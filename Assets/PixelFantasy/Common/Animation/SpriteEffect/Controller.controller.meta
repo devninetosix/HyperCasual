@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 962721c6db859e948a4ab7ffaa30d3e6
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 250116
+  packageName: 'Pixel Heroes: Fantasy Editor'
+  packageVersion: 2.7
+  assetPath: Assets/PixelFantasy/Common/Animation/SpriteEffect/Controller.controller
+  uploadId: 656065

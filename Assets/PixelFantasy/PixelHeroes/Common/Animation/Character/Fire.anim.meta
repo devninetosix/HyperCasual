@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 5753f244d4112ae47b460ae1ff9ce1e8
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 250116
+  packageName: 'Pixel Heroes: Fantasy Editor'
+  packageVersion: 2.7
+  assetPath: Assets/PixelFantasy/PixelHeroes/Common/Animation/Character/Fire.anim
+  uploadId: 656065

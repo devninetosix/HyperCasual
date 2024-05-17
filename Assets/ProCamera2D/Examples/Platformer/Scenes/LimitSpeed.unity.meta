@@ -1,0 +1,42 @@
+fileFormatVersion: 2
+guid: 4dd0a44a1b965401fb22f4dc114818ff
+labels:
+- camera
+- 2d
+- 2.5d
+- shake
+- parallax
+- follow
+- multi-target
+- multiple-targets
+- boundaries
+- zoom
+- zoom-to-fit
+- smooth-follow
+- ortho
+- orthographic
+- perspective
+- toolkit
+- 2dtoolkit
+- tk2d
+- pixel-perfect
+- pixelperfect
+- pixelart
+- pixel-art
+- cinematics
+- axes
+- playmaker
+- playmaker-actions
+timeCreated: 1455204711
+licenseType: Store
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 42095
+  packageName: Pro Camera 2D - The definitive 2D & 2.5D camera plugin for Unity
+  packageVersion: 2.9.7
+  assetPath: Assets/ProCamera2D/Examples/Platformer/Scenes/LimitSpeed.unity
+  uploadId: 657796

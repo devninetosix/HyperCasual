@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: d3526bef1446e6845895b33df656f94b
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 250116
+  packageName: 'Pixel Heroes: Fantasy Editor'
+  packageVersion: 2.7
+  assetPath: Assets/PixelFantasy/PixelHeroes/Common/Animation/Character/Heal.anim
+  uploadId: 656065

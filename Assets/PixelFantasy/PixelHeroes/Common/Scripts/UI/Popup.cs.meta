@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: b2967e90df3741fe8abaf0ee736976a9
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 250116
+  packageName: 'Pixel Heroes: Fantasy Editor'
+  packageVersion: 2.7
+  assetPath: Assets/PixelFantasy/PixelHeroes/Common/Scripts/UI/Popup.cs
+  uploadId: 656065

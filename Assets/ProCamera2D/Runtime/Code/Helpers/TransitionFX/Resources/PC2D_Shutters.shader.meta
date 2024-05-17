@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: be515eab61ea9430993a1c07592799ce
+timeCreated: 1456398281
+licenseType: Store
+ShaderImporter:
+  defaultTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 42095
+  packageName: Pro Camera 2D - The definitive 2D & 2.5D camera plugin for Unity
+  packageVersion: 2.9.7
+  assetPath: Assets/ProCamera2D/Runtime/Code/Helpers/TransitionFX/Resources/PC2D_Shutters.shader
+  uploadId: 657796

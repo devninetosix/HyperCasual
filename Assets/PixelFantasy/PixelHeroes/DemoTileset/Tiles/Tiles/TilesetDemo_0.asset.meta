@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 8d341de6cd888ca4ca08c11e0d3abd1e
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 250116
+  packageName: 'Pixel Heroes: Fantasy Editor'
+  packageVersion: 2.7
+  assetPath: Assets/PixelFantasy/PixelHeroes/DemoTileset/Tiles/Tiles/TilesetDemo_0.asset
+  uploadId: 656065

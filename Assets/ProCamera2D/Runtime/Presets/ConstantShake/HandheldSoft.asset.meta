@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 892e7a55ce003499d8f72636131605c7
+timeCreated: 1487285591
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 42095
+  packageName: Pro Camera 2D - The definitive 2D & 2.5D camera plugin for Unity
+  packageVersion: 2.9.7
+  assetPath: Assets/ProCamera2D/Runtime/Presets/ConstantShake/HandheldSoft.asset
+  uploadId: 657796

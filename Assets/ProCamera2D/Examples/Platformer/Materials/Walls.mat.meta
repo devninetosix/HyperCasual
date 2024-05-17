@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: f55c4d26159b348748a4ce6e97625c9e
+timeCreated: 1429657444
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 42095
+  packageName: Pro Camera 2D - The definitive 2D & 2.5D camera plugin for Unity
+  packageVersion: 2.9.7
+  assetPath: Assets/ProCamera2D/Examples/Platformer/Materials/Walls.mat
+  uploadId: 657796

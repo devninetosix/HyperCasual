@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: e624fc6d0e51945a1b48d32407f6f06b
+timeCreated: 1487610199
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 42095
+  packageName: Pro Camera 2D - The definitive 2D & 2.5D camera plugin for Unity
+  packageVersion: 2.9.7
+  assetPath: Assets/ProCamera2D/Editor/Helpers/MinMaxSliderDrawer.cs
+  uploadId: 657796

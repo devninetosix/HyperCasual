@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: fcce2e062a9bb46b589bcdd72d36441c
+timeCreated: 1444246553
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 42095
+  packageName: Pro Camera 2D - The definitive 2D & 2.5D camera plugin for Unity
+  packageVersion: 2.9.7
+  assetPath: Assets/ProCamera2D/Examples/TopDownShooter/Materials/Ground.mat
+  uploadId: 657796

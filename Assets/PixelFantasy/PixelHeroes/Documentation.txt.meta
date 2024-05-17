@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 859ac6f5b007dce48a1058afa83c41d8
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 250116
+  packageName: 'Pixel Heroes: Fantasy Editor'
+  packageVersion: 2.7
+  assetPath: Assets/PixelFantasy/PixelHeroes/Documentation.txt
+  uploadId: 656065

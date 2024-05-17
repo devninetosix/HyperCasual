@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 685a21973e6f8074e82d657eb2ee98d3
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 250116
+  packageName: 'Pixel Heroes: Fantasy Editor'
+  packageVersion: 2.7
+  assetPath: Assets/PixelFantasy/PixelHeroes/Common/Animation/Character/Ready.anim
+  uploadId: 656065

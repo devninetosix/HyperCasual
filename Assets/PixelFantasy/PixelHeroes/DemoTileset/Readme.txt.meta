@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: d3f5e32b1f3344319eaadd7ebd3eb195
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 250116
+  packageName: 'Pixel Heroes: Fantasy Editor'
+  packageVersion: 2.7
+  assetPath: Assets/PixelFantasy/PixelHeroes/DemoTileset/Readme.txt
+  uploadId: 656065

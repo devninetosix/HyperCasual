@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 6c47cdba9ce634971ba9d84eb91de2d4
+timeCreated: 1487291879
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 42095
+  packageName: Pro Camera 2D - The definitive 2D & 2.5D camera plugin for Unity
+  packageVersion: 2.9.7
+  assetPath: Assets/ProCamera2D/Runtime/Presets/Shake/GunShot.asset
+  uploadId: 657796

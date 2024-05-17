@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 1bef86dbdc18242729ef392729a12794
+timeCreated: 1465474384
+licenseType: Store
+TextScriptImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 42095
+  packageName: Pro Camera 2D - The definitive 2D & 2.5D camera plugin for Unity
+  packageVersion: 2.9.7
+  assetPath: Assets/ProCamera2D/Runtime/TransitionFX Textures/README.txt
+  uploadId: 657796

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: f0aa64146b34c481b8fda113d99791fc
+timeCreated: 1445898320
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 42095
+  packageName: Pro Camera 2D - The definitive 2D & 2.5D camera plugin for Unity
+  packageVersion: 2.9.7
+  assetPath: Assets/ProCamera2D/Examples/TopDownShooter/Scenes/TopDownShooter/NavMesh.asset
+  uploadId: 657796

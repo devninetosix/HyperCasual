@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 155f7348927d6b949985dac621528f1e
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 250116
+  packageName: 'Pixel Heroes: Fantasy Editor'
+  packageVersion: 2.7
+  assetPath: Assets/PixelFantasy/Common/Animation/SpriteEffect/Brake.anim
+  uploadId: 656065

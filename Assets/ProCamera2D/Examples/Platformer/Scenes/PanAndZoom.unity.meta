@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 194513394bcd24b8bafd392046bb2a72
+timeCreated: 1452669824
+licenseType: Store
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 42095
+  packageName: Pro Camera 2D - The definitive 2D & 2.5D camera plugin for Unity
+  packageVersion: 2.9.7
+  assetPath: Assets/ProCamera2D/Examples/Platformer/Scenes/PanAndZoom.unity
+  uploadId: 657796

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 5b2905789421483fbbed0750bf55ace0
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 250116
+  packageName: 'Pixel Heroes: Fantasy Editor'
+  packageVersion: 2.7
+  assetPath: Assets/PixelFantasy/PixelHeroes/Common/Animation/Character/Controller.controller
+  uploadId: 656065

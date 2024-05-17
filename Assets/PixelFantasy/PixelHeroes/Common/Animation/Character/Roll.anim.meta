@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: ce54814199044544ea9eb9234441db79
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 250116
+  packageName: 'Pixel Heroes: Fantasy Editor'
+  packageVersion: 2.7
+  assetPath: Assets/PixelFantasy/PixelHeroes/Common/Animation/Character/Roll.anim
+  uploadId: 656065

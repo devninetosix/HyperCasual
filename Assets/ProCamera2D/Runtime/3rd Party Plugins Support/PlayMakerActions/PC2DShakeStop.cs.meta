@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: b191bb069dcb4420195550be064b2e39
+timeCreated: 1482838806
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 42095
+  packageName: Pro Camera 2D - The definitive 2D & 2.5D camera plugin for Unity
+  packageVersion: 2.9.7
+  assetPath: Assets/ProCamera2D/Runtime/3rd Party Plugins Support/PlayMakerActions/PC2DShakeStop.cs
+  uploadId: 657796

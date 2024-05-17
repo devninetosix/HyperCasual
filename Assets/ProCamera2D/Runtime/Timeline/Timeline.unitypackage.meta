@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: ed6c11761d4a848788eacd90287423b0
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 42095
+  packageName: Pro Camera 2D - The definitive 2D & 2.5D camera plugin for Unity
+  packageVersion: 2.9.7
+  assetPath: Assets/ProCamera2D/Runtime/Timeline/Timeline.unitypackage
+  uploadId: 657796

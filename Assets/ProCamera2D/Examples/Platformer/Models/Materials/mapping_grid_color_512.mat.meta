@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 14bef3c54b5a14c38a73312e6c6b4461
+timeCreated: 1470311582
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 42095
+  packageName: Pro Camera 2D - The definitive 2D & 2.5D camera plugin for Unity
+  packageVersion: 2.9.7
+  assetPath: Assets/ProCamera2D/Examples/Platformer/Models/Materials/mapping_grid_color_512.mat
+  uploadId: 657796

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: beba8074644d440dab4d9e26e1843713
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 42095
+  packageName: Pro Camera 2D - The definitive 2D & 2.5D camera plugin for Unity
+  packageVersion: 2.9.7
+  assetPath: Assets/ProCamera2D/Examples/Platformer/Scenes/TriggerInfluence.unity
+  uploadId: 657796

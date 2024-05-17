@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 57d1bc348b84d48feaec92922c5473d1
+timeCreated: 1488812561
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: -1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 42095
+  packageName: Pro Camera 2D - The definitive 2D & 2.5D camera plugin for Unity
+  packageVersion: 2.9.7
+  assetPath: Assets/ProCamera2D/Runtime/Presets/ConstantShake/EarthquakeSoft.asset
+  uploadId: 657796

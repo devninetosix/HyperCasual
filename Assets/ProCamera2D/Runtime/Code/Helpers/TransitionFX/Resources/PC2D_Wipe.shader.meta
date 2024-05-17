@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 5c7573986b4d441ceb333c3ca55ffb23
+timeCreated: 1456050437
+licenseType: Store
+ShaderImporter:
+  defaultTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 42095
+  packageName: Pro Camera 2D - The definitive 2D & 2.5D camera plugin for Unity
+  packageVersion: 2.9.7
+  assetPath: Assets/ProCamera2D/Runtime/Code/Helpers/TransitionFX/Resources/PC2D_Wipe.shader
+  uploadId: 657796

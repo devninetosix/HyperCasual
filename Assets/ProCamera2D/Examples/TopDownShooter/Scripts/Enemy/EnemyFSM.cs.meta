@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: e946a0f41f0fe4390a946ec4bb71c996
+timeCreated: 1443796697
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 42095
+  packageName: Pro Camera 2D - The definitive 2D & 2.5D camera plugin for Unity
+  packageVersion: 2.9.7
+  assetPath: Assets/ProCamera2D/Examples/TopDownShooter/Scripts/Enemy/EnemyFSM.cs
+  uploadId: 657796

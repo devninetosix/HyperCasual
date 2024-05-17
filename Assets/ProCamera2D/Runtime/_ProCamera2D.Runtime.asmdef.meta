@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: da0319847955a4a36b91883508290fe8
+AssemblyDefinitionImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 42095
+  packageName: Pro Camera 2D - The definitive 2D & 2.5D camera plugin for Unity
+  packageVersion: 2.9.7
+  assetPath: Assets/ProCamera2D/Runtime/_ProCamera2D.Runtime.asmdef
+  uploadId: 657796

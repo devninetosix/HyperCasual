@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 4b1c6f7475961704286628d9fc21c1f2
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 6200000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 250116
+  packageName: 'Pixel Heroes: Fantasy Editor'
+  packageVersion: 2.7
+  assetPath: Assets/PixelFantasy/Common/Materials/NoFrictionPhysicsMaterial2D.physicsMaterial2D
+  uploadId: 656065

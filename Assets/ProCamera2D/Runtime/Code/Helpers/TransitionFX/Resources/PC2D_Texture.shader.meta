@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 8792cf492ecb54aa989bb9be033e5c62
+timeCreated: 1465055365
+licenseType: Store
+ShaderImporter:
+  defaultTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 42095
+  packageName: Pro Camera 2D - The definitive 2D & 2.5D camera plugin for Unity
+  packageVersion: 2.9.7
+  assetPath: Assets/ProCamera2D/Runtime/Code/Helpers/TransitionFX/Resources/PC2D_Texture.shader
+  uploadId: 657796

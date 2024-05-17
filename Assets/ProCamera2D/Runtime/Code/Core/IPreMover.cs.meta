@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 32bf46b1206e344308f4d7b271c6676c
+timeCreated: 1455023700
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 42095
+  packageName: Pro Camera 2D - The definitive 2D & 2.5D camera plugin for Unity
+  packageVersion: 2.9.7
+  assetPath: Assets/ProCamera2D/Runtime/Code/Core/IPreMover.cs
+  uploadId: 657796

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 33fb2d204215475c8b01896c4aa110aa
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 250116
+  packageName: 'Pixel Heroes: Fantasy Editor'
+  packageVersion: 2.7
+  assetPath: Assets/PixelFantasy/PixelHeroes/FantasyHeroes/Bonus/Character/Goblin/SpriteLibrary.asset
+  uploadId: 656065
