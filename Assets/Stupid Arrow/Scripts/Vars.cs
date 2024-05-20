@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Vars : MonoBehaviour
-{
-    public static int currentMenu = 0; //0 - main menu, 1 - gameplay menu, 2 - reply
+public class Vars : MonoBehaviour {
+    
+    public static int currentMenu = 0;//0 - main menu, 1 - gameplay menu, 2 - reply
     public static int mainMenuCircles = 15;
     public static bool startGame = false;
     public static int obstacle = 0;
@@ -12,8 +12,7 @@ public class Vars : MonoBehaviour
     public static int score = 0;
     public static float obstacleScaleSpeed = 0;
 
-    public static void Reset()
-    {
+    public static void Reset() {
         mainMenuCircles = 15;
         startGame = false;
         obstacle = 0;
@@ -21,4 +20,5 @@ public class Vars : MonoBehaviour
         score = 0;
         obstacleScaleSpeed = 0;
     }
+
 }
