@@ -18,12 +18,14 @@ namespace Com.LuisPedroFonseca.ProCamera2D
         private const string TAG_URP = "USING_URP";
  
         [UnityEditor.Callbacks.DidReloadScripts]
+        [Obsolete("LoadPackages")]
         private static void OnScriptsReloaded()
         {
             var packagesRequest = Client.List(true);
             LoadPackages(packagesRequest);
         }
         
+        [Obsolete("DefinePreProcessors")]
         private static void LoadPackages (ListRequest request)
         {
             if (request == null)
@@ -47,6 +49,7 @@ namespace Com.LuisPedroFonseca.ProCamera2D
             DefinePreProcessors(hasHDRP, hasURP);
         }
  
+        [Obsolete("SetScriptingDefineSymbolsForGroup")]
         private static void DefinePreProcessors(bool defineHDRP, bool defineURP)
         {
             string originalDefineSymbols;

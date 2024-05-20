@@ -1,5 +1,7 @@
-﻿using UnityEditor;
+﻿using System;
+using UnityEditor;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace Com.LuisPedroFonseca.ProCamera2D
 {
@@ -9,8 +11,15 @@ namespace Com.LuisPedroFonseca.ProCamera2D
     {
         MonoScript _script;
     	GUIContent _tooltip;
+	    private Object[] _allBoundariesTriggers;
 
-        void OnEnable()
+	    [Obsolete("FindObjectsOfType")]
+	    private void Start()
+	    {
+		    _allBoundariesTriggers = FindObjectsOfType(typeof(ProCamera2DTriggerBoundaries));
+	    }
+
+	    void OnEnable()
         {
 			var proCamera2DTriggerBoundaries = (ProCamera2DTriggerBoundaries)target;
 
@@ -23,7 +32,10 @@ namespace Com.LuisPedroFonseca.ProCamera2D
             _script = MonoScript.FromMonoBehaviour(proCamera2DTriggerBoundaries);
         }
 
+        [Obsolete("Obsolete")]
+#pragma warning disable CS0809 // 사용되지 않는 멤버가 사용되는 멤버를 재정의합니다.
         public override void OnInspectorGUI()
+#pragma warning restore CS0809 // 사용되지 않는 멤버가 사용되는 멤버를 재정의합니다.
         {
 			var proCamera2DTriggerBoundaries = (ProCamera2DTriggerBoundaries)target;
 
@@ -156,10 +168,10 @@ namespace Com.LuisPedroFonseca.ProCamera2D
 
             if(proCamera2DTriggerBoundaries._setAsStartingBoundaries)
             {
-                var allBoundariesTriggers = FindObjectsOfType(typeof(ProCamera2DTriggerBoundaries));
-                foreach (ProCamera2DTriggerBoundaries trigger in allBoundariesTriggers) 
+	            foreach (var o in _allBoundariesTriggers)
                 {
-                    trigger._setAsStartingBoundaries = false;
+	                var trigger = (ProCamera2DTriggerBoundaries)o;
+	                trigger._setAsStartingBoundaries = false;
                 }
 
                 proCamera2DTriggerBoundaries._setAsStartingBoundaries = true;

@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 0b692cd0837ee0e43b9b552d21f3fc7c
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 176539
+  packageName: Stupid Arrow - Hyper Casual Game
+  packageVersion: 1.0
+  assetPath: Assets/Stupid Arrow/Scripts/ObstacleRotation.cs
+  uploadId: 384038

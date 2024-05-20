@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -113,6 +114,7 @@ namespace Com.LuisPedroFonseca.ProCamera2D
         }
         #endif
 
+        [Obsolete("FindObjectsOfType")]
         public void CalculateParallaxObjectsOffset()
         {
             // Find all parallax objects

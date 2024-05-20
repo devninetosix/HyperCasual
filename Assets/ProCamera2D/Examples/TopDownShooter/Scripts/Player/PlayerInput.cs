@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Com.LuisPedroFonseca.ProCamera2D.TopDownShooter
 {
@@ -17,6 +18,7 @@ namespace Com.LuisPedroFonseca.ProCamera2D.TopDownShooter
 
         bool _movementAllowed = true;
 
+        [Obsolete("FindObjectsOfType")]
         void Start()
         {
             _characterController = GetComponent<CharacterController>();

@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: e8e6c4031a8df6242beff1ec751d00dd
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 176539
+  packageName: Stupid Arrow - Hyper Casual Game
+  packageVersion: 1.0
+  assetPath: Assets/Stupid Arrow/Scripts/FlexibleGridLayout.cs
+  uploadId: 384038

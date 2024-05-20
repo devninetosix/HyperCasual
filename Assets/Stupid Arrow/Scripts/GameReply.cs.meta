@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: badf6a58dc69f2745b60387d2eb75a3e
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 176539
+  packageName: Stupid Arrow - Hyper Casual Game
+  packageVersion: 1.0
+  assetPath: Assets/Stupid Arrow/Scripts/GameReply.cs
+  uploadId: 384038

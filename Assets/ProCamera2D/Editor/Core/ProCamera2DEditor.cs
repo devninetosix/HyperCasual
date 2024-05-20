@@ -1,8 +1,10 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace Com.LuisPedroFonseca.ProCamera2D
 {
@@ -39,6 +41,7 @@ namespace Com.LuisPedroFonseca.ProCamera2D
         private GUIContent _userGuideIcon;
         private Texture _inspectorHeader;
 
+        [Obsolete("Obsolete")]
         void OnEnable()
         {
             var proCamera2D = (ProCamera2D)target;

@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 033622e8d14b1ca4588add80be78d468
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 176539
+  packageName: Stupid Arrow - Hyper Casual Game
+  packageVersion: 1.0
+  assetPath: Assets/Stupid Arrow/Scripts/Menus.cs
+  uploadId: 384038
