@@ -19,7 +19,7 @@ MonoBehaviour:
     rid: 7103956010844291099
   m_Scenes:
   - m_enabled: 1
-    m_path: Assets/_PixelSlayers/Scenes/Main.unity
+    m_path: Assets/Stupid Arrow/Scenes/game.unity
   m_ScriptingDefines: []
   m_PlayerSettingsYaml:
     m_Settings:
@@ -35,7 +35,7 @@ MonoBehaviour:
     - line: '|   useOnDemandResources: 0'
     - line: '|   accelerometerFrequency: 60'
     - line: '|   companyName: ENVY BROS.'
-    - line: '|   productName: PixelSlayers'
+    - line: '|   productName: CrossingCircles'
     - line: '|   defaultCursor: {instanceID: 0}'
     - line: '|   cursorHotspot: {x: 0, y: 0}'
     - line: '|   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b:
@@ -313,7 +313,7 @@ MonoBehaviour:
     - line: '|   - m_BuildTarget: '
     - line: '|     m_Icons:'
     - line: '|     - serializedVersion: 2'
-    - line: '|       m_Icon: {fileID: 2800000, guid: 3919c2cb39cbe49b789dfe2cfcc21505,
+    - line: '|       m_Icon: {fileID: 2800000, guid: e4e180ad72510894593bc75b070a2243,
         type: 3}'
     - line: '|       m_Width: 128'
     - line: '|       m_Height: 128'
@@ -851,7 +851,8 @@ MonoBehaviour:
     - line: '|   metroTileBackgroundColor: {r: 0.13333334, g: 0.17254902, b: 0.21568628,
         a: 0}'
     - line: '|   metroSplashScreenBackgroundColor: {r: 0.12941177, g: 0.17254902,
-        b: 0.21568628, a: 1}'
+        b: 0.21568628,'
+    - line: '|     a: 1}'
     - line: '|   metroSplashScreenUseBackgroundColor: 0'
     - line: '|   syncCapabilities: 0'
     - line: '|   platformCapabilities: {}'
