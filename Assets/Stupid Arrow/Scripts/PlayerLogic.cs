@@ -1,35 +1,40 @@
-﻿using System.Collections;
-using TMPro;
+﻿using TMPro;
+using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public class PlayerLogic : MonoBehaviour
 {
-    public float FixeScale = 1;
+    public float fixedScale = 1;
     public GameObject parent;
     public Camera cam;
-    private AudioSource lineChangeSound;
-    private TextMeshProUGUI score;
+    private AudioSource _lineChangeSound;
+    private TextMeshProUGUI _score;
 
     private void Awake()
     {
-        lineChangeSound = GameObject.Find("LineChangeSound").GetComponent<AudioSource>();
-        score = GameObject.Find("Canvas").transform.Find("GameMenu").transform.Find("TopMenu").transform
-            .Find("ScoreText").GetComponent<TextMeshProUGUI>();
+        _lineChangeSound = GameObject.Find("LineChangeSound").GetComponent<AudioSource>();
+        _score = GameObject.Find("Canvas")
+            .transform.Find("GameMenu")
+            .transform.Find("TopMenu")
+            .transform.Find("ScoreText")
+            .GetComponent<TextMeshProUGUI>();
     }
 
     private void FixedUpdate()
     {
-        transform.localScale = new Vector2(FixeScale / parent.transform.localScale.x,
-            FixeScale / parent.transform.localScale.y);
+        transform.localScale = new Vector2(
+            fixedScale / parent.transform.localScale.x,
+            fixedScale / parent.transform.localScale.y
+        );
     }
 
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (EventSystem.current.IsPointerOverGameObject(-1) || EventSystem.current.IsPointerOverGameObject(0) ||
+            if (EventSystem.current.IsPointerOverGameObject(-1) ||
+                EventSystem.current.IsPointerOverGameObject(0) ||
                 EventSystem.current.IsPointerOverGameObject(1))
             {
                 return;
@@ -41,9 +46,8 @@ public class PlayerLogic : MonoBehaviour
             float circleScale = circle.transform.localScale.x;
 
             Vars.NumberOfCircles++;
-            GameObject newCircle = Instantiate(Resources.Load("circle", typeof(GameObject))) as GameObject;
+            GameObject newCircle = Instantiate(Resources.Load("circle", typeof(GameObject)), GameObject.Find("Gameplay").transform, true) as GameObject;
 
-            newCircle.transform.parent = GameObject.Find("Gameplay").transform;
             GameObject previousCircle = GameObject.Find("circle" + (Vars.NumberOfCircles - 1));
 
             GameObject circleToJump = GameObject.Find("circle" + (Vars.Obstacle - 1));
@@ -55,7 +59,7 @@ public class PlayerLogic : MonoBehaviour
             circle.transform.localScale = new Vector2(circleScale, circleScale);
             circleToJump.transform.localScale = new Vector2(circleToJumpScale, circleToJumpScale);
 
-            newCircle.name = "circle" + Vars.NumberOfCircles;
+            newCircle!.name = "circle" + Vars.NumberOfCircles;
             SpriteRenderer newCircleSpriteRenderer = newCircle.GetComponent<SpriteRenderer>();
             newCircleSpriteRenderer.sortingOrder = -Vars.NumberOfCircles;
             newCircle.transform.localScale = new Vector3(previousCircle.transform.localScale.x + 0.05f,
@@ -73,8 +77,7 @@ public class PlayerLogic : MonoBehaviour
 
     private IEnumerator CheckPixelColor(int x, int y)
     {
-        //It will check the color of the pixel at the top of current arrow position
-        Rect viewRect = cam.pixelRect;
+        // It will check the color of the pixel at the top of current arrow position
         Texture2D tex = new Texture2D(1, 1, TextureFormat.RGB24, false);
         yield return new WaitForEndOfFrame();
         tex.ReadPixels(new Rect(x, y, x, y), 0, 0, false);
@@ -101,9 +104,9 @@ public class PlayerLogic : MonoBehaviour
                 PlayerPrefs.SetInt("BestScore", Vars.Score);
             }
 
-            score.text = "POINTS: " + Vars.Score;
+            _score.SetText("POINTS: " + Vars.Score);
             PlayerPrefs.SetInt("totalPoints", PlayerPrefs.GetInt("totalPoints") + 1);
-            lineChangeSound.Play();
+            _lineChangeSound.Play();
         }
 
         RenderTexture.active = currentRT;
@@ -119,14 +122,18 @@ public class PlayerLogic : MonoBehaviour
         GameObject.Find("ExplosionSound").GetComponent<AudioSource>().Play();
         transform.parent = null;
         transform.Find("PlayerSprite").GetComponent<PlayerDestroy>().enabled = true;
-        if (GameObject.Find("TopMenu") != null) GameObject.Find("TopMenu").SetActive(false);
+        if (GameObject.Find("TopMenu") != null)
+        {
+            GameObject.Find("TopMenu").SetActive(false);
+        }
+
         GameObject rpyButton = GameObject.Find("ReplyButton");
         rpyButton.transform.localScale = new Vector2(4, 4);
         rpyButton.GetComponent<CircleCollider2D>().enabled = true;
         rpyButton.GetComponent<SpriteRenderer>().enabled = true;
         GameObject.Find("GameOverMenu").transform.localScale = new Vector2(1, 1);
-        GameObject.Find("GameOverScore").GetComponent<TextMeshProUGUI>().text = "POINTS: " + Vars.Score;
-        GameObject.Find("GameOverBestScore").GetComponent<TextMeshProUGUI>().text = "BEST: " + PlayerPrefs.GetInt("BestScore");
+        GameObject.Find("GameOverScore").GetComponent<TextMeshProUGUI>().SetText("POINTS: " + Vars.Score);
+        GameObject.Find("GameOverBestScore").GetComponent<TextMeshProUGUI>().SetText("BEST: " + PlayerPrefs.GetInt("BestScore"));
         Destroy(this.gameObject, 0.5f);
         GetComponent<PlayerLogic>().enabled = false;
     }
