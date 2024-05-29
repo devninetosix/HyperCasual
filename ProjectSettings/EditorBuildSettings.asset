@@ -9,3 +9,4 @@ EditorBuildSettings:
     path: Assets/Stupid Arrow/Scenes/game.unity
     guid: 253670144fd9b4142b69fe98c514a911
   m_configObjects: {}
+  m_UseUCBPForAssetBundles: 0
