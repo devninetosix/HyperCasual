@@ -140,7 +140,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -2
   m_Sprite: {fileID: 21300000, guid: e4e180ad72510894593bc75b070a2243, type: 3}
-  m_Color: {r: 0, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5176471, g: 0.34901962, b: 0.909804, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -163,7 +163,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rot: 0
-  startScale: 0
   rotateForward: 1
 --- !u!1 &7223122292398595565
 GameObject:
@@ -276,7 +275,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -13
   m_Sprite: {fileID: 21300000, guid: e4e180ad72510894593bc75b070a2243, type: 3}
-  m_Color: {r: 0, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5176471, g: 0.34901962, b: 0.909804, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -299,7 +298,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rot: 0
-  startScale: 0
   rotateForward: 0
 --- !u!1 &7223122292835160235
 GameObject:
@@ -379,7 +377,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: e4e180ad72510894593bc75b070a2243, type: 3}
-  m_Color: {r: 0, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5176471, g: 0.34901962, b: 0.909804, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -402,7 +400,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rot: 0
-  startScale: 0
   rotateForward: 1
 --- !u!1 &7223122292923064251
 GameObject:
@@ -482,7 +479,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -7
   m_Sprite: {fileID: 21300000, guid: e4e180ad72510894593bc75b070a2243, type: 3}
-  m_Color: {r: 0, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5176471, g: 0.34901962, b: 0.909804, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -505,7 +502,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rot: 0
-  startScale: 0
   rotateForward: 0
 --- !u!1 &7223122292949203884
 GameObject:
@@ -585,7 +581,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: e4e180ad72510894593bc75b070a2243, type: 3}
-  m_Color: {r: 0, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5176471, g: 0.34901962, b: 0.909804, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -608,7 +604,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rot: 0
-  startScale: 0
   rotateForward: 0
 --- !u!1 &7223122293006770066
 GameObject:
@@ -795,7 +790,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -14
   m_Sprite: {fileID: 21300000, guid: e4e180ad72510894593bc75b070a2243, type: 3}
-  m_Color: {r: 0, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5176471, g: 0.34901962, b: 0.909804, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -818,7 +813,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rot: 0
-  startScale: 0
   rotateForward: 1
 --- !u!1 &7223122293254609773
 GameObject:
@@ -848,8 +842,8 @@ Transform:
   m_GameObject: {fileID: 7223122293254609773}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.05, z: 0}
-  m_LocalScale: {x: 2.5, y: 2.5, z: 1}
+  m_LocalPosition: {x: 0, y: -0.05, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7223122293910337965}
@@ -1030,7 +1024,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -8
   m_Sprite: {fileID: 21300000, guid: e4e180ad72510894593bc75b070a2243, type: 3}
-  m_Color: {r: 0, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5176471, g: 0.34901962, b: 0.909804, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1053,7 +1047,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rot: 0
-  startScale: 0
   rotateForward: 1
 --- !u!1 &7223122293559177167
 GameObject:
@@ -1133,7 +1126,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -12
   m_Sprite: {fileID: 21300000, guid: e4e180ad72510894593bc75b070a2243, type: 3}
-  m_Color: {r: 0, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5176471, g: 0.34901962, b: 0.909804, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1156,7 +1149,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rot: 0
-  startScale: 0
   rotateForward: 1
 --- !u!1 &7223122293630028297
 GameObject:
@@ -1236,7 +1228,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -11
   m_Sprite: {fileID: 21300000, guid: e4e180ad72510894593bc75b070a2243, type: 3}
-  m_Color: {r: 0, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5176471, g: 0.34901962, b: 0.909804, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1259,7 +1251,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rot: 0
-  startScale: 0
   rotateForward: 0
 --- !u!1 &7223122293707175069
 GameObject:
@@ -1339,7 +1330,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -9
   m_Sprite: {fileID: 21300000, guid: e4e180ad72510894593bc75b070a2243, type: 3}
-  m_Color: {r: 0, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5176471, g: 0.34901962, b: 0.909804, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1362,7 +1353,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rot: 0
-  startScale: 0
   rotateForward: 0
 --- !u!1 &7223122293845158615
 GameObject:
@@ -1442,7 +1432,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -10
   m_Sprite: {fileID: 21300000, guid: e4e180ad72510894593bc75b070a2243, type: 3}
-  m_Color: {r: 0, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5176471, g: 0.34901962, b: 0.909804, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1465,7 +1455,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rot: 0
-  startScale: 0
   rotateForward: 1
 --- !u!1 &7223122293910337967
 GameObject:
@@ -1514,7 +1503,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 012ceb43dda10cc4c9636d1b6cfccde4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FixeScale: 1
+  fixedScale: 1
   parent: {fileID: 7223122294150959020}
   cam: {fileID: 7223122293006770065}
 --- !u!58 &7223122293910337964
@@ -1658,7 +1647,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -5
   m_Sprite: {fileID: 21300000, guid: e4e180ad72510894593bc75b070a2243, type: 3}
-  m_Color: {r: 0, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5176471, g: 0.34901962, b: 0.909804, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1681,7 +1670,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rot: 0
-  startScale: 0
   rotateForward: 0
 --- !u!1 &7223122294059761920
 GameObject:
@@ -1761,7 +1749,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -6
   m_Sprite: {fileID: 21300000, guid: e4e180ad72510894593bc75b070a2243, type: 3}
-  m_Color: {r: 0, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5176471, g: 0.34901962, b: 0.909804, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1784,7 +1772,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rot: 0
-  startScale: 0
   rotateForward: 1
 --- !u!1 &7223122294094236006
 GameObject:
@@ -1864,7 +1851,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -4
   m_Sprite: {fileID: 21300000, guid: e4e180ad72510894593bc75b070a2243, type: 3}
-  m_Color: {r: 0, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5176471, g: 0.34901962, b: 0.909804, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1887,7 +1874,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rot: 0
-  startScale: 0
   rotateForward: 1
 --- !u!1 &7223122294150959020
 GameObject:
@@ -1968,7 +1954,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: e4e180ad72510894593bc75b070a2243, type: 3}
-  m_Color: {r: 0, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5176471, g: 0.34901962, b: 0.909804, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1991,7 +1977,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rot: 0
-  startScale: 0
   rotateForward: 0
 --- !u!1 &7223122294416477984
 GameObject:
@@ -2071,7 +2056,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -3
   m_Sprite: {fileID: 21300000, guid: e4e180ad72510894593bc75b070a2243, type: 3}
-  m_Color: {r: 0, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5176471, g: 0.34901962, b: 0.909804, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2094,5 +2079,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rot: 0
-  startScale: 0
   rotateForward: 0

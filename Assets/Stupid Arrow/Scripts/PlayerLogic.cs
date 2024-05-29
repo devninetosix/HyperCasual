@@ -96,7 +96,7 @@ public class PlayerLogic : MonoBehaviour
 
         Color pixel = tex.GetPixel(0, 0);
 
-        if (pixel is { g: 0, b: 0 })
+        if (pixel is { r: 0, g: 0, b: 0 })
         {
             DestroyPlayer();
         }
