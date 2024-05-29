@@ -13,7 +13,7 @@ public class GameReply : MonoBehaviour
 
         _canClick = false;
         GameObject.Find("GameManager").GetComponent<Menus>().Reply();
-        Invoke("AllowClicking", 1);
+        Invoke(nameof(AllowClicking), 1);
     }
 
     private void AllowClicking()

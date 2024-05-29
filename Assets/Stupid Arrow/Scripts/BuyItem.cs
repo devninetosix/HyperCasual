@@ -25,7 +25,7 @@ public class BuyItem : MonoBehaviour
             background.color = new Color(1, 1, 1, 1);
         }
 
-        points.text = "POINTS: " + (PlayerPrefs.GetInt("totalPoints") - PlayerPrefs.GetInt("spentPoints"));
+        points.SetText("POINTS: " + (PlayerPrefs.GetInt("totalPoints") - PlayerPrefs.GetInt("spentPoints")));
     }
 
     public void Buy()
@@ -39,7 +39,7 @@ public class BuyItem : MonoBehaviour
                 PlayerPrefs.SetInt("Item" + gameObject.name, 1);
                 background.color = new Color(1, 1, 1, 1);
                 price.SetActive(false);
-                points.text = "POINTS: " + (PlayerPrefs.GetInt("totalPoints") - PlayerPrefs.GetInt("spentPoints"));
+                points.SetText("POINTS: " + (PlayerPrefs.GetInt("totalPoints") - PlayerPrefs.GetInt("spentPoints")));
                 GameObject.Find("ItemPurchaseSound").GetComponent<AudioSource>().Play();
                 PlayerPrefs.SetInt("Player", int.Parse(gameObject.name));
             }

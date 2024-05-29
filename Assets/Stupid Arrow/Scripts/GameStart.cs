@@ -13,7 +13,7 @@ public class GameStart : MonoBehaviour
         
         _canClick = false;
         GameObject.Find("GameManager").GetComponent<Menus>().StartTheGame();
-        Invoke("AllowClicking", 1);
+        Invoke(nameof(AllowClicking), 1);
     }
 
     private void AllowClicking()

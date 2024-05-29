@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-public class Vars : MonoBehaviour {
-    
-    public static int CurrentMenu = 0;//0 - main menu, 1 - gameplay menu, 2 - reply
+public class Vars : MonoBehaviour
+{
+    public static int CurrentMenu = 0; //0 - main menu, 1 - gameplay menu, 2 - reply
     public static int MainMenuCircles = 15;
     public static bool StartGame;
     public static int Obstacle;
@@ -10,7 +10,8 @@ public class Vars : MonoBehaviour {
     public static int Score;
     public static float ObstacleScaleSpeed;
 
-    public static void Reset() {
+    public static void ResetAll()
+    {
         MainMenuCircles = 15;
         StartGame = false;
         Obstacle = 0;
@@ -18,5 +19,4 @@ public class Vars : MonoBehaviour {
         Score = 0;
         ObstacleScaleSpeed = 0;
     }
-
 }
