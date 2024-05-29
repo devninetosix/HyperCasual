@@ -1,48 +1,51 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class ObstacleRotation : MonoBehaviour {
-    
+public class ObstacleRotation : MonoBehaviour
+{
     public float rot;
-    public float startScale;
     public bool rotateForward = true;
-    private float timer = 0;
-    private SpriteRenderer sp;
+    private float _timer;
+    private SpriteRenderer _sp;
 
-    void Start() {
-        startScale = transform.localScale.y;
+    private void Start()
+    {
         rot = Random.Range(50, 100);
-        sp = GetComponent<SpriteRenderer>();
-        Color c = sp.color;
+        _sp = GetComponent<SpriteRenderer>();
+        Color c = _sp.color;
         c.g = 1.2f - transform.localScale.x;
         c.b = 1.2f - transform.localScale.x;
-        sp.color = c;
+        _sp.color = c;
     }
 
-    void FixedUpdate() {
-        
-        if(rotateForward) {
+    private void FixedUpdate()
+    {
+        if (rotateForward)
+        {
             transform.Rotate(0, 0, rot * Time.deltaTime);
-        }else {
+        }
+        else
+        {
             transform.Rotate(0, 0, -rot * Time.deltaTime);
         }
 
-        timer += Time.deltaTime;
-        if(timer > 5f) {
-            timer = 0;
-            Vars.obstacleScaleSpeed += 0.00001f;
+        _timer += Time.deltaTime;
+        if (_timer > 5f)
+        {
+            _timer = 0;
+            Vars.ObstacleScaleSpeed += 0.00001f;
         }
-        
-        transform.localScale  = new Vector2(transform.localScale.x - (0.0005f + Vars.obstacleScaleSpeed), transform.localScale.y - (0.0005f + Vars.obstacleScaleSpeed));
 
-        Color c = sp.color;
+        transform.localScale = new Vector2(transform.localScale.x - (0.0005f + Vars.ObstacleScaleSpeed),
+            transform.localScale.y - (0.0005f + Vars.ObstacleScaleSpeed));
+
+        Color c = _sp.color;
         c.g = 1.2f - transform.localScale.x;
         c.b = 1.2f - transform.localScale.x;
-        sp.color = c;
+        _sp.color = c;
 
-        if(transform.localScale.x < 0f) {
-            Destroy(this.gameObject);
+        if (transform.localScale.x < 0f)
+        {
+            Destroy(gameObject);
         }
-    } 
+    }
 }

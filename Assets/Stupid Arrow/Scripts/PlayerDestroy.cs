@@ -1,22 +1,23 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerDestroy : MonoBehaviour
 {
-    private float timer = 0;
-    private float scale = 1;
+    private float _timer;
+    private float _scale = 1;
 
-    void Update()
+    private void Update()
     {
-        timer += Time.deltaTime;
-        if(timer >= 0.01f) {
-            timer = 0;
-            scale -= 0.05f;
-            transform.localScale = new Vector2(scale, scale);
-            if(scale <= 0) {
-                Destroy(this.gameObject);
+        _timer += Time.deltaTime;
+        
+        if (_timer >= 0.01f)
+        {
+            _timer = 0;
+            _scale -= 0.05f;
+            transform.localScale = new Vector2(_scale, _scale);
+            if (_scale <= 0)
+            {
+                Destroy(gameObject);
             }
-        }    
+        }
     }
 }

@@ -8,7 +8,7 @@ namespace TMPro.Examples
     public class Benchmark01 : MonoBehaviour
     {
 
-        public int BenchmarkType = 0;
+        public int BenchmarkType;
 
         public TMP_FontAsset TMProFont;
         public Font TextMeshFont;
@@ -27,8 +27,7 @@ namespace TMPro.Examples
         private Material m_material02;
 
 
-
-        IEnumerator Start()
+        private IEnumerator Start()
         {
 
 

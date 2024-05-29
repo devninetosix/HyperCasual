@@ -1,11 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class ObstacleStartScale : MonoBehaviour {
+public class ObstacleStartScale : MonoBehaviour
+{
     public float startScale;
 
-    void Start() {
+    private void Start()
+    {
         startScale = transform.localScale.y;
     }
 }

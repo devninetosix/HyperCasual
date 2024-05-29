@@ -5,16 +5,17 @@ using TonSdk.Connect;
 using TonSdk.Core;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.Serialization;
 using UnityEngine.UIElements;
 using Message = TonSdk.Connect.Message;
 
 public class UIManager : MonoBehaviour
 {
-    [Tooltip("Toggle if you want to use presaved wallet icons. (recommended)")]
-    public bool UseSavedWalletIcons = true;
-    [Tooltip("Wallet icons. Works only if UseSavedWalletIcons is enabled.")]
-    public List<Sprite> WalletIcons = new ();
-    private List<string> WalletsIconsList = new () {"tonkeeper", "tonhub", "openmask", "dewallet", "mytonwallet", "tonflow", "tonwallet", "xtonwallet", "telegram-wallet"};
+    [FormerlySerializedAs("UseSavedWalletIcons")] [Tooltip("Toggle if you want to use presaved wallet icons. (recommended)")]
+    public bool useSavedWalletIcons = true;
+    [FormerlySerializedAs("WalletIcons")] [Tooltip("Wallet icons. Works only if UseSavedWalletIcons is enabled.")]
+    public List<Sprite> walletIcons = new ();
+    private List<string> _walletsIconsList = new () {"tonkeeper", "tonhub", "openmask", "dewallet", "mytonwallet", "tonflow", "tonwallet", "xtonwallet", "telegram-wallet"};
 
     [Header("UI References")]
     [SerializeField] private UIDocument document;
@@ -27,14 +28,14 @@ public class UIManager : MonoBehaviour
     {
         TonConnectHandler.OnProviderStatusChanged += OnProviderStatusChange;
         TonConnectHandler.OnProviderStatusChangedError += OnProviderStatusChangeError;
-        DisableSendTXModal();
+        DisableSendTxModal();
         DisableWalletInfoButton();
         EnableConnectWalletButton();
     }
 
     private void OnProviderStatusChange(Wallet wallet)
     {
-        if(tonConnectHandler.tonConnect.IsConnected)
+        if(tonConnectHandler.TonConnect.IsConnected)
         {
             Debug.Log("Wallet connected. Address: " + wallet.Account.Address + ". Platform: " + wallet.Device.Platform + "," + wallet.Device.AppName + "," + wallet.Device.AppVersion);
             CloseConnectModal();
@@ -68,7 +69,7 @@ public class UIManager : MonoBehaviour
     #endregion
 
     #region Button Click Events
-    private async void OpenWalletQRContent(ClickEvent clickEvent, WalletConfig config)
+    private async void OpenWalletQrContent(ClickEvent clickEvent, WalletConfig config)
     {
         document.rootVisualElement.Q<Label>("ConnectModal_Title").text = "Connect Wallet";
 
@@ -79,8 +80,8 @@ public class UIManager : MonoBehaviour
 
         document.rootVisualElement.Q<Label>("ModalQRContent_OpenWalletButton_Title").text = $"Open {config.Name}";
 
-        string connectUrl = await tonConnectHandler.tonConnect.Connect(config);
-        Texture2D qrCodeTexture = QRGenerator.EncodeString(connectUrl.ToString());
+        string connectUrl = await tonConnectHandler.TonConnect.Connect(config);
+        Texture2D qrCodeTexture = QrGenerator.EncodeString(connectUrl.ToString());
 
         document.rootVisualElement.Q<VisualElement>("ModalQRContent_QRHandler").style.backgroundImage = new StyleBackground(qrCodeTexture);
         document.rootVisualElement.Q<VisualElement>("ModalQRContent_OpenWalletButton").UnregisterCallback<ClickEvent, string>(OpenWalletUrl);
@@ -89,7 +90,7 @@ public class UIManager : MonoBehaviour
 
     private async void OpenWebWallet(ClickEvent clickEvent, WalletConfig config)
     {
-        await tonConnectHandler.tonConnect.Connect(config);
+        await tonConnectHandler.TonConnect.Connect(config);
     }
 
     private void OpenWalletUrl(ClickEvent clickEvent, string url)
@@ -102,7 +103,7 @@ public class UIManager : MonoBehaviour
 
     private void BackToMainContent(ClickEvent clickEvent)
     {
-        tonConnectHandler.tonConnect.PauseConnection();
+        tonConnectHandler.TonConnect.PauseConnection();
         document.rootVisualElement.Q<Label>("ConnectModal_Title").text = "Choose Wallet";
         document.rootVisualElement.Q<VisualElement>("ModalContent").style.display = DisplayStyle.Flex;
         document.rootVisualElement.Q<VisualElement>("ModalContentWeb").style.display = DisplayStyle.Flex;
@@ -119,21 +120,21 @@ public class UIManager : MonoBehaviour
     {
         EnableConnectWalletButton();
         DisableWalletInfoButton();
-        tonConnectHandler.RestoreConnectionOnAwake = false;
-        await tonConnectHandler.tonConnect.Disconnect();
+        tonConnectHandler.restoreConnectionOnAwake = false;
+        await tonConnectHandler.TonConnect.Disconnect();
     }
 
     private  void WalletInfoButtonClick(ClickEvent clickEvent)
     {
-        ShowSendTXModal();
+        ShowSendTxModal();
     }
 
-    private void CloseTXModalButtonClick(ClickEvent clickEvent)
+    private void CloseTxModalButtonClick(ClickEvent clickEvent)
     {
-        DisableSendTXModal();
+        DisableSendTxModal();
     }
 
-    private async void SendTXModalSendButtonClick(ClickEvent clickEvent)
+    private async void SendTxModalSendButtonClick(ClickEvent clickEvent)
     {
         string receiverAddress = document.rootVisualElement.Q<TextField>("SendTXModal_Address").value;
         double sendValue = document.rootVisualElement.Q<DoubleField>("SendTXModal_Value").value;
@@ -152,7 +153,7 @@ public class UIManager : MonoBehaviour
         long validUntil = DateTimeOffset.Now.ToUnixTimeSeconds() + 600;
 
         SendTransactionRequest transactionRequest = new SendTransactionRequest(sendTons, validUntil);
-        await tonConnectHandler.tonConnect.SendTransaction(transactionRequest);
+        await tonConnectHandler.TonConnect.SendTransaction(transactionRequest);
     }
 
     #endregion
@@ -182,9 +183,9 @@ public class UIManager : MonoBehaviour
             if(t.BridgeUrl == null) continue;
             VisualElement walletElement = walletItem.CloneTree();
 
-            if(UseSavedWalletIcons && WalletsIconsList.Contains(t.AppName))
+            if(useSavedWalletIcons && _walletsIconsList.Contains(t.AppName))
             {
-                walletElement.Q<VisualElement>("WalletButton_WalletImage").style.backgroundImage = new StyleBackground(WalletIcons[WalletsIconsList.IndexOf(t.AppName)]);
+                walletElement.Q<VisualElement>("WalletButton_WalletImage").style.backgroundImage = new StyleBackground(walletIcons[_walletsIconsList.IndexOf(t.AppName)]);
             }
             else
             {
@@ -203,21 +204,21 @@ public class UIManager : MonoBehaviour
             }
 
             walletElement.Q<Label>("WalletButton_WalletName").text = t.Name;
-            walletElement.RegisterCallback<ClickEvent, WalletConfig>(OpenWalletQRContent, t);
+            walletElement.RegisterCallback<ClickEvent, WalletConfig>(OpenWalletQrContent, t);
             contentElement.Add(walletElement);
         }
 
         // load js bridge wallets
-        if(tonConnectHandler.UseWebWallets)
+        if(tonConnectHandler.useWebWallets)
         {
             for (int i = 0; i < wallets.Count; i++)
             {
                 if(wallets[i].JsBridgeKey == null || !InjectedProvider.IsWalletInjected(wallets[i].JsBridgeKey)) continue;
                 VisualElement walletElement = walletItem.CloneTree();
 
-                if(UseSavedWalletIcons && WalletsIconsList.Contains(wallets[i].AppName))
+                if(useSavedWalletIcons && _walletsIconsList.Contains(wallets[i].AppName))
                 {
-                    walletElement.Q<VisualElement>("WalletButton_WalletImage").style.backgroundImage = new StyleBackground(WalletIcons[WalletsIconsList.IndexOf(wallets[i].AppName)]);
+                    walletElement.Q<VisualElement>("WalletButton_WalletImage").style.backgroundImage = new StyleBackground(walletIcons[_walletsIconsList.IndexOf(wallets[i].AppName)]);
                 }
                 else
                 {
@@ -250,7 +251,7 @@ public class UIManager : MonoBehaviour
 
     public void ShowConnectModal()
     {
-        if (tonConnectHandler.tonConnect.IsConnected)
+        if (tonConnectHandler.TonConnect.IsConnected)
         {
             Debug.LogWarning("Wallet already connected. The connection window has not been opened. Before proceeding, please disconnect from your wallet.");
             document.rootVisualElement.Q<VisualElement>("ConnectModal").style.display = DisplayStyle.None;
@@ -277,7 +278,7 @@ public class UIManager : MonoBehaviour
 
     private void CloseConnectModal()
     {
-        if(!tonConnectHandler.tonConnect.IsConnected) tonConnectHandler.tonConnect.PauseConnection();
+        if(!tonConnectHandler.TonConnect.IsConnected) tonConnectHandler.TonConnect.PauseConnection();
         document.rootVisualElement.Q<VisualElement>("ConnectModal").style.display = DisplayStyle.None;
     }
 
@@ -316,16 +317,16 @@ public class UIManager : MonoBehaviour
         document.rootVisualElement.Q<VisualElement>("DisconnectWalletButton").style.display = DisplayStyle.None;
     }
 
-    private void ShowSendTXModal()
+    private void ShowSendTxModal()
     {
         document.rootVisualElement.Q<VisualElement>("SendTXModal").style.display = DisplayStyle.Flex;
-        document.rootVisualElement.Q<VisualElement>("SendTXModal_Button_Close").UnregisterCallback<ClickEvent>(CloseTXModalButtonClick);
-        document.rootVisualElement.Q<VisualElement>("SendTXModal_Button_Close").RegisterCallback<ClickEvent>(CloseTXModalButtonClick);
-        document.rootVisualElement.Q<VisualElement>("SendTXModal_ConfirmButton").UnregisterCallback<ClickEvent>(SendTXModalSendButtonClick);
-        document.rootVisualElement.Q<VisualElement>("SendTXModal_ConfirmButton").RegisterCallback<ClickEvent>(SendTXModalSendButtonClick);
+        document.rootVisualElement.Q<VisualElement>("SendTXModal_Button_Close").UnregisterCallback<ClickEvent>(CloseTxModalButtonClick);
+        document.rootVisualElement.Q<VisualElement>("SendTXModal_Button_Close").RegisterCallback<ClickEvent>(CloseTxModalButtonClick);
+        document.rootVisualElement.Q<VisualElement>("SendTXModal_ConfirmButton").UnregisterCallback<ClickEvent>(SendTxModalSendButtonClick);
+        document.rootVisualElement.Q<VisualElement>("SendTXModal_ConfirmButton").RegisterCallback<ClickEvent>(SendTxModalSendButtonClick);
     }
 
-    private void DisableSendTXModal()
+    private void DisableSendTxModal()
     {
         document.rootVisualElement.Q<VisualElement>("SendTXModal").style.display = DisplayStyle.None;
     }

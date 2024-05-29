@@ -1,18 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Menus : MonoBehaviour {
-
+public class Menus : MonoBehaviour
+{
     public GameObject playButton;
     public GameObject mainMenuUI;
     public GameObject gameMenuUI;
-    public Text score;
+    public TextMeshProUGUI score;
 
     public GameObject shopMenu;
     public GameObject[] shopMenuItems;
-    public Text shopMenuAvailablePoints;
+    public TextMeshProUGUI shopMenuAvailablePoints;
     public CircleCollider2D playButtonCollider;
     public GameObject pauseMenu;
     public GameObject transitionImage;
@@ -22,20 +21,23 @@ public class Menus : MonoBehaviour {
     public GameObject topMenu;
     public GameObject replyButton;
 
-    void Start() {
+    private void Start()
+    {
         Application.targetFrameRate = 300;
     }
 
-    public void StartTheGame() {
-        Vars.startGame = true;
-        Vars.currentMenu = 1;
-        transitionImage.GetComponent<MenuTransition> ().enabled = true;
+    public void StartTheGame()
+    {
+        Vars.StartGame = true;
+        Vars.CurrentMenu = 1;
+        transitionImage.GetComponent<MenuTransition>().enabled = true;
         buttonSound.Play();
     }
 
-    public void ShowGamePlayMenu() {
+    public void ShowGamePlayMenu()
+    {
         GameObject game = Instantiate(Resources.Load("Game", typeof(GameObject))) as GameObject;
-        game.name = "Game";
+        game!.name = "Game";
         Destroy(GameObject.Find("MainMenu"));
         playButton.SetActive(false);
         mainMenuUI.SetActive(false);
@@ -43,16 +45,18 @@ public class Menus : MonoBehaviour {
         score.text = "POINTS: 0";
     }
 
-    public void BackToTheMainMenu() {
+    public void BackToTheMainMenu()
+    {
         Time.timeScale = 1;
-        Vars.startGame = false;
-        Vars.currentMenu = 0;
-        transitionImage.GetComponent<MenuTransition> ().enabled = true;
+        Vars.StartGame = false;
+        Vars.CurrentMenu = 0;
+        transitionImage.GetComponent<MenuTransition>().enabled = true;
         Destroy(GameObject.Find("player"));
         buttonSound.Play();
     }
 
-    public void ShowMainMenu() {
+    public void ShowMainMenu()
+    {
         Destroy(GameObject.Find("Game"));
         GameObject game = Instantiate(Resources.Load("MainMenu", typeof(GameObject))) as GameObject;
         game.name = "MainMenu";
@@ -62,70 +66,84 @@ public class Menus : MonoBehaviour {
         pauseMenu.SetActive(false);
     }
 
-    public void ShowShopMenu() {
+    public void ShowShopMenu()
+    {
         shopMenu.transform.localScale = new Vector2(1, 1);
         playButtonCollider.enabled = false;
-        shopMenuAvailablePoints.text =  "POINTS: " + (PlayerPrefs.GetInt("totalPoints") - PlayerPrefs.GetInt("spentPoints"));
+        shopMenuAvailablePoints.text =
+            "POINTS: " + (PlayerPrefs.GetInt("totalPoints") - PlayerPrefs.GetInt("spentPoints"));
         buttonSound.Play();
     }
 
-    public void HideShopMenu() {
+    public void HideShopMenu()
+    {
         shopMenu.transform.localScale = new Vector2(0, 1);
         playButtonCollider.enabled = true;
         buttonSound.Play();
     }
 
-    public void UnSelectAllShopItems() {
-        for(int i = 0; i < shopMenuItems.Length; i++) {
-            shopMenuItems[i].GetComponent<Image> ().color = new Color(0.1698113f, 0.1698113f, 0.1698113f, 1f);
+    public void UnSelectAllShopItems()
+    {
+        for (int i = 0; i < shopMenuItems.Length; i++)
+        {
+            shopMenuItems[i].GetComponent<Image>().color = new Color(0.1698113f, 0.1698113f, 0.1698113f, 1f);
         }
     }
 
-    public void ShowPauseMenu() {
+    public void ShowPauseMenu()
+    {
         pauseMenu.SetActive(true);
         Time.timeScale = 0;
         buttonSound.Play();
     }
 
-    public void HidePauseMenu() {
+    public void HidePauseMenu()
+    {
         pauseMenu.SetActive(false);
         Time.timeScale = 1;
         buttonSound.Play();
     }
 
-    public void Reply() {
+    public void Reply()
+    {
         buttonSound.Play();
         Time.timeScale = 1;
-        Vars.currentMenu = 2;
-        transitionImage.GetComponent<MenuTransition> ().enabled = true;
+        Vars.CurrentMenu = 2;
+        transitionImage.GetComponent<MenuTransition>().enabled = true;
     }
 
-    public void GameReply() {
+    public void GameReply()
+    {
         Vars.Reset();
         replyButton.transform.localScale = new Vector2(0, 4);
-        replyButton.GetComponent<CircleCollider2D> ().enabled = false;
-        replyButton.GetComponent<SpriteRenderer> ().enabled = false;
+        replyButton.GetComponent<CircleCollider2D>().enabled = false;
+        replyButton.GetComponent<SpriteRenderer>().enabled = false;
         pauseMenu.SetActive(false);
         topMenu.SetActive(true);
         Destroy(GameObject.Find("Game"));
         GameObject.Find("GameOverMenu").transform.localScale = new Vector2(0, 1);
         GameObject game = Instantiate(Resources.Load("Game", typeof(GameObject))) as GameObject;
-        game.name = "Game";
+        game!.name = "Game";
         score.text = "POINTS: 0";
     }
 
-    public void SoundOnOff() {
+    public void SoundOnOff()
+    {
         buttonSound.Play();
-        if(AudioListener.volume == 1) {
+        if (Mathf.Approximately(AudioListener.volume, 1))
+        {
             AudioListener.volume = 0;
             soundOff.SetActive(true);
-        }else {
+        }
+        else
+        {
             AudioListener.volume = 1;
             soundOff.SetActive(false);
         }
     }
 
-    public void Quit() {
+    public void Quit()
+    {
         buttonSound.Play();
         Application.Quit();
     }

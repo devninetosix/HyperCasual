@@ -6,24 +6,27 @@ using System.Collections;
 using System.Threading;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using UnityEngine.Serialization;
 
 public class TonConnectHandler : MonoBehaviour
 {
+    [FormerlySerializedAs("UseWebWallets")]
     [Header("Plugin Settings")]
     [Tooltip("Toggle if you want to use injected/web wallets. \nOnly works in WebGL builds!")]
-    public bool UseWebWallets = false;
-    [Tooltip("Toggle if you want to restore saved connection from the storage. (recommended)")]
-    public bool RestoreConnectionOnAwake = true;
+    public bool useWebWallets;
+    [FormerlySerializedAs("RestoreConnectionOnAwake")] [Tooltip("Toggle if you want to restore saved connection from the storage. (recommended)")]
+    public bool restoreConnectionOnAwake = true;
 
+    [FormerlySerializedAs("ManifestURL")]
     [Space(4)]
 
     [Header("TonConnect Settings")]
     [Tooltip("Url to the manifest with the Dapp metadata that will be displayed in the user's wallet.")]
-    public string ManifestURL = "";
-    [Tooltip("Redefine wallets list source URL.Must be a link to a json file with following structure - https://github.com/ton-connect/wallets-list (optional)")]
-    public string WalletsListSource = "";
-    [Tooltip("Wallets list cache time to live in milliseconds. (optional)")]
-    public int WalletsListCacheTTL = 0;
+    public string manifestURL = "";
+    [FormerlySerializedAs("WalletsListSource")] [Tooltip("Redefine wallets list source URL.Must be a link to a json file with following structure - https://github.com/ton-connect/wallets-list (optional)")]
+    public string walletsListSource = "";
+    [FormerlySerializedAs("WalletsListCacheTTL")] [Tooltip("Wallets list cache time to live in milliseconds. (optional)")]
+    public int walletsListCacheTtl;
 
     [HideInInspector] public delegate void OnProviderStatusChange(Wallet wallet);
     [HideInInspector] public static event OnProviderStatusChange OnProviderStatusChanged;
@@ -32,7 +35,7 @@ public class TonConnectHandler : MonoBehaviour
     [HideInInspector] public static event OnProviderStatusChangeError OnProviderStatusChangedError;
 
     // main tonconnect instance, use it to work with tonconnect
-    public TonConnect tonConnect {get; private set;}
+    public TonConnect TonConnect {get; private set;}
 
     /// <summary>
     /// Get wallets list from url and call callback method with result of the request
@@ -57,8 +60,8 @@ public class TonConnectHandler : MonoBehaviour
         // Tonconnect options overrided by user data
         TonConnectOptions options = new()
         {
-            ManifestUrl = ManifestURL,
-            WalletsListSource = WalletsListSource,
+            ManifestUrl = manifestURL,
+            WalletsListSource = walletsListSource,
             WalletsListCacheTTLMs = 0
         };
 
@@ -75,15 +78,15 @@ public class TonConnectHandler : MonoBehaviour
         };
         
         // Tonconnect instance
-        tonConnect = new TonConnect(options, remoteStorage, additionalConnectOptions);
+        TonConnect = new TonConnect(options, remoteStorage, additionalConnectOptions);
 
         // Subscribing to Status Change Callbacks
-        tonConnect.OnStatusChange(OnStatusChange, OnStatusChangeError);
+        TonConnect.OnStatusChange(OnStatusChange, OnStatusChangeError);
 
         // Restore connection, if needed
-        if(RestoreConnectionOnAwake)
+        if(restoreConnectionOnAwake)
         {
-            bool result = await tonConnect.RestoreConnection();
+            bool result = await TonConnect.RestoreConnection();
             Debug.Log($"Connection restored: {result}");
         }
         else
@@ -100,13 +103,13 @@ public class TonConnectHandler : MonoBehaviour
         // UseWebWallets must be true, only in WebGL
         // ManifestURL must not be empty
 #if !UNITY_WEBGL || UNITY_EDITOR
-        if(UseWebWallets)
+        if(useWebWallets)
         {
-            UseWebWallets = false;
+            useWebWallets = false;
             Debug.LogWarning("The 'UseWebWallets' property has been automatically disabled due to platform incompatibility. It should be used specifically in WebGL builds.");
         }
 #endif
-        if(ManifestURL.Length == 0) throw new ArgumentNullException("'ManifestUrl' field cannot be empty. Please provide a valid URL in the 'ManifestUrl' field.");
+        if(manifestURL.Length == 0) throw new ArgumentNullException("'ManifestUrl' field cannot be empty. Please provide a valid URL in the 'ManifestUrl' field.");
     }
 
     #region Status change callbacks
@@ -196,7 +199,7 @@ public class TonConnectHandler : MonoBehaviour
     /// </summary>
     public void OnInjectedWalletMessageReceived(string message)
     {
-        tonConnect.ParseInjectedProviderMessage(message);
+        TonConnect.ParseInjectedProviderMessage(message);
     }
     #endregion
 

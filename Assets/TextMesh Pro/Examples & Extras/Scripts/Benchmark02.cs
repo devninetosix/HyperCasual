@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections;
 
 
 namespace TMPro.Examples
@@ -8,14 +7,14 @@ namespace TMPro.Examples
     public class Benchmark02 : MonoBehaviour
     {
 
-        public int SpawnType = 0;
+        public int SpawnType;
         public int NumberOfNPC = 12;
 
         public bool IsTextObjectScaleStatic;
         private TextMeshProFloatingText floatingText_Script;
 
 
-        void Start()
+        private void Start()
         {
 
             for (int i = 0; i < NumberOfNPC; i++)

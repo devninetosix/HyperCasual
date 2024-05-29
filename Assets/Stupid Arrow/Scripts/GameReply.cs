@@ -1,20 +1,23 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class GameReply: MonoBehaviour
+public class GameReply : MonoBehaviour
 {
-    private bool canClick = true;
+    private bool _canClick = true;
 
-    void OnMouseDown(){
-        if(canClick) {
-            canClick = false;
-            GameObject.Find("GameManager").GetComponent<Menus>().Reply();
-            Invoke("AllowClicking", 1);
+    private void OnMouseDown()
+    {
+        if (!_canClick)
+        {
+            return;
         }
+
+        _canClick = false;
+        GameObject.Find("GameManager").GetComponent<Menus>().Reply();
+        Invoke("AllowClicking", 1);
     }
 
-    private void AllowClicking() {
-        canClick = true;
+    private void AllowClicking()
+    {
+        _canClick = true;
     }
 }

@@ -1,10 +1,9 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-public class QRGenerator : MonoBehaviour {
+public class QrGenerator : MonoBehaviour {
 
     // Resolution
-    const int PIXELS_PER_MODULE = 20;
+    private const int PixelsPerModule = 20;
 
     /// <summary>
     /// Encode text in to a QR Code
@@ -13,10 +12,10 @@ public class QRGenerator : MonoBehaviour {
     /// <returns></returns>
     public static Texture2D EncodeString(string text)
     {
-        QRCodeGenerator qrGenerator = new QRCodeGenerator();
-        QRCodeGenerator.QRCode qrCode = qrGenerator.CreateQrCode(text, QRCodeGenerator.ECCLevel.L);
+        QrCodeGenerator qrGenerator = new QrCodeGenerator();
+        QrCodeGenerator.QrCode qrCode = qrGenerator.CreateQrCode(text, QrCodeGenerator.EccLevel.L);
 
-        Texture2D qrTexture = qrCode.GetGraphic(PIXELS_PER_MODULE);
+        Texture2D qrTexture = qrCode.GetGraphic(PixelsPerModule);
 
         return qrTexture;
     }
@@ -30,10 +29,10 @@ public class QRGenerator : MonoBehaviour {
     /// <returns></returns>
     public static Texture2D EncodeString(string text, Color darkColor, Color lightColor)
     {
-        QRCodeGenerator qrGenerator = new QRCodeGenerator();
-        QRCodeGenerator.QRCode qrCode = qrGenerator.CreateQrCode(text, QRCodeGenerator.ECCLevel.L);
+        QrCodeGenerator qrGenerator = new QrCodeGenerator();
+        QrCodeGenerator.QrCode qrCode = qrGenerator.CreateQrCode(text, QrCodeGenerator.EccLevel.L);
 
-        Texture2D qrTexture = qrCode.GetGraphic(PIXELS_PER_MODULE, darkColor, lightColor);
+        Texture2D qrTexture = qrCode.GetGraphic(PixelsPerModule, darkColor, lightColor);
 
         return qrTexture;
     }
@@ -46,12 +45,12 @@ public class QRGenerator : MonoBehaviour {
     /// <param name="lightColor"></param>
     /// <param name="errorCorrectionLevel"></param>
     /// <returns></returns>
-    public static Texture2D EncodeString(string text, Color darkColor, Color lightColor, QRCodeGenerator.ECCLevel errorCorrectionLevel)
+    public static Texture2D EncodeString(string text, Color darkColor, Color lightColor, QrCodeGenerator.EccLevel errorCorrectionLevel)
     {
-        QRCodeGenerator qrGenerator = new QRCodeGenerator();
-        QRCodeGenerator.QRCode qrCode = qrGenerator.CreateQrCode(text, errorCorrectionLevel);
+        QrCodeGenerator qrGenerator = new QrCodeGenerator();
+        QrCodeGenerator.QrCode qrCode = qrGenerator.CreateQrCode(text, errorCorrectionLevel);
 
-        Texture2D qrTexture = qrCode.GetGraphic(PIXELS_PER_MODULE, darkColor, lightColor);
+        Texture2D qrTexture = qrCode.GetGraphic(PixelsPerModule, darkColor, lightColor);
 
         return qrTexture;
     }

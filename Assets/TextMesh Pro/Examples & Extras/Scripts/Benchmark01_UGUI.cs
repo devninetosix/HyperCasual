@@ -9,7 +9,7 @@ namespace TMPro.Examples
     public class Benchmark01_UGUI : MonoBehaviour
     {
 
-        public int BenchmarkType = 0;
+        public int BenchmarkType;
 
         public Canvas canvas;
         public TMP_FontAsset TMProFont;
@@ -32,8 +32,7 @@ namespace TMPro.Examples
         private Material m_material02;
 
 
-
-        IEnumerator Start()
+        private IEnumerator Start()
         {
 
 

@@ -1,45 +1,72 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class MenuTransition : MonoBehaviour {
-    private float timer = 0;
-    private bool up = true;
-    private float alpha = 0;
+public class MenuTransition : MonoBehaviour
+{
+    private float _timer;
+    private bool _up = true;
+    private float _alpha;
     public Image img;
+    private GameObject _gameManager;
+    private Menus _menus;
+    private MenuTransition _menuTransition;
 
-    void OnEnable() {
+    private void Start()
+    {
+        _gameManager = GameObject.Find("GameManager");
+        _menus = _gameManager.GetComponent<Menus>();
+        _menuTransition = GetComponent<MenuTransition>();
+    }
+
+    private void OnEnable()
+    {
         img.enabled = true;
     }
 
-    void Update() {
-        timer += Time.deltaTime;
-        if(timer >= 0.01f) {
-            timer = 0;
-            if(up) {
-                img.raycastTarget = true;
-                alpha += 0.02f;
-                if(alpha >= 1f) {
-                    up = false;
-                    img.raycastTarget = false;
-                    if(Vars.currentMenu == 0) {
-                        GameObject.Find("GameManager").GetComponent<Menus> ().ShowMainMenu();
-                    }else if(Vars.currentMenu == 1) {
-                        GameObject.Find("GameManager").GetComponent<Menus> ().ShowGamePlayMenu();
-                    }else if(Vars.currentMenu == 2) {
-                        GameObject.Find("GameManager").GetComponent<Menus> ().GameReply();
-                    }
-                }
-            }else {
-                alpha -= 0.02f;
-                if(alpha <= 0) {
-                    up = true;
-                    img.enabled = false;
-                    GetComponent<MenuTransition> ().enabled = false; 
+    private void Update()
+    {
+        _timer += Time.deltaTime;
+
+        if (!(_timer >= 0.01f))
+        {
+            return;
+        }
+
+        _timer = 0;
+        if (_up)
+        {
+            img.raycastTarget = true;
+            _alpha += 0.02f;
+            if (_alpha >= 1f)
+            {
+                _up = false;
+                img.raycastTarget = false;
+
+                switch (Vars.CurrentMenu)
+                {
+                    case 0:
+                        _menus.ShowMainMenu();
+                        break;
+                    case 1:
+                        _menus.ShowGamePlayMenu();
+                        break;
+                    case 2:
+                        _menus.GameReply();
+                        break;
                 }
             }
-            img.color = new Color(0, 0, 0, alpha);
         }
+        else
+        {
+            _alpha -= 0.02f;
+            if (_alpha <= 0)
+            {
+                _up = true;
+                img.enabled = false;
+                _menuTransition.enabled = false;
+            }
+        }
+
+        img.color = new Color(0, 0, 0, _alpha);
     }
 }
