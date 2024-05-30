@@ -7,6 +7,7 @@ public class Menus : MonoBehaviour
     public GameObject playButton;
     public GameObject mainMenuUI;
     public GameObject gameMenuUI;
+    public GameObject rankingMenuUI;
     public TextMeshProUGUI score;
 
     public GameObject shopMenu;
@@ -41,6 +42,7 @@ public class Menus : MonoBehaviour
         Destroy(GameObject.Find("MainMenu"));
         playButton.SetActive(false);
         mainMenuUI.SetActive(false);
+        rankingMenuUI.SetActive(false);
         gameMenuUI.SetActive(true);
         score.SetText("POINTS: 0");
     }
@@ -62,6 +64,7 @@ public class Menus : MonoBehaviour
         game.name = "MainMenu";
         playButton.SetActive(true);
         mainMenuUI.SetActive(true);
+        rankingMenuUI.SetActive(false);
         gameMenuUI.SetActive(false);
         pauseMenu.SetActive(false);
     }
@@ -77,6 +80,20 @@ public class Menus : MonoBehaviour
     public void HideShopMenu()
     {
         shopMenu.transform.localScale = new Vector2(0, 1);
+        playButtonCollider.enabled = true;
+        buttonSound.Play();
+    }
+
+    public void ShowRankingMenu()
+    {
+        rankingMenuUI.SetActive(true);
+        playButtonCollider.enabled = false;
+        buttonSound.Play();
+    }
+
+    public void HideRankingMenu()
+    {
+        rankingMenuUI.SetActive(false);
         playButtonCollider.enabled = true;
         buttonSound.Play();
     }
