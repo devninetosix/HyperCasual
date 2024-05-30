@@ -1084,8 +1084,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 297931606}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: HideShopMenu
+        m_TargetAssemblyTypeName: Menus, Assembly-CSharp
+        m_MethodName: HideRankingMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2488,7 +2488,7 @@ MonoBehaviour:
   playButton: {fileID: 1111784372}
   mainMenuUI: {fileID: 1514343972}
   gameMenuUI: {fileID: 787593142}
-  rankingMenuUI: {fileID: 0}
+  rankingMenuUI: {fileID: 801501862}
   score: {fileID: 596342137}
   shopMenu: {fileID: 1649641926}
   shopMenuItems:
