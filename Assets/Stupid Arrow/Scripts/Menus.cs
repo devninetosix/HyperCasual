@@ -71,7 +71,7 @@ public class Menus : MonoBehaviour
 
     public void ShowShopMenu()
     {
-        shopMenu.transform.localScale = new Vector2(1, 1);
+        shopMenu.SetActive(true);
         playButtonCollider.enabled = false;
         shopMenuAvailablePoints.SetText("POINTS: " + (PlayerPrefs.GetInt("totalPoints") - PlayerPrefs.GetInt("spentPoints")));
         buttonSound.Play();
@@ -79,7 +79,7 @@ public class Menus : MonoBehaviour
 
     public void HideShopMenu()
     {
-        shopMenu.transform.localScale = new Vector2(0, 1);
+        shopMenu.SetActive(false);
         playButtonCollider.enabled = true;
         buttonSound.Play();
     }
