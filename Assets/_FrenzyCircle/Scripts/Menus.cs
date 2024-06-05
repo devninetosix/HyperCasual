@@ -1,5 +1,6 @@
 ﻿using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Menus : MonoBehaviour
@@ -83,10 +84,17 @@ public class Menus : MonoBehaviour
     }
 
     public void HideShopMenu()
+    {   
+        transitionImage.GetComponent<MenuTransition>().enabled = true;
+        Invoke(nameof(HideShopMenu_SceneReload), 0.6f);
+    }
+
+    private void HideShopMenu_SceneReload()
     {
         shopMenu.SetActive(false);
         playButtonCollider.enabled = true;
         buttonSound.Play();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void ShowRankingMenu()

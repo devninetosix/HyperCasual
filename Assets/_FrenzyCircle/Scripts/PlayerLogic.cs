@@ -59,7 +59,7 @@ public class PlayerLogic : MonoBehaviour
         GameObject newCircle = Instantiate(circlePrefab, GameObject.Find("Gameplay").transform, true);
         GameObject previousCircle = GameObject.Find("circle" + (Vars.NumberOfCircles - 1));
         GameObject circleToJump = GameObject.Find("circle" + (Vars.Obstacle - 1));
-        
+
         float circleToJumpScale = circleToJump.transform.localScale.x;
         circle.transform.localScale = new Vector2(0.2f, 0.2f);
         circleToJump.transform.localScale = new Vector2(0.2f, 0.2f);
@@ -68,19 +68,26 @@ public class PlayerLogic : MonoBehaviour
         circle.transform.localScale = new Vector2(circleScale, circleScale);
         circleToJump.transform.localScale = new Vector2(circleToJumpScale, circleToJumpScale);
 
-        newCircle!.name = "circle" + Vars.NumberOfCircles;
-        SpriteRenderer newCircleSpriteRenderer = newCircle.GetComponent<SpriteRenderer>();
-        newCircleSpriteRenderer.sortingOrder = -Vars.NumberOfCircles;
-        newCircle.transform.localScale = new Vector3(previousCircle.transform.localScale.x + 0.05f, previousCircle.transform.localScale.y + 0.05f, 1);
-        if (Vars.NumberOfCircles % 2 == 0)
+        if (newCircle)
         {
-            newCircle.GetComponent<ObstacleRotation>().rotateForward = false;
-            newCircle.transform.rotation = Quaternion.Euler(0, 0, 0);
+            newCircle.name = "circle" + Vars.NumberOfCircles;
+            SpriteRenderer newCircleSpriteRenderer = newCircle.GetComponent<SpriteRenderer>();
+            newCircleSpriteRenderer.sortingOrder = -Vars.NumberOfCircles;
+            newCircle.transform.localScale = new Vector3(
+                previousCircle.transform.localScale.x + 0.05f,
+                previousCircle.transform.localScale.y + 0.05f,
+                1
+            );
+
+            if (Vars.NumberOfCircles % 2 == 0)
+            {
+                newCircle.GetComponent<ObstacleRotation>().rotateForward = false;
+                newCircle.transform.rotation = Quaternion.Euler(0, 0, 0);
+            }
         }
 
         Vector2 playerPos = cam.WorldToScreenPoint(transform.position);
         StartCoroutine(CheckPixelColor((int)playerPos.x, (int)playerPos.y));
-        
     }
 
     private IEnumerator CheckPixelColor(int x, int y)

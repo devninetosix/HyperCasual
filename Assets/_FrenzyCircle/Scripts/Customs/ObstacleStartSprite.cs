@@ -9,7 +9,7 @@ public class ObstacleStartSprite : MonoBehaviour
         _renderer = GetComponent<SpriteRenderer>();
     }
 
-    private void OnEnable()
+    private void Start()
     {
         _renderer.sprite = ThemeManager.Instance.GetRotCircleSprite();
     }

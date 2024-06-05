@@ -26,8 +26,20 @@ public class GameplayAnimation : MonoBehaviour
         }
 
         transform.localScale = new Vector2(1, 1);
-        pl.enabled = true;
-        playersCollider.enabled = true;
-        _gameplayAnimation.enabled = false;
+
+        if (pl)
+        {
+            pl.enabled = true;
+        }
+
+        if (playersCollider)
+        {
+            playersCollider.enabled = true;
+        }
+        
+        if (_gameplayAnimation)
+        {
+            _gameplayAnimation.enabled = false;
+        }
     }
 }

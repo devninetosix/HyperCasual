@@ -12,7 +12,7 @@ public class MiddleCircleManager : MonoBehaviour
         _animator.enabled = false;
     }
 
-    private void OnEnable()
+    private void Start()
     {
         _renderer.sprite = ThemeManager.Instance.GetMiddleCircleSprite();
         _animator.SetInteger("Theme", PlayerPrefs.GetInt("Theme", 0));
