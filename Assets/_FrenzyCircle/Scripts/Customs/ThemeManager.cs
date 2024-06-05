@@ -8,7 +8,6 @@ public class ThemeManager : MonoBehaviour
     public Sprite[] rotCircles;
     public Sprite[] middleCircles;
     public Sprite[] arrows;
-    public AnimatorController[] animControllers;
 
     private void Awake()
     {
@@ -38,10 +37,5 @@ public class ThemeManager : MonoBehaviour
     public Sprite GetArrowSprite()
     {
         return arrows[PlayerPrefs.GetInt("Theme", 0)];
-    }
-
-    public AnimatorController GetAnimatorController()
-    {
-        return animControllers[PlayerPrefs.GetInt("Theme", 0)];
     }
 }

@@ -2132,15 +2132,14 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2089b0a8f7f00f34c838f8d4ee9dd7c2, type: 3}
   - {fileID: 21300000, guid: f2ef8a54cb57434419d0c83b457a5096, type: 3}
   - {fileID: 21300000, guid: 70a92d2a3c261cb4f9649769bd914927, type: 3}
-  animControllers:
-  - {fileID: 9100000, guid: c180f23f6ec38564c80d8936ff067b58, type: 2}
-  - {fileID: 9100000, guid: 50d176f24f90c41429a21d5cc80b4943, type: 2}
-  - {fileID: 9100000, guid: 53d36e8908aee0c4a9162172f3c721ac, type: 2}
-  - {fileID: 9100000, guid: cdebf345807278c4fb063c5402291162, type: 2}
-  - {fileID: 9100000, guid: 4253d217fda770a4e85cd618365c485b, type: 2}
-  - {fileID: 9100000, guid: 8af8f88731b060e47afe9f09a722d9cb, type: 2}
-  - {fileID: 9100000, guid: 9ab5160a35af09c43b03660450961831, type: 2}
-  - {fileID: 9100000, guid: 924dd0831c8646149b4b4016731927cd, type: 2}
+  animClips:
+  - {fileID: 7400000, guid: 887d98d1f6530da44b00a8374e02ef4c, type: 2}
+  - {fileID: 7400000, guid: b38b83818a4fb474fb00d0e97e67f7e2, type: 2}
+  - {fileID: 7400000, guid: 3b55296f4a2ac6640b7850768a2c4231, type: 2}
+  - {fileID: 7400000, guid: b5ee52df59fdc244784f78ad54cace3c, type: 2}
+  - {fileID: 7400000, guid: 9ef94096fc19f844abda62d92f7f27ac, type: 2}
+  - {fileID: 7400000, guid: 0cb76c5c19eb3e54d8cebca72689f938, type: 2}
+  - {fileID: 7400000, guid: b0e689281294b714b85ef4254149688c, type: 2}
 --- !u!1 &325510181
 GameObject:
   m_ObjectHideFlags: 0
@@ -4154,9 +4153,9 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 723650983}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c180f23f6ec38564c80d8936ff067b58, type: 2}
+  m_Controller: {fileID: 9100000, guid: 888a21fc5a7af4646ab4ce29ed420c0a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -12080,6 +12079,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1957809200}
   - component: {fileID: 1957809201}
+  - component: {fileID: 1957809202}
   m_Layer: 0
   m_Name: CircleMask
   m_TagString: Untagged
@@ -12158,6 +12158,28 @@ SpriteMask:
   m_IsCustomRangeActive: 1
   m_SpriteSortPoint: 0
   m_MaskSource: 0
+--- !u!95 &1957809202
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1957809198}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c180f23f6ec38564c80d8936ff067b58, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1959233308
 GameObject:
   m_ObjectHideFlags: 0
