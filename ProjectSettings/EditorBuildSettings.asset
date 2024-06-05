@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Stupid Arrow/Scenes/Game.unity
+    path: Assets/_FrenzyCircle/Scenes/Game.unity
     guid: 253670144fd9b4142b69fe98c514a911
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
