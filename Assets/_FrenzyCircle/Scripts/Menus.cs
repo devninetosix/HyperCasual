@@ -143,7 +143,7 @@ public class Menus : MonoBehaviour
         topMenu.SetActive(true);
         Destroy(GameObject.Find("Game"));
         GameObject.Find("GameOverMenu").transform.localScale = new Vector2(0, 1);
-        GameObject game = Instantiate(Resources.Load("Game", typeof(GameObject))) as GameObject;
+        GameObject game = Instantiate(gamePrefab);
         game!.name = "Game";
         score.SetText("POINTS: 0");
     }

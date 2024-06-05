@@ -50,10 +50,9 @@ public class ObjectRotationForMainMenu : MonoBehaviour
             _sp.sortingOrder = -Vars.MainMenuCircles;
         }
 
-        // Color c = _sp.color;
-        // c.r = Mathf.Clamp(132f / 255f - (1.2f - transform.localScale.x) * 0.1f, 0, 132f / 255f); // 초록 값 미세하게 감소
-        // c.g = Mathf.Clamp(89f / 255f - (1.2f - transform.localScale.x) * 0.1f, 0, 89f / 255f); // 초록 값 미세하게 감소
-        // c.b = Mathf.Clamp(232f / 255f - (1.2f - transform.localScale.x) * 0.1f, 0, 232f / 255f); // 파랑 값 미세하게 감소
-        // _sp.color = c;
+        Color c = _sp.color;
+        c.g = 1.2f - transform.localScale.x;
+        c.b = 1.2f - transform.localScale.x;
+        _sp.color = c;
     }
 }
