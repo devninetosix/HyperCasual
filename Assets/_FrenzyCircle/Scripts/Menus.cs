@@ -21,6 +21,11 @@ public class Menus : MonoBehaviour
 
     public GameObject topMenu;
     public GameObject replyButton;
+    
+    // Prefabs
+    public GameObject gamePrefab;
+    public GameObject menuPrefab;
+    
 
     private void Start()
     {
@@ -37,7 +42,7 @@ public class Menus : MonoBehaviour
 
     public void ShowGamePlayMenu()
     {
-        GameObject game = Instantiate(Resources.Load("Game", typeof(GameObject))) as GameObject;
+        GameObject game = Instantiate(gamePrefab);
         game!.name = "Game";
         Destroy(GameObject.Find("MainMenu"));
         playButton.SetActive(false);
@@ -60,7 +65,7 @@ public class Menus : MonoBehaviour
     public void ShowMainMenu()
     {
         Destroy(GameObject.Find("Game"));
-        GameObject game = Instantiate(Resources.Load("MainMenu", typeof(GameObject))) as GameObject;
+        GameObject game = Instantiate(menuPrefab);
         game.name = "MainMenu";
         playButton.SetActive(true);
         mainMenuUI.SetActive(true);

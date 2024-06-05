@@ -1005,8 +1005,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 652e569bb55a2374caf8d63f1c7d656f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprite:
-  - {fileID: 21300000, guid: aef5d10def566a944b153d659b705cc2, type: 3}
 --- !u!1 &7223122293255349389
 GameObject:
   m_ObjectHideFlags: 0
@@ -1632,6 +1630,8 @@ MonoBehaviour:
   fixedScale: 1
   parent: {fileID: 7223122294150959020}
   cam: {fileID: 7223122293006770065}
+  circlePrefab: {fileID: 6071470909967713163, guid: fce51654dc8573446ae1a536a2d5de0d,
+    type: 3}
 --- !u!58 &7223122293910337964
 CircleCollider2D:
   m_ObjectHideFlags: 0

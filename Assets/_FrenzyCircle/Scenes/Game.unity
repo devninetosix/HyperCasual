@@ -2048,23 +2048,13 @@ MonoBehaviour:
   shopMenu: {fileID: 1649641926}
   shopMenuItems:
   - {fileID: 266167918}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1016045674}
+  - {fileID: 1201554001}
+  - {fileID: 1050031815}
+  - {fileID: 1998184683}
+  - {fileID: 854857848}
+  - {fileID: 397121388}
+  - {fileID: 71792756}
   shopMenuAvailablePoints: {fileID: 884732119}
   playButtonCollider: {fileID: 1111784375}
   pauseMenu: {fileID: 1204175430}
@@ -2073,6 +2063,10 @@ MonoBehaviour:
   soundOff: {fileID: 203489654}
   topMenu: {fileID: 449068633}
   replyButton: {fileID: 2098642763}
+  gamePrefab: {fileID: 7223122292398595565, guid: 39ac6e803269897459e06e1f86d649af,
+    type: 3}
+  menuPrefab: {fileID: 3856754657455379533, guid: ef585765ec4e6094580a705d35817288,
+    type: 3}
 --- !u!4 &297931607
 Transform:
   m_ObjectHideFlags: 0
@@ -2112,9 +2106,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36b279ba7a7c1ad4ca7a0746785d069c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotCircles: []
-  middleCircles: []
-  arrows: []
+  rotCircles:
+  - {fileID: 21300000, guid: 7b0e934ebd4c39848a4e5b22b738a76a, type: 3}
+  - {fileID: 21300000, guid: be13e2a8acde0574eb94d5616ba021f9, type: 3}
+  - {fileID: 21300000, guid: 0ba649d19d4ea7841b26fe3678c56bd0, type: 3}
+  - {fileID: 21300000, guid: 4835f4909684c1541abe04fe1f980c8b, type: 3}
+  - {fileID: 21300000, guid: 45c00303d96d7b04e82fe54ef9a220e7, type: 3}
+  - {fileID: 21300000, guid: 1eac551a02d9e674e8c552e078ed1d24, type: 3}
+  - {fileID: 21300000, guid: e4e180ad72510894593bc75b070a2243, type: 3}
+  - {fileID: 21300000, guid: 11b92c7a59d8e4d4097f6a80ae0db125, type: 3}
+  middleCircles:
+  - {fileID: 21300000, guid: 89a9b0407a45e3241a9af8519a8071a1, type: 3}
+  - {fileID: 21300000, guid: 930c23281ff02c746848d2d1be2fa9a2, type: 3}
+  - {fileID: 21300000, guid: 5a00d733abfd4fd49bd5c07471ad3187, type: 3}
+  - {fileID: 21300000, guid: 4e64894ddc359ce43b4e43d32156b3b1, type: 3}
+  - {fileID: 21300000, guid: 18ec92c50211a0446a9d69db5431618a, type: 3}
+  - {fileID: 21300000, guid: 9a987da37583134419632bad6f41e764, type: 3}
+  - {fileID: 21300000, guid: 77f0dedd32a339144b289b9cfc03bf59, type: 3}
+  arrows:
+  - {fileID: 21300000, guid: aef5d10def566a944b153d659b705cc2, type: 3}
+  - {fileID: 21300000, guid: 36b40b3c3dbe7904ab05127200a6b027, type: 3}
+  - {fileID: 21300000, guid: 543c6727bd2f24e498f4e99d905eaec2, type: 3}
+  - {fileID: 21300000, guid: 8bf7de1dd7a480448896d242b8222701, type: 3}
+  - {fileID: 21300000, guid: bd85d86e602de8143a8f8a71e13f1b6e, type: 3}
+  - {fileID: 21300000, guid: 2089b0a8f7f00f34c838f8d4ee9dd7c2, type: 3}
+  - {fileID: 21300000, guid: f2ef8a54cb57434419d0c83b457a5096, type: 3}
+  - {fileID: 21300000, guid: 70a92d2a3c261cb4f9649769bd914927, type: 3}
 --- !u!1 &325510181
 GameObject:
   m_ObjectHideFlags: 0

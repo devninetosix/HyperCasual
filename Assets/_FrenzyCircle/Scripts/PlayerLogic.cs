@@ -11,6 +11,8 @@ public class PlayerLogic : MonoBehaviour
     private AudioSource _lineChangeSound;
     private TextMeshProUGUI _score;
 
+    public GameObject circlePrefab;
+
     private void Awake()
     {
         _lineChangeSound = GameObject.Find("LineChangeSound").GetComponent<AudioSource>();
@@ -54,7 +56,7 @@ public class PlayerLogic : MonoBehaviour
         float circleScale = circle.transform.localScale.x;
 
         Vars.NumberOfCircles++;
-        GameObject newCircle = Instantiate(Resources.Load("circle", typeof(GameObject)), GameObject.Find("Gameplay").transform, true) as GameObject;
+        GameObject newCircle = Instantiate(circlePrefab, GameObject.Find("Gameplay").transform, true);
         GameObject previousCircle = GameObject.Find("circle" + (Vars.NumberOfCircles - 1));
         GameObject circleToJump = GameObject.Find("circle" + (Vars.Obstacle - 1));
         
