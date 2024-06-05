@@ -2,10 +2,15 @@
 
 public class PlayerSprite : MonoBehaviour
 {
-    public Sprite[] sprite;
+    private SpriteRenderer _renderer;
 
-    private void Start()
+    private void Awake()
     {
-        GetComponent<SpriteRenderer>().sprite = sprite[PlayerPrefs.GetInt("Player", 0)];
+        _renderer = GetComponent<SpriteRenderer>();
+    }
+
+    private void OnEnable()
+    {
+        _renderer.sprite = ThemeManager.Instance.GetArrowSprite();
     }
 }

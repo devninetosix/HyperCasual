@@ -20,7 +20,7 @@ public class BuyItem : MonoBehaviour
             price.SetActive(false);
         }
 
-        if (int.Parse(gameObject.name) == PlayerPrefs.GetInt("Player"))
+        if (int.Parse(gameObject.name) == PlayerPrefs.GetInt("Theme"))
         {
             background.color = new Color(1, 1, 1, 1);
         }
@@ -41,7 +41,7 @@ public class BuyItem : MonoBehaviour
                 price.SetActive(false);
                 points.SetText("POINTS: " + (PlayerPrefs.GetInt("totalPoints") - PlayerPrefs.GetInt("spentPoints")));
                 GameObject.Find("ItemPurchaseSound").GetComponent<AudioSource>().Play();
-                PlayerPrefs.SetInt("Player", int.Parse(gameObject.name));
+                PlayerPrefs.SetInt("Theme", int.Parse(gameObject.name));
             }
             else
             {
@@ -54,7 +54,7 @@ public class BuyItem : MonoBehaviour
             background.color = new Color(1, 1, 1, 1);
             price.SetActive(false);
             GameObject.Find("ButtonSound").GetComponent<AudioSource>().Play();
-            PlayerPrefs.SetInt("Player", int.Parse(gameObject.name));
+            PlayerPrefs.SetInt("Theme", int.Parse(gameObject.name));
         }
     }
 }
