@@ -82,12 +82,18 @@ public class HttpManager : MonoBehaviour
         string jsonData = $"{{ \"gameId\": {1}, \"id\": {id}, \"nickname\": \"{nickname}\" }}";
         yield return IEPostRequest(uri, jsonData, Login_ResponseHandler);
     }
-    
+
     private static void Login_ResponseHandler(string json)
     {
+        ApiResponse<UserData> response = JsonUtility.FromJson<ApiResponse<UserData>>(json);
+        UserInfo.Id = response.data.id;
+        UserInfo.Name = response.data.nickname;
+        UserInfo.TodayHighScore = response.data.todayHighestScore;
+        UserInfo.TodayRank = response.data.todayRank;
+
         Utils.LogFormattedJson("[Login]", json);
     }
-    
+
     [Button(ButtonSizes.Large)]
     public void LoginTest(int id = 100, string nickname = "aespablo")
     {

@@ -158,7 +158,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      ninetosix_simbol_w_0: 8842262711049022827
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

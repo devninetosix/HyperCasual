@@ -8,7 +8,7 @@ public class ApiResponse<T>
 }
 
 [System.Serializable]
-public class PlayerInfo
+public class UserData
 {
     public int id;
     public string nickname;
