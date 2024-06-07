@@ -1,6 +1,6 @@
-using System;
 using System.Text;
 using System.Collections;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Networking;
@@ -23,30 +23,51 @@ public class HttpManager : MonoBehaviour
         Monthly,
     }
     
-    public void LoginTest()
+    /// <summary>
+    /// [GET] Users, 유저 정보 조회
+    /// </summary>
+    /// <param name="id">Superbase 유저 ID</param>
+    /// <returns></returns>
+    public static IEnumerator IEGetUserInfo(int id)
     {
-        StartCoroutine(IELogin(9876, "testpa"));
+        string uri = $"{BaseUrl}/users/{id}";
+        yield return IEGetRequest(uri, GetUserInfo_ResponseHandler);
     }
 
-    public void HighScoreTest()
+    private static void GetUserInfo_ResponseHandler(string json)
     {
-        StartCoroutine(IEHighScoreUpdate(9876, 9199));
+        Utils.LogFormattedJson("[GetUserInfo]", json);
+    }
+    
+    [Button(ButtonSizes.Large)]
+    public void GetUserInfoTest(int id = 100)
+    {
+        StartCoroutine(IEGetUserInfo(id));
+    }
+    
+    /// <summary>
+    /// [GET] Users, 유저 게임 스코어 정보 조회
+    /// </summary>
+    /// <param name="gameId">게임 ID는 1</param>
+    /// <param name="id">Superbase 유저 ID</param>
+    /// <returns></returns>
+    public static IEnumerator IEGetUserScore(int id)
+    {
+        string uri = $"{BaseUrl}/users/{id}/games/1/scores";
+        yield return IEGetRequest(uri, GetUserScore_ResponseHandler);
     }
 
-    public void GetUserInfoTest()
+    private static void GetUserScore_ResponseHandler(string json)
     {
-        StartCoroutine(IEGetUserInfo(9876));
+        Utils.LogFormattedJson("[GetUserScore]", json);
+    }
+    
+    [Button(ButtonSizes.Large)]
+    public void GetUserScoreTest(int id = 100)
+    {
+        StartCoroutine(IEGetUserScore(id));
     }
 
-    public void GetUserScoreTest()
-    {
-        StartCoroutine(IEGetUserScore(9876));
-    }
-
-    public void GetAllScoresTest(RankPeriod period)
-    {
-        StartCoroutine(IEGetAllRanking(period));
-    }
 
     /// <summary>
     /// [POST] Auth, 로그인
@@ -58,14 +79,21 @@ public class HttpManager : MonoBehaviour
     public static IEnumerator IELogin(int id, string nickname)
     {
         string uri = $"{BaseUrl}/auth/login";
-        string jsonData = $"{{ \"game_id\": {1}, \"id\": {id}, \"nickname\": \"{nickname}\" }}";
+        string jsonData = $"{{ \"gameId\": {1}, \"id\": {id}, \"nickname\": \"{nickname}\" }}";
         yield return IEPostRequest(uri, jsonData, Login_ResponseHandler);
     }
     
     private static void Login_ResponseHandler(string json)
     {
-        Debug.Log($"[Login] successful: {json}");
+        Utils.LogFormattedJson("[Login]", json);
     }
+    
+    [Button(ButtonSizes.Large)]
+    public void LoginTest(int id = 100, string nickname = "aespablo")
+    {
+        StartCoroutine(IELogin(id, nickname));
+    }
+
 
     /// <summary>
     /// [POST] Games, 유저 최고 스코어 등록
@@ -83,44 +111,24 @@ public class HttpManager : MonoBehaviour
 
     private static void HighScoreUpdate_ResponseHandler(string json)
     {
-        Debug.Log($"[HighScoreUpdate] successful: {json}");
-    }
-
-    /// <summary>
-    /// [GET] Users, 유저 정보 조회
-    /// </summary>
-    /// <param name="id">Superbase 유저 ID</param>
-    /// <returns></returns>
-    public static IEnumerator IEGetUserInfo(int id)
-    {
-        string uri = $"{BaseUrl}/users/{id}";
-        yield return IEGetRequest(uri, GetUserInfo_ResponseHandler);
-    }
-
-    private static void GetUserInfo_ResponseHandler(string json)
-    {
-        Debug.Log($"[GetUserInfo] successful: {json}");
-    }
-
-    /// <summary>
-    /// [GET] Users, 게임 스코어 정보 조회
-    /// </summary>
-    /// <param name="gameId">게임 ID는 1</param>
-    /// <param name="id">Superbase 유저 ID</param>
-    /// <returns></returns>
-    public static IEnumerator IEGetUserScore(int id)
-    {
-        // https://crcasoukrunpqyuxtwzb.supabase.co/functions/v1/users/1231/games/1/scores
-        string uri = $"{BaseUrl}/users/{id}/games/1/scores";
-        yield return IEGetRequest(uri, GetUserScore_ResponseHandler);
-    }
-
-    private static void GetUserScore_ResponseHandler(string json)
-    {
-        Debug.Log($"[GetUserScore] successful: {json}");
+        Utils.LogFormattedJson("[HighScoreUpdate]", json);
     }
     
-    public IEnumerator IEGetAllRanking(RankPeriod rankPeriod, int offset = 0, int limit = 100)
+    [Button(ButtonSizes.Large)]
+    public void HighScoreTest(int id = 100, int score = 1000)
+    {
+        StartCoroutine(IEHighScoreUpdate(id, score));
+    }
+
+    
+    /// <summary>
+    /// [GET] Games, 전체 랭킹 조회하기
+    /// </summary>
+    /// <param name="rankPeriod">일간, 주간, 월간</param>
+    /// <param name="offset">시작점</param>
+    /// <param name="limit">으로부터 개수</param>
+    /// <returns></returns>
+    public static IEnumerator IEGetAllRanking(RankPeriod rankPeriod, int offset = 0, int limit = 100)
     {
         string period = string.Empty;
 
@@ -138,15 +146,22 @@ public class HttpManager : MonoBehaviour
                 break;
         }
         
-        // https://crcasoukrunpqyuxtwzb.supabase.co/functions/v1/games/1/rankings?period=monthly&offset=0&limit=100
         string uri = $"{BaseUrl}/games/1/rankings?period={period}&offset={offset}&limit={limit}";
         yield return IEGetRequest(uri, GetAllRanking_ResponseHandler);
     }
 
     private static void GetAllRanking_ResponseHandler(string json)
     {
-        Debug.Log($"[GetAllRanking] successful: {json}");
+        Utils.LogFormattedJson("[GetAllRanking]", json);
     }
+    
+    [Button(ButtonSizes.Large)]
+    public void GetAllScoresTest(RankPeriod period = RankPeriod.Daily, int offset = 0, int limit = 100)
+    {
+        StartCoroutine(IEGetAllRanking(period, offset, limit));
+    }
+    
+    // HTTP /////////////////////////////////////////////////////////////////////
     
     private static IEnumerator IEGetRequest(string uri, UnityAction<string> callback)
     {
@@ -156,8 +171,8 @@ public class HttpManager : MonoBehaviour
 
         if (req.result is UnityWebRequest.Result.ConnectionError or UnityWebRequest.Result.ProtocolError)
         {
-            Debug.LogError($"Error: {req.error}");
-            Debug.LogError($"Response: {req.downloadHandler.text}");
+            Debug.LogError($"Error: {req.error}\n" +
+                           $"Response: {req.downloadHandler.text}");
         }
         else
         {
@@ -178,17 +193,12 @@ public class HttpManager : MonoBehaviour
 
         if (req.result is UnityWebRequest.Result.ConnectionError or UnityWebRequest.Result.ProtocolError)
         {
-            Debug.LogError($"Error: {req.error}");
-            Debug.LogError($"Response: {req.downloadHandler.text}");
+            Debug.LogError($"Error: {req.error}\n" +
+                           $"Response: {req.downloadHandler.text}");
         }
         else
         {
             callback?.Invoke(req.downloadHandler.text);
         }
-    }
-
-    private PlayerInfo JsonToPlayerInfo(string jsonText)
-    {
-        return JsonUtility.FromJson<PlayerInfo>(jsonText);
     }
 }
