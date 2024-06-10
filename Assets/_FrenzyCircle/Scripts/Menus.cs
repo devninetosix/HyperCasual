@@ -18,7 +18,11 @@ public class Menus : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject transitionImage;
     public AudioSource buttonSound;
-    public GameObject soundOff;
+
+
+    public Image soundBtn;
+    public Sprite soundOnSprite;
+    public Sprite soundOffSprite;
 
     public GameObject topMenu;
     public GameObject replyButton;
@@ -162,12 +166,12 @@ public class Menus : MonoBehaviour
         if (Mathf.Approximately(AudioListener.volume, 1))
         {
             AudioListener.volume = 0;
-            soundOff.SetActive(true);
+            soundBtn.sprite = soundOffSprite;
         }
         else
         {
             AudioListener.volume = 1;
-            soundOff.SetActive(false);
+            soundBtn.sprite = soundOnSprite;
         }
     }
 
