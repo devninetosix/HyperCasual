@@ -8,12 +8,12 @@ public class LoginSceneManager : MonoBehaviour
     [SerializeField] private string userName = "aespablo";
     
     // 에디터에서만 돌아가는 녀석
-// #if UNITY_EDITOR
+#if UNITY_EDITOR
     private IEnumerator Start()
     {
         yield return StartCoroutine(HttpManager.IELogin(userId, userName));
         yield return new WaitForSeconds(1);
         SceneManager.LoadScene(1);
     }
-// #endif
+#endif
 }

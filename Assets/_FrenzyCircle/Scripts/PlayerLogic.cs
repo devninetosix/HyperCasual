@@ -141,7 +141,7 @@ public class PlayerLogic : MonoBehaviour
         }
 
         GameObject rpyButton = GameObject.Find("ReplyButton");
-        rpyButton.transform.localScale = new Vector2(4, 4);
+        rpyButton.transform.localScale = new Vector2(0.8f, 0.8f);
         rpyButton.GetComponent<CircleCollider2D>().enabled = true;
         rpyButton.GetComponent<SpriteRenderer>().enabled = true;
         GameObject.Find("GameOverMenu").transform.localScale = new Vector2(1, 1);

@@ -25,16 +25,16 @@ public class ThemeManager : MonoBehaviour
 
     public Sprite GetRotCircleSprite()
     {
-        return rotCircles[PlayerPrefs.GetInt("Theme", 0)];
+        return rotCircles[PlayerPrefs.GetInt("Theme", 1)];
     }
 
     public Sprite GetMiddleCircleSprite()
     {
-        return middleCircles[PlayerPrefs.GetInt("Theme", 0)];
+        return middleCircles[PlayerPrefs.GetInt("Theme", 1)];
     }
 
     public Sprite GetArrowSprite()
     {
-        return arrows[PlayerPrefs.GetInt("Theme", 0)];
+        return arrows[PlayerPrefs.GetInt("Theme", 1)];
     }
 }

@@ -1243,7 +1243,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0.11328303}
-  m_AnchoredPosition: {x: 0.25, y: -7.232437}
+  m_AnchoredPosition: {x: 0.25, y: -7.232422}
   m_SizeDelta: {x: 0.5, y: -14.465}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &170279674
@@ -6858,7 +6858,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1108913535
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6898,7 +6898,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'price: 75'
+  m_text: 'PRICE: 0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6ec5d9a2c5f8834409ca6fa479588141, type: 2}
   m_sharedMaterial: {fileID: -2321187884706388041, guid: 6ec5d9a2c5f8834409ca6fa479588141,
@@ -7042,15 +7042,16 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: 180ad3da2afa2c14baf2db13c0dc560b, type: 3}
+  m_Sprite: {fileID: 4615209543915702287, guid: 5f1ba9623307104408c032a912ff42e9,
+    type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 0.8}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.9725, y: 0.98625}
+  m_Size: {x: 5.12, y: 5.12}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1111784374
@@ -7061,13 +7062,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1111784372}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0.212, y: 0, z: -0.5}
-  m_LocalScale: {x: 4, y: 4, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.5}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1574949068}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &1111784375
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -7103,7 +7104,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0.05}
-  m_Radius: 0.5
+  m_Radius: 1.5
 --- !u!114 &1111784376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7204,7 +7205,7 @@ MonoBehaviour:
   forcedTargetType: 0
   autoPlay: 1
   useTargetAsV3: 0
-  endValueFloat: 3
+  endValueFloat: 0.5
   endValueV3: {x: 0, y: 0, z: 0}
   endValueV2: {x: 0, y: 0}
   endValueColor: {r: 1, g: 1, b: 1, a: 1}
@@ -7394,7 +7395,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1175333289
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7434,7 +7435,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'price: 125'
+  m_text: 'PRICE: 0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6ec5d9a2c5f8834409ca6fa479588141, type: 2}
   m_sharedMaterial: {fileID: -2321187884706388041, guid: 6ec5d9a2c5f8834409ca6fa479588141,
@@ -8049,7 +8050,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1282465928
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8089,7 +8090,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'price: 175'
+  m_text: 'PRICE: 0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6ec5d9a2c5f8834409ca6fa479588141, type: 2}
   m_sharedMaterial: {fileID: -2321187884706388041, guid: 6ec5d9a2c5f8834409ca6fa479588141,
@@ -8465,7 +8466,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1353942906
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8505,7 +8506,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'price: 150'
+  m_text: 'PRICE: 0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6ec5d9a2c5f8834409ca6fa479588141, type: 2}
   m_sharedMaterial: {fileID: -2321187884706388041, guid: 6ec5d9a2c5f8834409ca6fa479588141,
@@ -8603,7 +8604,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1358124785
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8618,10 +8619,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 170279673}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 135.0625, y: -101.51921}
+  m_SizeDelta: {x: 270.125, y: 183.03842}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1358124786
 MonoBehaviour:
@@ -9080,7 +9081,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1404038995
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9120,7 +9121,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'price: 50'
+  m_text: 'PRICE: 0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6ec5d9a2c5f8834409ca6fa479588141, type: 2}
   m_sharedMaterial: {fileID: -2321187884706388041, guid: 6ec5d9a2c5f8834409ca6fa479588141,
@@ -10215,7 +10216,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1605121159
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10255,7 +10256,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'price: 200'
+  m_text: 'PRICE: 0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6ec5d9a2c5f8834409ca6fa479588141, type: 2}
   m_sharedMaterial: {fileID: -2321187884706388041, guid: 6ec5d9a2c5f8834409ca6fa479588141,
@@ -12950,7 +12951,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2032625833
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12990,7 +12991,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'price: 100'
+  m_text: 'PRICE: 0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6ec5d9a2c5f8834409ca6fa479588141, type: 2}
   m_sharedMaterial: {fileID: -2321187884706388041, guid: 6ec5d9a2c5f8834409ca6fa479588141,
@@ -13269,7 +13270,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 438.5
   height: 182
-  scaleFactor: 0.75
+  scaleFactor: 1.2
 --- !u!1 &2083943361
 GameObject:
   m_ObjectHideFlags: 0
@@ -13635,7 +13636,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0.1}
-  m_LocalScale: {x: 0, y: 4, z: 1}
+  m_LocalScale: {x: 0, y: 0.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1574949068}
@@ -13675,7 +13676,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0.05}
-  m_Radius: 0.5
+  m_Radius: 1.5
 --- !u!212 &2098642766
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13720,15 +13721,16 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: 92b280b64ba0b3147b10f0a913bbabef, type: 3}
+  m_Sprite: {fileID: 7397620116612541139, guid: 12a7fe9505078b14ca433e46cf7fab9f,
+    type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 0.8}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.9725, y: 0.98625}
+  m_Size: {x: 5.12, y: 5.12}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &2098642767
