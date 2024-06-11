@@ -22,4 +22,13 @@ public static class Utils
             Debug.LogError("Invalid JSON string: " + ex.Message);
         }
     }
+    
+    public static string GetTimeUntilMidnight()
+    {
+        DateTime now = DateTime.Now;
+        DateTime midnight = now.AddDays(1).Date; // 내일 자정 시간
+
+        TimeSpan timeUntilMidnight = midnight - now;
+        return timeUntilMidnight.ToString(@"hh\:mm\:ss");
+    }
 }

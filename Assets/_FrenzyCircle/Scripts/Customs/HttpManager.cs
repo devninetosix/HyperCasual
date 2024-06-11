@@ -1,5 +1,6 @@
 using System.Text;
 using System.Collections;
+using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
@@ -51,21 +52,28 @@ public class HttpManager : MonoBehaviour
     /// <param name="gameId">게임 ID는 1</param>
     /// <param name="id">Superbase 유저 ID</param>
     /// <returns></returns>
-    public static IEnumerator IEGetUserScore(int id)
+    public static IEnumerator IEGetUserScore(UnityAction callback, int id)
     {
         string uri = $"{BaseUrl}/users/{id}/games/1/scores";
         yield return IEGetRequest(uri, GetUserScore_ResponseHandler);
+        callback?.Invoke();
     }
 
     private static void GetUserScore_ResponseHandler(string json)
     {
+        ApiResponse<UserRank> response = JsonUtility.FromJson<ApiResponse<UserRank>>(json);
+
+        UserInfo.UserDayRanking = response.data.dayRanking;
+        UserInfo.UserWeekRanking = response.data.weekRanking;
+        UserInfo.UserMonthRanking = response.data.monthRanking;
+
         Utils.LogFormattedJson("[GetUserScore]", json);
     }
 
     [Button(ButtonSizes.Large)]
     public void GetUserScoreTest(int id = 100)
     {
-        StartCoroutine(IEGetUserScore(id));
+        StartCoroutine(IEGetUserScore(null, id));
     }
 
 
@@ -131,11 +139,12 @@ public class HttpManager : MonoBehaviour
     /// <summary>
     /// [GET] Games, 전체 랭킹 조회하기
     /// </summary>
+    /// <param name="callback">전부 끝내고 실행할 녀석</param>
     /// <param name="rankPeriod">일간, 주간, 월간</param>
     /// <param name="offset">시작점</param>
     /// <param name="limit">으로부터 개수</param>
     /// <returns></returns>
-    public static IEnumerator IEGetAllRanking(RankPeriod rankPeriod, int offset = 0, int limit = 100)
+    public static IEnumerator IEGetAllRanking(UnityAction callback, RankPeriod rankPeriod, int offset = 0, int limit = 100)
     {
         string period = string.Empty;
 
@@ -155,17 +164,20 @@ public class HttpManager : MonoBehaviour
 
         string uri = $"{BaseUrl}/games/1/rankings?period={period}&offset={offset}&limit={limit}";
         yield return IEGetRequest(uri, GetAllRanking_ResponseHandler);
+        callback?.Invoke();
     }
 
     private static void GetAllRanking_ResponseHandler(string json)
     {
+        ApiResponse<List<RankInfo>> response = JsonUtility.FromJson<ApiResponse<List<RankInfo>>>(json);
+        UserInfo.WorldRankings = response.data;
         Utils.LogFormattedJson("[GetAllRanking]", json);
     }
 
     [Button(ButtonSizes.Large)]
     public void GetAllScoresTest(RankPeriod period = RankPeriod.Daily, int offset = 0, int limit = 100)
     {
-        StartCoroutine(IEGetAllRanking(period, offset, limit));
+        StartCoroutine(IEGetAllRanking(null, period, offset, limit));
     }
 
     // HTTP /////////////////////////////////////////////////////////////////////
