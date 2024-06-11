@@ -1,12 +1,22 @@
 ﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Text.RegularExpressions;
 
 public class BuyItem : MonoBehaviour
 {
     public Image background;
     public GameObject price;
     public TextMeshProUGUI points;
+    public TextMeshProUGUI availablePoint;
+
+    private TextMeshProUGUI _priceText;
+    private int _thisPrice;
+
+    private void Awake()
+    {
+        _priceText = price.GetComponent<TextMeshProUGUI>();
+    }
 
     private void Start()
     {
@@ -15,33 +25,47 @@ public class BuyItem : MonoBehaviour
 
     private void OnEnable()
     {
-        if (PlayerPrefs.GetInt("Item" + gameObject.name) == 1)
+        if (_priceText != null)
+        {
+            Match match = Regex.Match(_priceText.text, @"\d+");
+            _thisPrice = match.Success ? int.Parse(match.Value) : 0;
+        }
+
+        string itemName = "Item" + gameObject.name;
+        string themeName = gameObject.name;
+
+        if (PlayerPrefs.GetInt(itemName) == 1)
         {
             price.SetActive(false);
         }
 
-        if (int.Parse(gameObject.name) == PlayerPrefs.GetInt("Theme"))
+        if (int.Parse(themeName) == PlayerPrefs.GetInt("Theme"))
         {
             background.color = new Color(1, 1, 1, 1);
         }
 
-        points.SetText("POINTS: " + (PlayerPrefs.GetInt("totalPoints") - PlayerPrefs.GetInt("spentPoints")));
+        UpdatePointsText();
     }
 
     public void Buy()
     {
-        if (PlayerPrefs.GetInt("Item" + gameObject.name) != 1)
+        string itemName = "Item" + gameObject.name;
+
+        if (PlayerPrefs.GetInt(itemName) != 1)
         {
-            if (PlayerPrefs.GetInt("totalPoints") - PlayerPrefs.GetInt("spentPoints") >= 100)
+            int totalPoints = PlayerPrefs.GetInt("totalPoints");
+            int spentPoints = PlayerPrefs.GetInt("spentPoints");
+
+            if (totalPoints - spentPoints >= _thisPrice)
             {
                 GameObject.Find("GameManager").GetComponent<Menus>().UnSelectAllShopItems();
-                PlayerPrefs.SetInt("spentPoints", PlayerPrefs.GetInt("spentPoints") + 100);
-                PlayerPrefs.SetInt("Item" + gameObject.name, 1);
+                PlayerPrefs.SetInt("spentPoints", spentPoints + _thisPrice);
+                PlayerPrefs.SetInt(itemName, 1);
                 background.color = new Color(1, 1, 1, 1);
                 price.SetActive(false);
-                points.SetText("POINTS: " + (PlayerPrefs.GetInt("totalPoints") - PlayerPrefs.GetInt("spentPoints")));
+                UpdatePointsText();
                 GameObject.Find("ItemPurchaseSound").GetComponent<AudioSource>().Play();
-                PlayerPrefs.SetInt("Theme", int.Parse(gameObject.name));
+                ThemeManager.SetThemes(int.Parse(gameObject.name));
             }
             else
             {
@@ -54,7 +78,15 @@ public class BuyItem : MonoBehaviour
             background.color = new Color(1, 1, 1, 1);
             price.SetActive(false);
             GameObject.Find("ButtonSound").GetComponent<AudioSource>().Play();
-            PlayerPrefs.SetInt("Theme", int.Parse(gameObject.name));
+            ThemeManager.SetThemes(int.Parse(gameObject.name));
         }
+    }
+
+    private void UpdatePointsText()
+    {
+        int totalPoints = PlayerPrefs.GetInt("totalPoints");
+        int spentPoints = PlayerPrefs.GetInt("spentPoints");
+        points.SetText("POINTS: " + (totalPoints - spentPoints));
+        availablePoint.SetText(points.text);
     }
 }

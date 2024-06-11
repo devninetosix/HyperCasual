@@ -1,4 +1,6 @@
 using UnityEngine;
+using Sirenix.OdinInspector;
+using UnityEngine.SceneManagement;
 
 public class ThemeManager : MonoBehaviour
 {
@@ -18,23 +20,32 @@ public class ThemeManager : MonoBehaviour
         Instance = this;
     }
 
-    public void SetThemes(int number)
+    public static void SetThemes(int number)
     {
         PlayerPrefs.SetInt("Theme", number);
     }
 
     public Sprite GetRotCircleSprite()
     {
-        return rotCircles[PlayerPrefs.GetInt("Theme", 1)];
+        return rotCircles[PlayerPrefs.GetInt("Theme", 0)];
     }
 
     public Sprite GetMiddleCircleSprite()
     {
-        return middleCircles[PlayerPrefs.GetInt("Theme", 1)];
+        return middleCircles[PlayerPrefs.GetInt("Theme", 0)];
     }
 
     public Sprite GetArrowSprite()
     {
-        return arrows[PlayerPrefs.GetInt("Theme", 1)];
+        return arrows[PlayerPrefs.GetInt("Theme", 0)];
+    }
+
+    [Button(ButtonSizes.Large)]
+    public void InitPlayerPrefs()
+    {
+        PlayerPrefs.DeleteAll();
+        PlayerPrefs.SetInt("totalPoints", 100000);
+
+        SceneManager.LoadScene(1);
     }
 }

@@ -11,6 +11,7 @@ public class ObstacleRotation : MonoBehaviour
     {
         rot = Random.Range(50, 100);
         _sp = GetComponent<SpriteRenderer>();
+        UpdateColor();
     }
 
     private void FixedUpdate()

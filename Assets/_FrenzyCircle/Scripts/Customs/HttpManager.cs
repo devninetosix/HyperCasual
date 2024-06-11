@@ -100,7 +100,6 @@ public class HttpManager : MonoBehaviour
         StartCoroutine(IELogin(id, nickname));
     }
 
-
     /// <summary>
     /// [POST] Games, 유저 최고 스코어 등록
     /// </summary>
