@@ -15,14 +15,14 @@ public class HttpManager : MonoBehaviour
                                  "y7yB5_IRSAqUPw9uefjYuEADU4yCpHyFwY";
 
     private const string BaseUrl = "https://crcasoukrunpqyuxtwzb.supabase.co/functions/v1";
-    
+
     public enum RankPeriod
     {
         Daily,
         Weekly,
         Monthly,
     }
-    
+
     /// <summary>
     /// [GET] Users, 유저 정보 조회
     /// </summary>
@@ -38,13 +38,13 @@ public class HttpManager : MonoBehaviour
     {
         Utils.LogFormattedJson("[GetUserInfo]", json);
     }
-    
+
     [Button(ButtonSizes.Large)]
     public void GetUserInfoTest(int id = 100)
     {
         StartCoroutine(IEGetUserInfo(id));
     }
-    
+
     /// <summary>
     /// [GET] Users, 유저 게임 스코어 정보 조회
     /// </summary>
@@ -61,7 +61,7 @@ public class HttpManager : MonoBehaviour
     {
         Utils.LogFormattedJson("[GetUserScore]", json);
     }
-    
+
     [Button(ButtonSizes.Large)]
     public void GetUserScoreTest(int id = 100)
     {
@@ -86,10 +86,12 @@ public class HttpManager : MonoBehaviour
     private static void Login_ResponseHandler(string json)
     {
         ApiResponse<UserData> response = JsonUtility.FromJson<ApiResponse<UserData>>(json);
-        UserInfo.Id = response.data.id;
-        UserInfo.Name = response.data.nickname;
-        UserInfo.TodayHighScore = response.data.todayHighestScore;
-        UserInfo.TodayRank = response.data.todayRank;
+        UserInfo.Instance.SetUserInfo(
+            response.data.id,
+            response.data.nickname,
+            response.data.todayHighestScore,
+            response.data.todayRank
+        );
 
         Utils.LogFormattedJson("[Login]", json);
     }
@@ -118,14 +120,14 @@ public class HttpManager : MonoBehaviour
     {
         Utils.LogFormattedJson("[HighScoreUpdate]", json);
     }
-    
+
     [Button(ButtonSizes.Large)]
     public void HighScoreTest(int id = 100, int score = 1000)
     {
         StartCoroutine(IEHighScoreUpdate(id, score));
     }
 
-    
+
     /// <summary>
     /// [GET] Games, 전체 랭킹 조회하기
     /// </summary>
@@ -150,7 +152,7 @@ public class HttpManager : MonoBehaviour
                 period = "monthly";
                 break;
         }
-        
+
         string uri = $"{BaseUrl}/games/1/rankings?period={period}&offset={offset}&limit={limit}";
         yield return IEGetRequest(uri, GetAllRanking_ResponseHandler);
     }
@@ -159,15 +161,15 @@ public class HttpManager : MonoBehaviour
     {
         Utils.LogFormattedJson("[GetAllRanking]", json);
     }
-    
+
     [Button(ButtonSizes.Large)]
     public void GetAllScoresTest(RankPeriod period = RankPeriod.Daily, int offset = 0, int limit = 100)
     {
         StartCoroutine(IEGetAllRanking(period, offset, limit));
     }
-    
+
     // HTTP /////////////////////////////////////////////////////////////////////
-    
+
     private static IEnumerator IEGetRequest(string uri, UnityAction<string> callback)
     {
         using UnityWebRequest req = UnityWebRequest.Get(uri);
