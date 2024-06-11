@@ -150,5 +150,6 @@ public class PlayerLogic : MonoBehaviour
             .SetText("BEST: " + PlayerPrefs.GetInt("BestScore"));
         Destroy(this.gameObject, 0.5f);
         GetComponent<PlayerLogic>().enabled = false;
+        UserInfo.Instance.UpdateTodayBestScore(Vars.Score);
     }
 }
