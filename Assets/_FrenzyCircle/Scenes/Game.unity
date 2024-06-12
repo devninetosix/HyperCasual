@@ -2462,6 +2462,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36b279ba7a7c1ad4ca7a0746785d069c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cgImgFader: {fileID: 1004795457}
   rotCircles:
   - {fileID: 21300000, guid: be13e2a8acde0574eb94d5616ba021f9, type: 3}
   - {fileID: 21300000, guid: 0ba649d19d4ea7841b26fe3678c56bd0, type: 3}
@@ -2486,7 +2487,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2089b0a8f7f00f34c838f8d4ee9dd7c2, type: 3}
   - {fileID: 21300000, guid: f2ef8a54cb57434419d0c83b457a5096, type: 3}
   - {fileID: 21300000, guid: 70a92d2a3c261cb4f9649769bd914927, type: 3}
-  cgImgFader: {fileID: 1004795457}
 --- !u!1 &325510181
 GameObject:
   m_ObjectHideFlags: 0
@@ -4093,7 +4093,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'POINTS: 0'
+  m_text: 'SCORE: 0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6ec5d9a2c5f8834409ca6fa479588141, type: 2}
   m_sharedMaterial: {fileID: -2321187884706388041, guid: 6ec5d9a2c5f8834409ca6fa479588141,
@@ -6705,7 +6705,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'POINTS: 0'
+  m_text: 'SCORE: 0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6ec5d9a2c5f8834409ca6fa479588141, type: 2}
   m_sharedMaterial: {fileID: -2321187884706388041, guid: 6ec5d9a2c5f8834409ca6fa479588141,
@@ -8164,7 +8164,7 @@ SpriteRenderer:
   m_SortingOrder: 10
   m_Sprite: {fileID: 4615209543915702287, guid: 5f1ba9623307104408c032a912ff42e9,
     type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.8}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.6}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -11017,7 +11017,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'BEST: 0'
+  m_text: 'BEST SCORE: 0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6ec5d9a2c5f8834409ca6fa479588141, type: 2}
   m_sharedMaterial: {fileID: -2321187884706388041, guid: 6ec5d9a2c5f8834409ca6fa479588141,
@@ -14116,10 +14116,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1514343973}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -50}
-  m_SizeDelta: {x: 438.5, y: 182}
+  m_SizeDelta: {x: -100, y: 400}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &2055808056
 MonoBehaviour:
@@ -14736,7 +14736,7 @@ SpriteRenderer:
   m_SortingOrder: 10
   m_Sprite: {fileID: 7397620116612541139, guid: 12a7fe9505078b14ca433e46cf7fab9f,
     type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.8}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.6}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

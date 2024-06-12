@@ -92,7 +92,7 @@ public class BuyItem : MonoBehaviour
     {
         int totalPoints = PlayerPrefs.GetInt("totalPoints");
         int spentPoints = PlayerPrefs.GetInt("spentPoints");
-        points.SetText("POINTS: " + (totalPoints - spentPoints));
+        points.SetText("SCORE: " + (totalPoints - spentPoints));
         availablePoint.SetText(points.text);
     }
 }

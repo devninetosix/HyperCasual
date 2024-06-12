@@ -117,7 +117,7 @@ public class PlayerLogic : MonoBehaviour
                 PlayerPrefs.SetInt("BestScore", Vars.Score);
             }
 
-            _score.SetText("POINTS: " + Vars.Score);
+            _score.SetText("SCORE: " + Vars.Score);
             PlayerPrefs.SetInt("totalPoints", PlayerPrefs.GetInt("totalPoints") + 1);
             _lineChangeSound.Play();
         }
@@ -145,9 +145,9 @@ public class PlayerLogic : MonoBehaviour
         rpyButton.GetComponent<CircleCollider2D>().enabled = true;
         rpyButton.GetComponent<SpriteRenderer>().enabled = true;
         GameObject.Find("GameOverMenu").transform.localScale = new Vector2(1, 1);
-        GameObject.Find("GameOverScore").GetComponent<TextMeshProUGUI>().SetText("POINTS: " + Vars.Score);
+        GameObject.Find("GameOverScore").GetComponent<TextMeshProUGUI>().SetText("SCORE: " + Vars.Score);
         GameObject.Find("GameOverBestScore").GetComponent<TextMeshProUGUI>()
-            .SetText("BEST: " + PlayerPrefs.GetInt("BestScore"));
+            .SetText("BEST SCORE: " + PlayerPrefs.GetInt("BestScore"));
         Destroy(this.gameObject, 0.5f);
         GetComponent<PlayerLogic>().enabled = false;
         UserInfo.Instance.UpdateTodayBestScore(Vars.Score);
