@@ -1,7 +1,7 @@
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class RankingMenu : MonoBehaviour
 {
@@ -9,16 +9,29 @@ public class RankingMenu : MonoBehaviour
     public RankingPanel userRankingPanel;
     public RankingPanel rankingPrefab;
     public Transform rankingParents;
+    public GameObject noDataImage;
 
     public Button[] periodButtons;
-
     public TextMeshProUGUI timeLeftText;
-
     public HttpManager.RankPeriod period;
+
+    private readonly List<RankingPanel> _rankingInstances = new();
+    private readonly Queue<RankingPanel> _rankingPool = new();
 
     private void OnEnable()
     {
         ChangeRankingDate(0);
+    }
+
+    private void OnDisable()
+    {
+        foreach (var instance in _rankingInstances)
+        {
+            instance.gameObject.SetActive(false);
+            _rankingPool.Enqueue(instance);
+        }
+
+        _rankingInstances.Clear();
     }
 
     private void FixedUpdate()
@@ -43,24 +56,59 @@ public class RankingMenu : MonoBehaviour
 
     private void UserRankingInfoUpdate_Callback()
     {
+        RankInfo rankInfo;
+
         switch (period)
         {
             case HttpManager.RankPeriod.Daily:
-                var rankInfo = UserInfo.UserDayRanking;
-                userRankingPanel.SetTexts(rankInfo.id + "", rankInfo.rank, rankInfo.score);
+                rankInfo = UserInfo.UserDayRanking;
+                userRankingPanel.SetTexts(Utils.RandomNameGenerator(), rankInfo.rank, rankInfo.score);
                 break;
             case HttpManager.RankPeriod.Weekly:
+                rankInfo = UserInfo.UserWeekRanking;
+                userRankingPanel.SetTexts(Utils.RandomNameGenerator(), rankInfo.rank, rankInfo.score);
                 break;
             case HttpManager.RankPeriod.Monthly:
+                rankInfo = UserInfo.UserMonthRanking;
+                userRankingPanel.SetTexts(Utils.RandomNameGenerator(), rankInfo.rank, rankInfo.score);
                 break;
             default:
-                throw new ArgumentOutOfRangeException();
+                return;
         }
     }
 
     private void GlobalRankingInfoUpdate_Callback()
     {
-        Debug.Log("Call back!!!");
+        List<RankInfo> globalRankings = UserInfo.WorldRankings;
+
+        foreach (var oldRank in _rankingInstances)
+        {
+            oldRank.gameObject.SetActive(false);
+            _rankingPool.Enqueue(oldRank);
+        }
+
+        _rankingInstances.Clear();
+
+        foreach (var newRank in globalRankings)
+        {
+            RankingPanel instance;
+            if (_rankingPool.Count > 0)
+            {
+                instance = _rankingPool.Dequeue();
+                instance.gameObject.SetActive(true);
+            }
+            else
+            {
+                instance = Instantiate(rankingPrefab, rankingParents);
+            }
+
+            // todo: 이거 실제 유저 이름으로 바꿔야함
+            instance.SetTexts(Utils.RandomNameGenerator(), newRank.rank, newRank.score);
+
+            _rankingInstances.Add(instance);
+        }
+
+        noDataImage.SetActive(globalRankings.Count == 0);
         loadingIndicator.SetActive(false);
     }
 }
