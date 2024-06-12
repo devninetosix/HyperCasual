@@ -15,7 +15,6 @@ public class UserInfo : MonoBehaviour
     public static RankInfo UserWeekRanking;
     public static RankInfo UserMonthRanking;
 
-
     public static UserInfo Instance { get; private set; }
 
     private void Awake()
