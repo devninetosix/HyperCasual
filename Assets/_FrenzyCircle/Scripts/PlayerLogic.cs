@@ -132,6 +132,7 @@ public class PlayerLogic : MonoBehaviour
 
     private void DestroyPlayer()
     {
+        BGMManager.Instance.DefeatBgm();
         GameObject.Find("ExplosionSound").GetComponent<AudioSource>().Play();
         transform.parent = null;
         transform.Find("PlayerSprite").GetComponent<PlayerDestroy>().enabled = true;

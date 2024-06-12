@@ -37,6 +37,12 @@ public class Menus : MonoBehaviour
         Application.targetFrameRate = 300;
     }
 
+    public void SceneReload()
+    {
+        BackToTheMainMenu();
+        SceneManager.LoadScene(1);
+    }
+
     public void StartTheGame()
     {
         Vars.StartGame = true;
@@ -83,6 +89,7 @@ public class Menus : MonoBehaviour
     {
         shopMenu.SetActive(true);
         playButtonCollider.enabled = false;
+        BGMManager.Instance.ShopBgm();
         shopMenuAvailablePoints.SetText("SCORE: " + (PlayerPrefs.GetInt("totalPoints") - PlayerPrefs.GetInt("spentPoints")));
         buttonSound.Play();
     }
@@ -103,6 +110,7 @@ public class Menus : MonoBehaviour
 
     public void ShowRankingMenu()
     {
+        BGMManager.Instance.ShopBgm();
         rankingMenuUI.SetActive(true);
         playButtonCollider.enabled = false;
         buttonSound.Play();
@@ -110,6 +118,7 @@ public class Menus : MonoBehaviour
 
     public void HideRankingMenu()
     {
+        BGMManager.Instance.BGMOn();
         rankingMenuUI.SetActive(false);
         playButtonCollider.enabled = true;
         buttonSound.Play();
@@ -143,6 +152,7 @@ public class Menus : MonoBehaviour
         Time.timeScale = 1;
         Vars.CurrentMenu = 2;
         transitionImage.GetComponent<MenuTransition>().enabled = true;
+        BGMManager.Instance.BGMOn();
     }
 
     public void GameReply()
