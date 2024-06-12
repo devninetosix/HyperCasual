@@ -44,49 +44,55 @@ public class BuyItem : MonoBehaviour
             background.color = new Color(1, 1, 1, 1);
         }
 
-        UpdatePointsText();
+        // UpdatePointsText();
     }
 
     public void Buy()
     {
-        string itemName = "Item" + gameObject.name;
-
-        if (PlayerPrefs.GetInt(itemName) != 1)
-        {
-            int totalPoints = PlayerPrefs.GetInt("totalPoints");
-            int spentPoints = PlayerPrefs.GetInt("spentPoints");
-
-            if (totalPoints - spentPoints >= _thisPrice)
-            {
-                GameObject.Find("GameManager").GetComponent<Menus>().UnSelectAllShopItems();
-                PlayerPrefs.SetInt("spentPoints", spentPoints + _thisPrice);
-                PlayerPrefs.SetInt(itemName, 1);
-                background.color = new Color(1, 1, 1, 1);
-                price.SetActive(false);
-                UpdatePointsText();
-                GameObject.Find("ItemPurchaseSound").GetComponent<AudioSource>().Play();
-                ThemeManager.SetThemes(int.Parse(gameObject.name));
-            }
-            else
-            {
-                GameObject.Find("DenySound").GetComponent<AudioSource>().Play();
-            }
-        }
-        else
-        {
-            GameObject.Find("GameManager").GetComponent<Menus>().UnSelectAllShopItems();
-            background.color = new Color(1, 1, 1, 1);
-            price.SetActive(false);
-            GameObject.Find("ButtonSound").GetComponent<AudioSource>().Play();
-            ThemeManager.SetThemes(int.Parse(gameObject.name));
-        }
+        GameObject.Find("GameManager").GetComponent<Menus>().UnSelectAllShopItems();
+        background.color = new Color(1, 1, 1, 1);
+        price.SetActive(false);
+        GameObject.Find("ButtonSound").GetComponent<AudioSource>().Play();
+        ThemeManager.SetThemes(int.Parse(gameObject.name));
+        
+        // string itemName = "Item" + gameObject.name;
+        //
+        // if (PlayerPrefs.GetInt(itemName) != 1)
+        // {
+        //     int totalPoints = PlayerPrefs.GetInt("totalPoints");
+        //     int spentPoints = PlayerPrefs.GetInt("spentPoints");
+        //
+        //     if (totalPoints - spentPoints >= _thisPrice)
+        //     {
+        //         GameObject.Find("GameManager").GetComponent<Menus>().UnSelectAllShopItems();
+        //         PlayerPrefs.SetInt("spentPoints", spentPoints + _thisPrice);
+        //         PlayerPrefs.SetInt(itemName, 1);
+        //         background.color = new Color(1, 1, 1, 1);
+        //         price.SetActive(false);
+        //         UpdatePointsText();
+        //         GameObject.Find("ItemPurchaseSound").GetComponent<AudioSource>().Play();
+        //         ThemeManager.SetThemes(int.Parse(gameObject.name));
+        //     }
+        //     else
+        //     {
+        //         GameObject.Find("DenySound").GetComponent<AudioSource>().Play();
+        //     }
+        // }
+        // else
+        // {
+        //     GameObject.Find("GameManager").GetComponent<Menus>().UnSelectAllShopItems();
+        //     background.color = new Color(1, 1, 1, 1);
+        //     price.SetActive(false);
+        //     GameObject.Find("ButtonSound").GetComponent<AudioSource>().Play();
+        //     ThemeManager.SetThemes(int.Parse(gameObject.name));
+        // }
     }
 
     private void UpdatePointsText()
     {
         int totalPoints = PlayerPrefs.GetInt("totalPoints");
         int spentPoints = PlayerPrefs.GetInt("spentPoints");
-        points.SetText("POINTS: " + (totalPoints - spentPoints));
+        points.SetText("SCORE: " + (totalPoints - spentPoints));
         availablePoint.SetText(points.text);
     }
 }

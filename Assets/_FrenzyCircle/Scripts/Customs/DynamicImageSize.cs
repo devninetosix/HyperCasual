@@ -1,4 +1,5 @@
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 public class DynamicImageSize : MonoBehaviour
 {
@@ -8,18 +9,19 @@ public class DynamicImageSize : MonoBehaviour
 
     private RectTransform _rectTr;
 
-    private void Awake()
-    {
-        _rectTr = GetComponent<RectTransform>();
-    }
-
-    private void FixedUpdate()
+    private void Start()
     {
         ResizeTitleImage();
     }
 
+    [Button(ButtonSizes.Large)]
     private void ResizeTitleImage()
     {
+        if (!_rectTr)
+        {
+            _rectTr = GetComponent<RectTransform>();
+        }
+
         // 현재 화면의 너비와 높이 가져오기
         float screenWidth = Screen.width;
         float screenHeight = Screen.height;
@@ -42,6 +44,6 @@ public class DynamicImageSize : MonoBehaviour
         _rectTr.pivot = new Vector2(0.5f, 1f);
 
         // 상단에서의 오프셋 설정
-        _rectTr.anchoredPosition = new Vector2(0, -newHeight / 2);
+        _rectTr.anchoredPosition = new Vector2(0, -newHeight / 5);
     }
 }

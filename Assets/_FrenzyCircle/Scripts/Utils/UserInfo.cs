@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,7 +13,6 @@ public class UserInfo : MonoBehaviour
     public static RankInfo UserDayRanking;
     public static RankInfo UserWeekRanking;
     public static RankInfo UserMonthRanking;
-
 
     public static UserInfo Instance { get; private set; }
 

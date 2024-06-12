@@ -54,7 +54,7 @@ public class Menus : MonoBehaviour
         mainMenuUI.SetActive(false);
         rankingMenuUI.SetActive(false);
         gameMenuUI.SetActive(true);
-        score.SetText("POINTS: 0");
+        score.SetText("SCORE: 0");
     }
 
     public void BackToTheMainMenu()
@@ -83,7 +83,7 @@ public class Menus : MonoBehaviour
     {
         shopMenu.SetActive(true);
         playButtonCollider.enabled = false;
-        shopMenuAvailablePoints.SetText("POINTS: " + (PlayerPrefs.GetInt("totalPoints") - PlayerPrefs.GetInt("spentPoints")));
+        shopMenuAvailablePoints.SetText("SCORE: " + (PlayerPrefs.GetInt("totalPoints") - PlayerPrefs.GetInt("spentPoints")));
         buttonSound.Play();
     }
 
@@ -157,7 +157,7 @@ public class Menus : MonoBehaviour
         GameObject.Find("GameOverMenu").transform.localScale = new Vector2(0, 1);
         GameObject game = Instantiate(gamePrefab);
         game!.name = "Game";
-        score.SetText("POINTS: 0");
+        score.SetText("SCORE: 0");
     }
 
     public void SoundOnOff()

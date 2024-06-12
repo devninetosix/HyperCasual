@@ -1,7 +1,9 @@
 using UnityEngine;
 using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Random = UnityEngine.Random;
 
 public static class Utils
 {
@@ -22,7 +24,7 @@ public static class Utils
             Debug.LogError("Invalid JSON string: " + ex.Message);
         }
     }
-    
+
     public static string GetTimeUntilMidnight()
     {
         DateTime now = DateTime.Now;
@@ -30,5 +32,32 @@ public static class Utils
 
         TimeSpan timeUntilMidnight = midnight - now;
         return timeUntilMidnight.ToString(@"hh\:mm\:ss");
+    }
+
+    public static string RandomNameGenerator()
+    {
+        List<string> firstNames = new List<string>()
+        {
+            "Liam", "Noah", "Oliver", "Elijah", "Mateo", "Lucas", "Levi", "Ezra", "Asher", "Leo", "James", "Henry",
+            "Theodore", "William", "Mason", "Benjamin", "Grayson", "Jack", "Ethan", "Alexander", "Wyatt", "Josiah",
+            "Samuel", "Aiden", "David", "Owen", "Ezekiel", "Julian", "Luke", "Carter", "Santiago", "Isaiah", "Miles",
+            "Jayden", "Logan", "Isaac", "Matthew", "John", "Adam", "Nolan", "Nathan", "Caleb", "Joseph", "Cooper",
+            "Thomas", "Anthony", "Micah", "Roman", "Lincoln", "Amir", "Olivia", "Emma", "Amelia", "Sophia", "Charlotte",
+            "Isabella", "Ava", "Mia", "Luna", "Ellie", "Harper", "Camila", "Sofia", "Scarlett", "Elizabeth", "Eleanor",
+            "Emily", "Chloe", "Mila", "Violet", "Penelope", "Gianna", "Aria", "Abigail", "Ella", "Avery", "Hazel",
+            "Nora", "Layla", "Lily", "Aurora", "Nova", "Madison", "Grace", "Isla", "Zoe", "Riley", "Stella", "Eliana",
+            "Ivy", "Victoria", "Emilia", "Zoey", "Naomi", "Hannah", "Lucy", "Elena", "Lillian", "Maya", "Leah",
+        };
+
+        List<string> lastNames = new List<string>()
+        {
+            "Smith", "Johnson", "Williams", "Brown", "Jones", "Garcia", "Miller", "Davis", "Rodriguez", "Martinez",
+            "Hernandez", "Lopez", "Gonzalez", "Wilson", "Anderson", "Thomas", "Taylor", "Moore", "Jackson", "Martin",
+            "Lee", "Perez", "Thompson", "White", "Harris", "Sanchez", "Clark", "Ramirez", "Lewis", "Robinson", "Walker",
+            "Young", "Allen", "King", "Wright", "Scott", "Torres", "Nguyen", "Hill", "Flores", "Green", "Adams",
+            "Nelson", "Baker", "Hall", "Rivera", "Campbell", "Mitchell", "Carter", "Roberts",
+        };
+
+        return firstNames[Random.Range(0, firstNames.Count)] + lastNames[Random.Range(0, lastNames.Count)];
     }
 }
