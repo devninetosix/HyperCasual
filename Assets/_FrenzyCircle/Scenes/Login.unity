@@ -482,10 +482,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1279740055}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0.39139587}
+  m_AnchorMax: {x: 1, y: 0.59962493}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 540, y: 540}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &943180519
 MonoBehaviour:
@@ -510,7 +510,7 @@ MonoBehaviour:
   m_Sprite: {fileID: -6470460504253458178, guid: 441d57b24c7bec34bbbcc8ced7f80ec9,
     type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -587,7 +587,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   userId: 100
   userName: aespablo
-  cgImageFactor: {fileID: 1279740056}
 --- !u!114 &977905074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -600,7 +599,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 753421e5ebdad76419f72d1dd3991a46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cgImageFactor: {fileID: 1279740056}
 --- !u!114 &977905075
 MonoBehaviour:
   m_ObjectHideFlags: 0
