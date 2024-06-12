@@ -31,20 +31,28 @@ public class ReactConnect : MonoBehaviour
             UserInfo.Id = int.Parse(response.id);
             UserInfo.Name = response.name;
             StartCoroutine(IELoginLogic(UserInfo.Id, UserInfo.Name));
-            
+
             Utils.LogFormattedJson("[SetUserInfo]", json);
         }
         catch (Exception ex)
         {
-            Application.Quit();
+            StartCoroutine(IEDummyLogin());
         }
     }
 
-    private IEnumerator IELoginLogic(int id, string name)
+    private IEnumerator IELoginLogic(int id, string userName)
     {
-        yield return StartCoroutine(HttpManager.IELogin(id, name));
+        yield return StartCoroutine(HttpManager.IELogin(id, userName));
         SceneManager.LoadScene(1);
     }
-  
+
+    private IEnumerator IEDummyLogin()
+    {
+        int dummyId = UnityEngine.Random.Range(10000, 100000);
+        yield return StartCoroutine(HttpManager.IELogin(dummyId, Utils.RandomNameGenerator()));
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene(1);
+    }
+
 #endif
 }
