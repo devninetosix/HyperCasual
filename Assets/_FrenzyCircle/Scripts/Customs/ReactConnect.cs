@@ -48,8 +48,7 @@ public class ReactConnect : MonoBehaviour
 
     private IEnumerator IEDummyLogin()
     {
-        int dummyId = UnityEngine.Random.Range(10000, 100000);
-        yield return StartCoroutine(HttpManager.IELogin(dummyId, Utils.RandomNameGenerator()));
+        yield return StartCoroutine(HttpManager.IELogin(UnityEngine.Random.Range(10000, 100000), Utils.RandomNameGenerator()));
         yield return new WaitForSeconds(1);
         SceneManager.LoadScene(1);
     }

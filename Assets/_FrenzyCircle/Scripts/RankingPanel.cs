@@ -10,7 +10,7 @@ public class RankingPanel : MonoBehaviour
     public void SetTexts(string name, int rank, int score)
     {
         nameTextPanel.SetText(name);
-        rankTextPanel.SetText(rank + "");
-        scoreTextPanel.SetText(score + "");
+        rankTextPanel.SetText(rank == 0 ? "-" : rank + "");
+        scoreTextPanel.SetText(score == 0 ? "-" : score + "");
     }
 }

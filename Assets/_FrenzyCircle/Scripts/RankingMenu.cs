@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 using System.Collections.Generic;
 
 public class RankingMenu : MonoBehaviour
@@ -50,8 +51,14 @@ public class RankingMenu : MonoBehaviour
                 rankPeriod == i ? Color.white : Color.gray;
         }
 
-        StartCoroutine(HttpManager.IEGetUserScore(UserRankingInfoUpdate_Callback, UserInfo.Id));
-        StartCoroutine(HttpManager.IEGetAllRanking(GlobalRankingInfoUpdate_Callback, period));
+        StartCoroutine(IEChain());
+        return;
+
+        IEnumerator IEChain()
+        {
+            yield return StartCoroutine(HttpManager.IEGetUserScore(UserRankingInfoUpdate_Callback, UserInfo.Id));
+            StartCoroutine(HttpManager.IEGetAllRanking(GlobalRankingInfoUpdate_Callback, period));
+        }
     }
 
     private void UserRankingInfoUpdate_Callback()
@@ -62,15 +69,15 @@ public class RankingMenu : MonoBehaviour
         {
             case HttpManager.RankPeriod.Daily:
                 rankInfo = UserInfo.UserDayRanking;
-                userRankingPanel.SetTexts(Utils.RandomNameGenerator(), rankInfo.rank, rankInfo.score);
+                userRankingPanel.SetTexts(UserInfo.Name, rankInfo.rank, rankInfo.score);
                 break;
             case HttpManager.RankPeriod.Weekly:
                 rankInfo = UserInfo.UserWeekRanking;
-                userRankingPanel.SetTexts(Utils.RandomNameGenerator(), rankInfo.rank, rankInfo.score);
+                userRankingPanel.SetTexts(UserInfo.Name, rankInfo.rank, rankInfo.score);
                 break;
             case HttpManager.RankPeriod.Monthly:
                 rankInfo = UserInfo.UserMonthRanking;
-                userRankingPanel.SetTexts(Utils.RandomNameGenerator(), rankInfo.rank, rankInfo.score);
+                userRankingPanel.SetTexts(UserInfo.Name, rankInfo.rank, rankInfo.score);
                 break;
             default:
                 return;
@@ -80,6 +87,8 @@ public class RankingMenu : MonoBehaviour
     private void GlobalRankingInfoUpdate_Callback()
     {
         List<RankInfo> globalRankings = UserInfo.WorldRankings;
+
+        globalRankings.Sort((a, b) => a.rank.CompareTo(b.rank));
 
         foreach (var oldRank in _rankingInstances)
         {
@@ -102,8 +111,7 @@ public class RankingMenu : MonoBehaviour
                 instance = Instantiate(rankingPrefab, rankingParents);
             }
 
-            // todo: 이거 실제 유저 이름으로 바꿔야함
-            instance.SetTexts(Utils.RandomNameGenerator(), newRank.rank, newRank.score);
+            instance.SetTexts(newRank.nickname, newRank.rank, newRank.score);
 
             _rankingInstances.Add(instance);
         }
