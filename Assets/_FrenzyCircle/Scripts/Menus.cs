@@ -39,7 +39,7 @@ public class Menus : MonoBehaviour
 
     public void SceneReload()
     {
-        BackToTheMainMenu();
+        Vars.ResetAll();
         SceneManager.LoadScene(1);
     }
 
@@ -69,13 +69,26 @@ public class Menus : MonoBehaviour
         Vars.StartGame = false;
         Vars.CurrentMenu = 0;
         transitionImage.GetComponent<MenuTransition>().enabled = true;
-        Destroy(GameObject.Find("player"));
+
+        var player = GameObject.Find("player");
+
+        if (player != null)
+        {
+            Destroy(player);
+        }
+
         buttonSound.Play();
     }
 
     public void ShowMainMenu()
     {
-        Destroy(GameObject.Find("Game"));
+        var gamePrefab = GameObject.Find("Game");
+
+        if (gamePrefab != null)
+        {
+            Destroy(gamePrefab);
+        }
+
         GameObject game = Instantiate(menuPrefab);
         game.name = "MainMenu";
         playButton.SetActive(true);
