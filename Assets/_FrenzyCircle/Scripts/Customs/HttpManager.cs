@@ -8,7 +8,8 @@ using UnityEngine.Networking;
 
 public class HttpManager : MonoBehaviour
 {
-    private const string TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNyY2Fzb3VrcnVucHF5dXh0d3piIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcxNjI2ODMyNywiZXhwIjoyMDMxODQ0MzI3fQ.efA7_0nxuy7yB5_IRSAqUPw9uefjYuEADU4yCpHyFwY";
+    private const string TOKEN =
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNyY2Fzb3VrcnVucHF5dXh0d3piIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcxNjI2ODMyNywiZXhwIjoyMDMxODQ0MzI3fQ.efA7_0nxuy7yB5_IRSAqUPw9uefjYuEADU4yCpHyFwY";
 
     private const string BaseUrl = "https://crcasoukrunpqyuxtwzb.supabase.co/functions/v1";
 
@@ -104,7 +105,8 @@ public class HttpManager : MonoBehaviour
         StartCoroutine(IEHighScoreUpdate(id, score));
     }
 
-    public static IEnumerator IEGetAllRanking(UnityAction callback, RankPeriod rankPeriod, int offset = 0, int limit = 100)
+    public static IEnumerator IEGetAllRanking(UnityAction callback, RankPeriod rankPeriod, int offset = 0,
+        int limit = 100)
     {
         string period = rankPeriod switch
         {
@@ -140,7 +142,9 @@ public class HttpManager : MonoBehaviour
 
         if (req.result is UnityWebRequest.Result.ConnectionError or UnityWebRequest.Result.ProtocolError)
         {
+#if UNITY_EDITOR
             Debug.LogError($"Error: {req.error}\nResponse: {req.downloadHandler.text}");
+#endif
         }
         else
         {
@@ -161,7 +165,9 @@ public class HttpManager : MonoBehaviour
 
         if (req.result is UnityWebRequest.Result.ConnectionError or UnityWebRequest.Result.ProtocolError)
         {
+#if UNITY_EDITOR
             Debug.LogError($"Error: {req.error}\nResponse: {req.downloadHandler.text}");
+#endif
         }
         else
         {

@@ -703,7 +703,7 @@ PlayerSettings:
   webGLTemplate: APPLICATION:Minimal
   webGLAnalyzeBuildSize: 0
   webGLUseEmbeddedResources: 0
-  webGLCompressionFormat: 0
+  webGLCompressionFormat: 2
   webGLWasmArithmeticExceptions: 0
   webGLLinkerTarget: 1
   webGLThreadsSupport: 0
@@ -733,7 +733,7 @@ PlayerSettings:
     Server: UNITY_VISUAL_SCRIPTING
     Standalone: DOTWEEN;UNITY_VISUAL_SCRIPTING
     VisionOS: DOTWEEN;UNITY_VISUAL_SCRIPTING
-    WebGL: DOTWEEN;ODIN_INSPECTOR;ODIN_INSPECTOR_3;ODIN_INSPECTOR_3_1;ODIN_INSPECTOR_3_2;ODIN_INSPECTOR_3_3;UNITY_VISUAL_SCRIPTING
+    WebGL: DOTWEEN;EASYSAVE;ODIN_INSPECTOR;ODIN_INSPECTOR_3;ODIN_INSPECTOR_3_1;ODIN_INSPECTOR_3_2;ODIN_INSPECTOR_3_3;UNITY_VISUAL_SCRIPTING
     Windows Store Apps: DOTWEEN;UNITY_VISUAL_SCRIPTING
     XboxOne: DOTWEEN;UNITY_VISUAL_SCRIPTING
     iPhone: DOTWEEN;UNITY_VISUAL_SCRIPTING
@@ -763,7 +763,7 @@ PlayerSettings:
     tvOS: 1
   incrementalIl2cppBuild: {}
   suppressCommonWarnings: 1
-  allowUnsafeCode: 0
+  allowUnsafeCode: 1
   useDeterministicCompilation: 1
   additionalIl2CppArgs: 
   scriptingRuntimeVersion: 1
