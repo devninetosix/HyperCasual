@@ -1,8 +1,6 @@
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using Sirenix.OdinInspector;
 
 public class RankingPanel : MonoBehaviour
 {
@@ -17,7 +15,6 @@ public class RankingPanel : MonoBehaviour
 
     public DynamicScrollContentSize dynamicScrollSize;
 
-    [Button]
     private void OnEnable()
     {
         RectTransform target = transform.parent.parent.GetComponent<RectTransform>();

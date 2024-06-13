@@ -26,7 +26,7 @@ public class UserInfo : MonoBehaviour
         Instance = this;
     }
 
-    public void SetUserInfo(int userId, string userName, int todayHighScore, int todayRank)
+    public void InitUserInfo(int userId = 0, string userName = "", int todayHighScore = 0, int todayRank = 0)
     {
         Id = userId;
         Name = userName;

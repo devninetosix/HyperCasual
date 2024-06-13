@@ -13,7 +13,6 @@ public class ConnectInfo
 
 public class ReactConnect : MonoBehaviour
 {
-#if !UNITY_EDITOR
     [DllImport("__Internal")]
     private static extern void GameInit(string message);
 
@@ -49,9 +48,6 @@ public class ReactConnect : MonoBehaviour
     private IEnumerator IEDummyLogin()
     {
         yield return StartCoroutine(HttpManager.IELogin(UnityEngine.Random.Range(10000, 100000), Utils.RandomNameGenerator()));
-        yield return new WaitForSeconds(1);
         SceneManager.LoadScene(1);
     }
-
-#endif
 }

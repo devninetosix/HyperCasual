@@ -1,15 +1,18 @@
 using System.Text;
 using System.Collections;
 using System.Collections.Generic;
-using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Networking;
 
 public class HttpManager : MonoBehaviour
 {
-    private const string TOKEN =
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNyY2Fzb3VrcnVucHF5dXh0d3piIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcxNjI2ODMyNywiZXhwIjoyMDMxODQ0MzI3fQ.efA7_0nxuy7yB5_IRSAqUPw9uefjYuEADU4yCpHyFwY";
+    private const string TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9" +
+                                 ".eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN" +
+                                 "yY2Fzb3VrcnVucHF5dXh0d3piIiwicm9sZSI" +
+                                 "6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcxNjI" +
+                                 "2ODMyNywiZXhwIjoyMDMxODQ0MzI3fQ.efA7" +
+                                 "_0nxuy7yB5_IRSAqUPw9uefjYuEADU4yCpHyFwY";
 
     private const string BaseUrl = "https://crcasoukrunpqyuxtwzb.supabase.co/functions/v1";
 
@@ -31,12 +34,6 @@ public class HttpManager : MonoBehaviour
         Utils.LogFormattedJson("[GetUserInfo]", json);
     }
 
-    [Button(ButtonSizes.Large)]
-    public void GetUserInfoTest(int id = 100)
-    {
-        StartCoroutine(IEGetUserInfo(id));
-    }
-
     public static IEnumerator IEGetUserScore(UnityAction callback, int id)
     {
         string uri = $"{BaseUrl}/users/{id}/games/1/scores";
@@ -55,12 +52,6 @@ public class HttpManager : MonoBehaviour
         Utils.LogFormattedJson("[GetUserScore]", json);
     }
 
-    [Button(ButtonSizes.Large)]
-    public void GetUserScoreTest(int id = 100)
-    {
-        StartCoroutine(IEGetUserScore(null, id));
-    }
-
     public static IEnumerator IELogin(int id, string nickname)
     {
         string uri = $"{BaseUrl}/auth/login";
@@ -71,7 +62,7 @@ public class HttpManager : MonoBehaviour
     private static void Login_ResponseHandler(string json)
     {
         ApiResponse<UserData> response = JsonUtility.FromJson<ApiResponse<UserData>>(json);
-        UserInfo.Instance.SetUserInfo(
+        UserInfo.Instance.InitUserInfo(
             response.data.id,
             response.data.nickname,
             response.data.todayHighestScore,
@@ -79,12 +70,6 @@ public class HttpManager : MonoBehaviour
         );
 
         Utils.LogFormattedJson("[Login]", json);
-    }
-
-    [Button(ButtonSizes.Large)]
-    public void LoginTest(int id = 100, string nickname = "aespablo")
-    {
-        StartCoroutine(IELogin(id, nickname));
     }
 
     public static IEnumerator IEHighScoreUpdate(int id, int score)
@@ -99,14 +84,7 @@ public class HttpManager : MonoBehaviour
         Utils.LogFormattedJson("[HighScoreUpdate]", json);
     }
 
-    [Button(ButtonSizes.Large)]
-    public void HighScoreTest(int id = 100, int score = 1000)
-    {
-        StartCoroutine(IEHighScoreUpdate(id, score));
-    }
-
-    public static IEnumerator IEGetAllRanking(UnityAction callback, RankPeriod rankPeriod, int offset = 0,
-        int limit = 100)
+    public static IEnumerator IEGetAllRanking(UnityAction callback, RankPeriod rankPeriod, int offset = 0, int limit = 100)
     {
         string period = rankPeriod switch
         {
@@ -126,12 +104,6 @@ public class HttpManager : MonoBehaviour
         ApiResponse<List<RankInfo>> response = JsonUtility.FromJson<ApiResponse<List<RankInfo>>>(json);
         UserInfo.WorldRankings = response.data;
         Utils.LogFormattedJson("[GetAllRanking]", json);
-    }
-
-    [Button(ButtonSizes.Large)]
-    public void GetAllScoresTest(RankPeriod period = RankPeriod.Daily, int offset = 0, int limit = 100)
-    {
-        StartCoroutine(IEGetAllRanking(null, period, offset, limit));
     }
 
     private static IEnumerator IEGetRequest(string uri, UnityAction<string> callback)

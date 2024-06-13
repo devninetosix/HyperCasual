@@ -60,7 +60,7 @@ public class Menus : MonoBehaviour
         mainMenuUI.SetActive(false);
         rankingMenuUI.SetActive(false);
         gameMenuUI.SetActive(true);
-        score.SetText("SCORE: 0");
+        score.SetText("SCORE: 0" + "\nBEST SCORE: " + ES3.Load(Contant.BestScore));
     }
 
     public void BackToTheMainMenu()

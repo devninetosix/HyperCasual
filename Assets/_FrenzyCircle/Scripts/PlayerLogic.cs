@@ -117,8 +117,7 @@ public class PlayerLogic : MonoBehaviour
                 ES3.Save(Contant.BestScore, Vars.Score);
             }
 
-            _score.SetText("SCORE: " + Vars.Score);
-            // PlayerPrefs.SetInt("totalPoints", PlayerPrefs.GetInt("totalPoints", 0) + 1);
+            _score.SetText("SCORE: " + Vars.Score + "\nBEST SCORE: " + ES3.Load(Contant.BestScore));
             _lineChangeSound.Play();
         }
 
