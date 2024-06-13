@@ -10,6 +10,7 @@ public class TruncateText : MonoBehaviour
     private void Awake()
     {
         _textMesh = GetComponent<TextMeshProUGUI>();
+        _textMesh.SetText(" ");
     }
 
     private void FixedUpdate()
