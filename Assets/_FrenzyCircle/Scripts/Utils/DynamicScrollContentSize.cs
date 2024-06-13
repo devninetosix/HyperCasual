@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class DynamicScrollContentSize : MonoBehaviour
 {
     private RectTransform _rectTr;
+    public RankingPanel basePanel;
     
     private void Awake()
     {
