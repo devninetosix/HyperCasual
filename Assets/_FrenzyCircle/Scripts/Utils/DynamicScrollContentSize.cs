@@ -15,7 +15,7 @@ public class DynamicScrollContentSize : MonoBehaviour
         if (transform.childCount > 0)
         {
             var height = transform.GetChild(0).GetComponent<LayoutElement>().minHeight;
-            _rectTr.sizeDelta = new Vector2(0, height * transform.childCount);
+            _rectTr.sizeDelta = new Vector2(0, height * transform.childCount + height);
         }
     }
 }

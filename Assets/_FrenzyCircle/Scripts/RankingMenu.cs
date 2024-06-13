@@ -92,6 +92,7 @@ public class RankingMenu : MonoBehaviour
     {
         List<RankInfo> globalRankings = UserInfo.WorldRankings;
 
+        globalRankings.RemoveAll(rankInfo => rankInfo.score == 0);
         globalRankings.Sort((a, b) => a.rank.CompareTo(b.rank));
 
         foreach (var oldRank in _rankingInstances)
