@@ -33,7 +33,10 @@ public class UserInfo : MonoBehaviour
         TodayHighScore = todayHighScore;
         TodayRank = todayRank;
 
-        PlayerPrefs.SetInt("BestScore", TodayHighScore);
+        if (ES3.Load(Contant.BestScore, 0) < TodayHighScore)
+        {
+            ES3.Save(Contant.BestScore, TodayHighScore);
+        }
     }
 
     public void UpdateTodayBestScore(int score)
@@ -43,7 +46,11 @@ public class UserInfo : MonoBehaviour
             return;
         }
 
-        PlayerPrefs.SetInt("BestScore", score);
+        if (ES3.Load(Contant.BestScore, 0) < score)
+        {
+            ES3.Save(Contant.BestScore, score);
+        }
+
         StartCoroutine(HttpManager.IEHighScoreUpdate(Id, score));
     }
 }

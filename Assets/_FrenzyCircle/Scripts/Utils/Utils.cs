@@ -61,3 +61,9 @@ public static class Utils
         return firstNames[Random.Range(0, firstNames.Count)] + lastNames[Random.Range(0, lastNames.Count)];
     }
 }
+
+public static class Contant
+{
+    public const string BestScore = "BestScore";
+    public const string Theme = "Theme";
+}

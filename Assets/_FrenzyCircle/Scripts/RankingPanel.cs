@@ -1,5 +1,7 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
+using Sirenix.OdinInspector;
 
 public class RankingPanel : MonoBehaviour
 {
@@ -7,9 +9,25 @@ public class RankingPanel : MonoBehaviour
     public TextMeshProUGUI rankTextPanel;
     public TextMeshProUGUI scoreTextPanel;
 
-    public void SetTexts(string name, int rank, int score)
+    public bool targetChangedSize;
+    public RectTransform targetRectTr;
+
+    [Button]
+    private void OnEnable()
     {
-        nameTextPanel.SetText(name);
+        RectTransform target = transform.parent.GetComponent<RectTransform>();
+
+        if (targetChangedSize)
+        {
+            target = targetRectTr;
+        }
+
+        GetComponent<LayoutElement>().minHeight = target.rect.height / 10f;
+    }
+
+    public void SetTexts(string userName, int rank, int score)
+    {
+        nameTextPanel.SetText(userName);
         rankTextPanel.SetText(rank == 0 ? "-" : rank + "");
         scoreTextPanel.SetText(score == 0 ? "-" : score + "");
     }

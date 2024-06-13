@@ -103,7 +103,6 @@ public class Menus : MonoBehaviour
         shopMenu.SetActive(true);
         playButtonCollider.enabled = false;
         BGMManager.Instance.ShopBgm();
-        shopMenuAvailablePoints.SetText("SCORE: " + (PlayerPrefs.GetInt("totalPoints") - PlayerPrefs.GetInt("spentPoints")));
         buttonSound.Play();
     }
 
