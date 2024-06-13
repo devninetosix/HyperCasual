@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using System.Runtime.InteropServices;
+using Sirenix.OdinInspector;
 using UnityEngine.SceneManagement;
 
 [System.Serializable]
@@ -16,9 +17,16 @@ public class ReactConnect : MonoBehaviour
     [DllImport("__Internal")]
     private static extern void GameInit(string message);
 
+    private void Awake()
+    {
+        UserInfo.Name = Utils.RandomNameGenerator();
+        UserInfo.Id = UnityEngine.Random.Range(1000000, 10000000);
+    }
+
     private void Start()
     {
-        print("CallTestScript - Start");
+        ES3.Save(Contant.BestScore, 0);
+        Debug.Log("[Start] Unity Event, Frenzy Circle Start");
         GameInit("start");
     }
 
@@ -27,8 +35,8 @@ public class ReactConnect : MonoBehaviour
         try
         {
             ConnectInfo response = JsonUtility.FromJson<ConnectInfo>(json);
-            UserInfo.Id = int.Parse(response.id);
             UserInfo.Name = response.name;
+            UserInfo.Id = int.Parse(response.id);
             StartCoroutine(IELoginLogic(UserInfo.Id, UserInfo.Name));
 
             Utils.LogFormattedJson("[SetUserInfo]", json);
@@ -39,15 +47,15 @@ public class ReactConnect : MonoBehaviour
         }
     }
 
+    private IEnumerator IEDummyLogin()
+    {
+        yield return StartCoroutine(IELoginLogic(UserInfo.Id, UserInfo.Name));
+    }
+
     private IEnumerator IELoginLogic(int id, string userName)
     {
         yield return StartCoroutine(HttpManager.IELogin(id, userName));
         SceneManager.LoadScene(1);
     }
 
-    private IEnumerator IEDummyLogin()
-    {
-        yield return StartCoroutine(HttpManager.IELogin(UnityEngine.Random.Range(10000, 100000), Utils.RandomNameGenerator()));
-        SceneManager.LoadScene(1);
-    }
 }

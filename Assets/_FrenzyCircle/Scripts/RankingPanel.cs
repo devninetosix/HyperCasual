@@ -40,9 +40,9 @@ public class RankingPanel : MonoBehaviour
         }
     }
 
-    public void SetTexts(string userName, int rank, int score)
+    public void SetTexts(string userName = "", int rank = 0, int score = 0)
     {
-        if (userName.Length >= 12)
+        if (userName != string.Empty && userName.Length >= 12)
         {
             userName = userName[..12] + "...";
         }

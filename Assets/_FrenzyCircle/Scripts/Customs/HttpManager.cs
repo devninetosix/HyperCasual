@@ -31,7 +31,7 @@ public class HttpManager : MonoBehaviour
 
     private static void GetUserInfo_ResponseHandler(string json)
     {
-        Utils.LogFormattedJson("[GetUserInfo]", json);
+        Utils.LogFormattedJson("[Get] - UserInfo", json);
     }
 
     public static IEnumerator IEGetUserScore(UnityAction callback, int id)
@@ -49,7 +49,7 @@ public class HttpManager : MonoBehaviour
         UserInfo.UserWeekRanking = response.data.weekRanking;
         UserInfo.UserMonthRanking = response.data.monthRanking;
 
-        Utils.LogFormattedJson("[GetUserScore]", json);
+        Utils.LogFormattedJson("[Get] - UserScore", json);
     }
 
     public static IEnumerator IELogin(int id, string nickname)
@@ -63,13 +63,11 @@ public class HttpManager : MonoBehaviour
     {
         ApiResponse<UserData> response = JsonUtility.FromJson<ApiResponse<UserData>>(json);
         UserInfo.Instance.InitUserInfo(
-            response.data.id,
-            response.data.nickname,
             response.data.todayHighestScore,
             response.data.todayRank
         );
 
-        Utils.LogFormattedJson("[Login]", json);
+        Utils.LogFormattedJson("[POST] - Login", json);
     }
 
     public static IEnumerator IEHighScoreUpdate(int id, int score)
@@ -81,7 +79,7 @@ public class HttpManager : MonoBehaviour
 
     private static void HighScoreUpdate_ResponseHandler(string json)
     {
-        Utils.LogFormattedJson("[HighScoreUpdate]", json);
+        Utils.LogFormattedJson("[POST] - HighScoreUpdate", json);
     }
 
     public static IEnumerator IEGetAllRanking(UnityAction callback, RankPeriod rankPeriod, int offset = 0, int limit = 100)
@@ -103,7 +101,7 @@ public class HttpManager : MonoBehaviour
     {
         ApiResponse<List<RankInfo>> response = JsonUtility.FromJson<ApiResponse<List<RankInfo>>>(json);
         UserInfo.WorldRankings = response.data;
-        Utils.LogFormattedJson("[GetAllRanking]", json);
+        Utils.LogFormattedJson("[Get] - AllRanking", json);
     }
 
     private static IEnumerator IEGetRequest(string uri, UnityAction<string> callback)
@@ -114,9 +112,7 @@ public class HttpManager : MonoBehaviour
 
         if (req.result is UnityWebRequest.Result.ConnectionError or UnityWebRequest.Result.ProtocolError)
         {
-#if UNITY_EDITOR
-            Debug.LogError($"Error: {req.error}\nResponse: {req.downloadHandler.text}");
-#endif
+            Debug.LogError($"[GET] CALL Error: {req.error}\nResponse: {req.downloadHandler.text}");
         }
         else
         {
@@ -131,15 +127,14 @@ public class HttpManager : MonoBehaviour
         req.uploadHandler = new UploadHandlerRaw(bodyRaw);
         req.downloadHandler = new DownloadHandlerBuffer();
         req.SetRequestHeader("Content-Type", "application/json");
+        // req.SetRequestHeader("Access-Control-Allow-Origin", "*");
         req.SetRequestHeader("Authorization", "Bearer " + TOKEN);
 
         yield return req.SendWebRequest();
 
         if (req.result is UnityWebRequest.Result.ConnectionError or UnityWebRequest.Result.ProtocolError)
         {
-#if UNITY_EDITOR
-            Debug.LogError($"Error: {req.error}\nResponse: {req.downloadHandler.text}");
-#endif
+            Debug.LogError($"[POST] CALL Error: {req.error}\nResponse: {req.downloadHandler.text}");
         }
         else
         {

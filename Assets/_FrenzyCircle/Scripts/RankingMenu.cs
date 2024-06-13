@@ -22,6 +22,7 @@ public class RankingMenu : MonoBehaviour
 
     private void OnEnable()
     {
+        period = HttpManager.RankPeriod.Monthly;
         ChangeRankingDate(0);
     }
 
@@ -43,11 +44,17 @@ public class RankingMenu : MonoBehaviour
 
     public void ChangeRankingDate(int rankPeriod)
     {
+        if (period == (HttpManager.RankPeriod)rankPeriod)
+        {
+            return;
+        }
+
+        period = (HttpManager.RankPeriod)rankPeriod;
+
         cgNoData.alpha = 1f;
         loadingData.alpha = 1f;
         noData.alpha = 0f;
-        
-        period = (HttpManager.RankPeriod)rankPeriod;
+
         for (int i = 0; i < periodButtons.Length; i++)
         {
             periodButtons[i].image.enabled = rankPeriod == i;
@@ -55,6 +62,7 @@ public class RankingMenu : MonoBehaviour
                 rankPeriod == i ? Color.white : Color.gray;
         }
 
+        userRankingPanel.SetTexts(UserInfo.Name);
         StartCoroutine(IEChain());
         return;
 
