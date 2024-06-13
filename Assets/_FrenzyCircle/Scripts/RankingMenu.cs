@@ -14,9 +14,10 @@ public class RankingMenu : MonoBehaviour
     public Button[] periodButtons;
     public TextMeshProUGUI timeLeftText;
     public HttpManager.RankPeriod period;
+    public CanvasGroup loadingData;
+    public CanvasGroup noData;
 
     private readonly List<RankingPanel> _rankingInstances = new();
-    private readonly Queue<RankingPanel> _rankingPool = new();
 
     private void OnEnable()
     {
@@ -25,10 +26,9 @@ public class RankingMenu : MonoBehaviour
 
     private void OnDisable()
     {
-        foreach (var instance in _rankingInstances)
+        while (rankingParents.childCount != 0)
         {
-            instance.gameObject.SetActive(false);
-            _rankingPool.Enqueue(instance);
+            Destroy(rankingParents.GetChild(0));
         }
 
         _rankingInstances.Clear();
@@ -42,6 +42,9 @@ public class RankingMenu : MonoBehaviour
     public void ChangeRankingDate(int rankPeriod)
     {
         cgNoData.alpha = 1f;
+        loadingData.alpha = 1f;
+        noData.alpha = 0f;
+        
         period = (HttpManager.RankPeriod)rankPeriod;
         for (int i = 0; i < periodButtons.Length; i++)
         {
@@ -92,29 +95,21 @@ public class RankingMenu : MonoBehaviour
         foreach (var oldRank in _rankingInstances)
         {
             oldRank.gameObject.SetActive(false);
-            _rankingPool.Enqueue(oldRank);
         }
 
         _rankingInstances.Clear();
 
         foreach (var newRank in globalRankings)
         {
-            RankingPanel instance;
-            if (_rankingPool.Count > 0)
-            {
-                instance = _rankingPool.Dequeue();
-                instance.gameObject.SetActive(true);
-            }
-            else
-            {
-                instance = Instantiate(rankingPrefab, rankingParents);
-            }
+            RankingPanel instance = Instantiate(rankingPrefab, rankingParents);
 
             instance.SetTexts(newRank.nickname, newRank.rank, newRank.score);
 
             _rankingInstances.Add(instance);
         }
 
+        loadingData.alpha = 0f;
         cgNoData.alpha = globalRankings.Count == 0 ? 1f : 0f;
+        noData.alpha = globalRankings.Count == 0 ? 1f : 0f;
     }
 }
