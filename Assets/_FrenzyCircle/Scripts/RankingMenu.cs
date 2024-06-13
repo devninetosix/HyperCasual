@@ -9,6 +9,7 @@ public class RankingMenu : MonoBehaviour
     public RankingPanel userRankingPanel;
     public RankingPanel rankingPrefab;
     public Transform rankingParents;
+    public Transform trashBox;
     public CanvasGroup cgNoData;
 
     public Button[] periodButtons;
@@ -26,9 +27,10 @@ public class RankingMenu : MonoBehaviour
 
     private void OnDisable()
     {
-        while (rankingParents.childCount != 0)
+        foreach (var instance in _rankingInstances)
         {
-            Destroy(rankingParents.GetChild(0));
+            instance.gameObject.SetActive(false);
+            instance.transform.SetParent(trashBox);
         }
 
         _rankingInstances.Clear();
@@ -95,17 +97,24 @@ public class RankingMenu : MonoBehaviour
         foreach (var oldRank in _rankingInstances)
         {
             oldRank.gameObject.SetActive(false);
+            oldRank.transform.SetParent(trashBox);
         }
 
         _rankingInstances.Clear();
 
-        foreach (var newRank in globalRankings)
+        for (var i = 0; i < globalRankings.Count; i++)
         {
+            var newRank = globalRankings[i];
             RankingPanel instance = Instantiate(rankingPrefab, rankingParents);
 
-            instance.SetTexts(newRank.nickname, newRank.rank, newRank.score);
+            instance.SetTexts(newRank.nickname, i + 1, newRank.score);
 
             _rankingInstances.Add(instance);
+
+            if (i >= 100)
+            {
+                break;
+            }
         }
 
         loadingData.alpha = 0f;

@@ -772,6 +772,9 @@ MonoBehaviour:
   nameTextPanel: {fileID: 5682614777572416943}
   rankTextPanel: {fileID: 955898149557967130}
   scoreTextPanel: {fileID: 1609424058675705291}
+  pointTextPanel: {fileID: 8070891823884704742}
+  targetChangedSize: 0
+  targetRectTr: {fileID: 0}
 --- !u!222 &221526113939131941
 CanvasRenderer:
   m_ObjectHideFlags: 0

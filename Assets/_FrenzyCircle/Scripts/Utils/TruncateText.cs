@@ -3,17 +3,28 @@ using UnityEngine;
 
 public class TruncateText : MonoBehaviour
 {
-    public TextMeshProUGUI textMesh;
-    private const int maxCharacters = 12;
+    private const int MaxCharacters = 12;
+
+    private TextMeshProUGUI _textMesh;
+
+    private void Awake()
+    {
+        _textMesh = GetComponent<TextMeshProUGUI>();
+    }
 
     private void FixedUpdate()
     {
-        if (textMesh.text.Length <= maxCharacters)
+        if (_textMesh.text == string.Empty)
+        {
+            return;
+        }
+        
+        if (_textMesh.text.Length < MaxCharacters)
         {
             return;
         }
 
-        string truncatedText = textMesh.text[..maxCharacters] + "...";
-        textMesh.SetText(truncatedText);
+        string truncatedText = _textMesh.text[..MaxCharacters] + "...";
+        _textMesh.SetText(truncatedText);
     }
 }

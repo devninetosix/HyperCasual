@@ -8,6 +8,7 @@ public class RankingPanel : MonoBehaviour
     public TextMeshProUGUI nameTextPanel;
     public TextMeshProUGUI rankTextPanel;
     public TextMeshProUGUI scoreTextPanel;
+    public TextMeshProUGUI pointTextPanel;
 
     public bool targetChangedSize;
     public RectTransform targetRectTr;
@@ -15,7 +16,7 @@ public class RankingPanel : MonoBehaviour
     [Button]
     private void OnEnable()
     {
-        RectTransform target = transform.parent.GetComponent<RectTransform>();
+        RectTransform target = transform.parent.parent.GetComponent<RectTransform>();
 
         if (targetChangedSize)
         {
@@ -30,5 +31,6 @@ public class RankingPanel : MonoBehaviour
         nameTextPanel.SetText(userName);
         rankTextPanel.SetText(rank == 0 ? "-" : rank + "");
         scoreTextPanel.SetText(score == 0 ? "-" : score + "");
+        pointTextPanel.SetText("-");
     }
 }
