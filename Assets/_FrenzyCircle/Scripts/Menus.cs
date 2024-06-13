@@ -37,6 +37,12 @@ public class Menus : MonoBehaviour
         Application.targetFrameRate = 300;
     }
 
+    public void SceneReload()
+    {
+        Vars.ResetAll();
+        SceneManager.LoadScene(1);
+    }
+
     public void StartTheGame()
     {
         Vars.StartGame = true;
@@ -63,13 +69,26 @@ public class Menus : MonoBehaviour
         Vars.StartGame = false;
         Vars.CurrentMenu = 0;
         transitionImage.GetComponent<MenuTransition>().enabled = true;
-        Destroy(GameObject.Find("player"));
+
+        var player = GameObject.Find("player");
+
+        if (player != null)
+        {
+            Destroy(player);
+        }
+
         buttonSound.Play();
     }
 
     public void ShowMainMenu()
     {
-        Destroy(GameObject.Find("Game"));
+        var gamePrefab = GameObject.Find("Game");
+
+        if (gamePrefab != null)
+        {
+            Destroy(gamePrefab);
+        }
+
         GameObject game = Instantiate(menuPrefab);
         game.name = "MainMenu";
         playButton.SetActive(true);
@@ -83,7 +102,7 @@ public class Menus : MonoBehaviour
     {
         shopMenu.SetActive(true);
         playButtonCollider.enabled = false;
-        shopMenuAvailablePoints.SetText("SCORE: " + (PlayerPrefs.GetInt("totalPoints") - PlayerPrefs.GetInt("spentPoints")));
+        BGMManager.Instance.ShopBgm();
         buttonSound.Play();
     }
 
@@ -103,6 +122,7 @@ public class Menus : MonoBehaviour
 
     public void ShowRankingMenu()
     {
+        BGMManager.Instance.ShopBgm();
         rankingMenuUI.SetActive(true);
         playButtonCollider.enabled = false;
         buttonSound.Play();
@@ -110,6 +130,7 @@ public class Menus : MonoBehaviour
 
     public void HideRankingMenu()
     {
+        BGMManager.Instance.BGMOn();
         rankingMenuUI.SetActive(false);
         playButtonCollider.enabled = true;
         buttonSound.Play();
@@ -143,6 +164,7 @@ public class Menus : MonoBehaviour
         Time.timeScale = 1;
         Vars.CurrentMenu = 2;
         transitionImage.GetComponent<MenuTransition>().enabled = true;
+        BGMManager.Instance.BGMOn();
     }
 
     public void GameReply()

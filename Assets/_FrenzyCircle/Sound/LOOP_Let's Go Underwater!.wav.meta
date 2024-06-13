@@ -1,0 +1,31 @@
+fileFormatVersion: 2
+guid: 24772223bb79442e58913c5b7a9adfb8
+AudioImporter:
+  externalObjects: {}
+  serializedVersion: 7
+  defaultSettings:
+    serializedVersion: 2
+    loadType: 0
+    sampleRateSetting: 0
+    sampleRateOverride: 44100
+    compressionFormat: 1
+    quality: 1
+    conversionMode: 0
+    preloadAudioData: 0
+  platformSettingOverrides: {}
+  forceToMono: 0
+  normalize: 1
+  loadInBackground: 0
+  ambisonic: 0
+  3D: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 199309
+  packageName: 'Game Music Treasury: Vol. I (550+ YouTube-Safe Tracks)'
+  packageVersion: 1.3
+  assetPath: Assets/Game Music Treasury - Vol. I/Retro Music Bundle/8-Bit Adventure/LOOP_Let's
+    Go Underwater!.wav
+  uploadId: 653059

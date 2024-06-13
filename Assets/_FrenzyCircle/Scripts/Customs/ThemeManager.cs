@@ -1,8 +1,6 @@
-using System.Collections;
 using DG.Tweening;
 using UnityEngine;
-using Sirenix.OdinInspector;
-using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class ThemeManager : MonoBehaviour
 {
@@ -31,41 +29,35 @@ public class ThemeManager : MonoBehaviour
         if (_isLoaded)
         {
             cgImgFader.alpha = 0f;
+            BGMManager.Instance.BGMOn();
             yield break;
         }
+
         cgImgFader.alpha = 1f;
         yield return new WaitForSeconds(.5f);
 
         yield return cgImgFader.DOFade(0f, 1).SetEase(Ease.InQuart);
         _isLoaded = true;
+        BGMManager.Instance.BGMOn();
     }
 
     public static void SetThemes(int number)
     {
-        PlayerPrefs.SetInt("Theme", number);
+        ES3.Save(Contant.Theme, number);
     }
 
     public Sprite GetRotCircleSprite()
     {
-        return rotCircles[PlayerPrefs.GetInt("Theme", 0)];
+        return rotCircles[ES3.Load(Contant.Theme, 0)];
     }
 
     public Sprite GetMiddleCircleSprite()
     {
-        return middleCircles[PlayerPrefs.GetInt("Theme", 0)];
+        return middleCircles[ES3.Load(Contant.Theme, 0)];
     }
 
     public Sprite GetArrowSprite()
     {
-        return arrows[PlayerPrefs.GetInt("Theme", 0)];
-    }
-
-    [Button(ButtonSizes.Large)]
-    public void InitPlayerPrefs()
-    {
-        PlayerPrefs.DeleteAll();
-        PlayerPrefs.SetInt("totalPoints", 100000);
-
-        SceneManager.LoadScene(1);
+        return arrows[ES3.Load(Contant.Theme, 0)];
     }
 }

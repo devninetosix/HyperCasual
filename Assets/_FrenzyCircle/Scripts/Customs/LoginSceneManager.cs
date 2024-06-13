@@ -11,7 +11,7 @@ public class LoginSceneManager : MonoBehaviour
 #if UNITY_EDITOR
     private IEnumerator Start()
     {
-        yield return StartCoroutine(HttpManager.IELogin(userId, userName));
+        yield return StartCoroutine(HttpManager.IELogin(Random.Range(10000, 100000), Utils.RandomNameGenerator()));
         yield return new WaitForSeconds(1);
         SceneManager.LoadScene(1);
     }

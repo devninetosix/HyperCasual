@@ -112,13 +112,13 @@ public class PlayerLogic : MonoBehaviour
         else
         {
             Vars.Score++;
-            if (Vars.Score > PlayerPrefs.GetInt("BestScore"))
+            if (Vars.Score > ES3.Load(Contant.BestScore, 0))
             {
-                PlayerPrefs.SetInt("BestScore", Vars.Score);
+                ES3.Save(Contant.BestScore, Vars.Score);
             }
 
             _score.SetText("SCORE: " + Vars.Score);
-            PlayerPrefs.SetInt("totalPoints", PlayerPrefs.GetInt("totalPoints") + 1);
+            // PlayerPrefs.SetInt("totalPoints", PlayerPrefs.GetInt("totalPoints", 0) + 1);
             _lineChangeSound.Play();
         }
 
@@ -132,14 +132,12 @@ public class PlayerLogic : MonoBehaviour
 
     private void DestroyPlayer()
     {
+        BGMManager.Instance.DefeatBgm();
+
         GameObject.Find("ExplosionSound").GetComponent<AudioSource>().Play();
         transform.parent = null;
         transform.Find("PlayerSprite").GetComponent<PlayerDestroy>().enabled = true;
-        if (GameObject.Find("TopMenu"))
-        {
-            GameObject.Find("TopMenu").SetActive(false);
-        }
-
+        GameObject.Find("TopMenu").SetActive(false);
         GameObject rpyButton = GameObject.Find("ReplyButton");
         rpyButton.transform.localScale = new Vector2(0.8f, 0.8f);
         rpyButton.GetComponent<CircleCollider2D>().enabled = true;
@@ -147,8 +145,13 @@ public class PlayerLogic : MonoBehaviour
         GameObject.Find("GameOverMenu").transform.localScale = new Vector2(1, 1);
         GameObject.Find("GameOverScore").GetComponent<TextMeshProUGUI>().SetText("SCORE: " + Vars.Score);
         GameObject.Find("GameOverBestScore").GetComponent<TextMeshProUGUI>()
-            .SetText("BEST SCORE: " + PlayerPrefs.GetInt("BestScore"));
-        Destroy(this.gameObject, 0.5f);
+            .SetText("BEST SCORE: " + ES3.Load(Contant.BestScore, 0));
+
+        if (gameObject)
+        {
+            Destroy(gameObject, 0.5f);
+        }
+
         GetComponent<PlayerLogic>().enabled = false;
         UserInfo.Instance.UpdateTodayBestScore(Vars.Score);
     }

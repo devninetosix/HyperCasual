@@ -1,5 +1,6 @@
 using System;
 using Newtonsoft.Json;
+using UnityEngine.Serialization;
 
 [Serializable]
 public class ApiResponse<T>
@@ -30,10 +31,9 @@ public class UserRank
 public class RankInfo
 {
     public int id;
-
-    [JsonProperty("user_id")] public int userId;
+    public int userId;
+    public string nickname;
     public int score;
     public int rank;
-
-    [JsonProperty("created_at")] public string createAt;
+    public string createdAt;
 }
