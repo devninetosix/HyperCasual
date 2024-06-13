@@ -6,11 +6,10 @@ using System.Collections.Generic;
 
 public class RankingMenu : MonoBehaviour
 {
-    public GameObject loadingIndicator;
     public RankingPanel userRankingPanel;
     public RankingPanel rankingPrefab;
     public Transform rankingParents;
-    public GameObject noDataImage;
+    public CanvasGroup cgNoData;
 
     public Button[] periodButtons;
     public TextMeshProUGUI timeLeftText;
@@ -42,7 +41,7 @@ public class RankingMenu : MonoBehaviour
 
     public void ChangeRankingDate(int rankPeriod)
     {
-        loadingIndicator.SetActive(true);
+        cgNoData.alpha = 1f;
         period = (HttpManager.RankPeriod)rankPeriod;
         for (int i = 0; i < periodButtons.Length; i++)
         {
@@ -116,7 +115,6 @@ public class RankingMenu : MonoBehaviour
             _rankingInstances.Add(instance);
         }
 
-        noDataImage.SetActive(globalRankings.Count == 0);
-        loadingIndicator.SetActive(false);
+        cgNoData.alpha = globalRankings.Count == 0 ? 1f : 0f;
     }
 }
