@@ -1,15 +1,15 @@
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 
 public class RankingMenu : MonoBehaviour
 {
     public RankingPanel userRankingPanel;
     public RankingPanel rankingPrefab;
-    public Transform rankingParents;
+    public RectTransform rankingParents;
     public Transform trashBox;
     public CanvasGroup cgNoData;
 
@@ -18,6 +18,7 @@ public class RankingMenu : MonoBehaviour
     public HttpManager.RankPeriod period;
     public CanvasGroup loadingData;
     public CanvasGroup noData;
+
 
     private readonly List<RankingPanel> _rankingInstances = new();
 
@@ -38,7 +39,7 @@ public class RankingMenu : MonoBehaviour
         _rankingInstances.Clear();
     }
 
-    private void LateUpdate()
+    private void Update()
     {
         switch (period)
         {
@@ -143,5 +144,7 @@ public class RankingMenu : MonoBehaviour
         loadingData.alpha = 0f;
         cgNoData.alpha = globalRankings.Count == 0 ? 1f : 0f;
         noData.alpha = globalRankings.Count == 0 ? 1f : 0f;
+        
+        rankingParents.DOAnchorPosY(0, .25f).SetEase(Ease.OutQuad);
     }
 }

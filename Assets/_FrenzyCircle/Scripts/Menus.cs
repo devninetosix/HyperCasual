@@ -34,13 +34,9 @@ public class Menus : MonoBehaviour
 
     public ParticleImage iconParticle;
 
-    private IEnumerator Start()
+    private void Start()
     {
         Application.targetFrameRate = 300;
-        iconParticle.startSize = new SeparatedMinMaxCurve(0);
-
-        yield return new WaitForSeconds(1f);
-        iconParticle.startSize = new SeparatedMinMaxCurve(100);
     }
 
     public void SceneReload()

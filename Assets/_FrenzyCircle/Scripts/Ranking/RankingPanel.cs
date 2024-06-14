@@ -35,8 +35,29 @@ public class RankingPanel : MonoBehaviour
             {
                 dynamicScrollSize = transform.parent.GetComponent<DynamicScrollContentSize>();
             }
+        }
+    }
 
+    private void Update()
+    {
+        if (ignoreSetFontSize)
+        {
+            return;
+        }
+
+        if (targetChangedSize)
+        {
+            Utils.Log($"BEFORE: {nameTextPanel.fontSize}, {dynamicScrollSize.basePanel.GetNameFontSize()}");
+        }
+        
+        if (nameTextPanel.fontSize - dynamicScrollSize.basePanel.GetNameFontSize() < 0.01f)
+        {
             SetFontSizes();
+        }
+
+        if (targetChangedSize)
+        {
+            Utils.Log($"AFTER: {nameTextPanel.fontSize}, {dynamicScrollSize.basePanel.GetNameFontSize()}");
         }
     }
 
