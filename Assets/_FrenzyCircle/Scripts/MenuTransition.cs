@@ -36,7 +36,7 @@ public class MenuTransition : MonoBehaviour
         if (_up)
         {
             img.raycastTarget = true;
-            _alpha += 0.02f;
+            _alpha += 0.015f;
             if (_alpha >= 1f)
             {
                 _up = false;
@@ -58,7 +58,7 @@ public class MenuTransition : MonoBehaviour
         }
         else
         {
-            _alpha -= 0.02f;
+            _alpha -= 0.015f;
             if (_alpha <= 0)
             {
                 _up = true;

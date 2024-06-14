@@ -1,4 +1,6 @@
-﻿using TMPro;
+﻿using System.Collections;
+using AssetKits.ParticleImage;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -25,19 +27,25 @@ public class Menus : MonoBehaviour
 
     public GameObject topMenu;
     public GameObject replyButton;
-    
+
     // Prefabs
     public GameObject gamePrefab;
     public GameObject menuPrefab;
-    
 
-    private void Start()
+    public ParticleImage iconParticle;
+
+    private IEnumerator Start()
     {
         Application.targetFrameRate = 300;
+        iconParticle.startSize = new SeparatedMinMaxCurve(0);
+
+        yield return new WaitForSeconds(1f);
+        iconParticle.startSize = new SeparatedMinMaxCurve(100);
     }
 
     public void SceneReload()
     {
+        BackToTheMainMenu();
         Vars.ResetAll();
         SceneManager.LoadScene(1);
     }
@@ -47,6 +55,7 @@ public class Menus : MonoBehaviour
         Vars.StartGame = true;
         Vars.CurrentMenu = 1;
         transitionImage.GetComponent<MenuTransition>().enabled = true;
+        iconParticle.startSize = new SeparatedMinMaxCurve(0);
         buttonSound.Play();
     }
 
@@ -106,7 +115,7 @@ public class Menus : MonoBehaviour
     }
 
     public void HideShopMenu()
-    {   
+    {
         transitionImage.GetComponent<MenuTransition>().enabled = true;
         Invoke(nameof(HideShopMenu_SceneReload), 0.6f);
     }

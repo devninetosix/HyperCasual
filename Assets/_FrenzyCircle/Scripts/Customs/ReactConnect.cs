@@ -16,19 +16,18 @@ public class ReactConnect : MonoBehaviour
     [DllImport("__Internal")]
     private static extern void GameInit(string message);
 
-    private void Awake()
-    {
-        UserInfo.Name = Utils.RandomNameGenerator();
-        UserInfo.Id = UnityEngine.Random.Range(1000000, 10000000);
-    }
-
     private void Start()
     {
         ES3.Save(Contant.BestScore, 0);
         Utils.Log("[Start] Unity Event, Frenzy Circle Start");
+#if UNITY_EDITOR
+        SetUserInfo("");
+#else
         GameInit("start");
+#endif
     }
 
+    // 미들웨어 (React)에서 실행해주는 함수
     public void SetUserInfo(string json)
     {
         try
@@ -37,20 +36,31 @@ public class ReactConnect : MonoBehaviour
             UserInfo.Name = response.name;
             UserInfo.Id = int.Parse(response.id);
             StartCoroutine(IELoginLogic(UserInfo.Id, UserInfo.Name));
-
             Utils.LogFormattedJson("[SetUserInfo]", json);
         }
         catch (Exception ex)
         {
+            // [POST] 호출 실패했을 경우, 로직 타는 부분
+            Utils.Log(ex.Message, true);
             StartCoroutine(IEDummyLogin());
         }
     }
 
+    // 비회원 로그인!!
     private IEnumerator IEDummyLogin()
     {
+#if UNITY_EDITOR
+        UserInfo.Name = "aespablo";
+        UserInfo.Id = 10101010;
+#else
+        UserInfo.Name = Utils.RandomNameGenerator();
+        UserInfo.Id = UnityEngine.Random.Range(1000000, 10000000);
+#endif
         yield return StartCoroutine(IELoginLogic(UserInfo.Id, UserInfo.Name));
     }
 
+    // 전반적인 로그인 로직
+    // 로그인 후 바로 다음씬으로 넘어간다.
     private IEnumerator IELoginLogic(int id, string userName)
     {
         yield return StartCoroutine(HttpManager.IELogin(id, userName));

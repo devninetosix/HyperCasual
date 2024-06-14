@@ -33,8 +33,6 @@ public class ThemeManager : MonoBehaviour
         }
 
         cgImgFader.alpha = 1f;
-        yield return new WaitForSeconds(.5f);
-
         yield return cgImgFader.DOFade(0f, 1).SetEase(Ease.InQuart);
         _isLoaded = true;
     }

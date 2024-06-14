@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -37,9 +38,21 @@ public class RankingMenu : MonoBehaviour
         _rankingInstances.Clear();
     }
 
-    private void FixedUpdate()
+    private void LateUpdate()
     {
-        timeLeftText.SetText($"TIME LEFT\n{Utils.GetTimeUntilMidnight()}");
+        switch (period)
+        {
+            case HttpManager.RankPeriod.Daily:
+            default:
+                timeLeftText.SetText($"TIME LEFT\n{Utils.GetTimeUntilMidnight()}");
+                break;
+            case HttpManager.RankPeriod.Weekly:
+                timeLeftText.SetText($"TIME LEFT\n{Utils.GetTimeUntilEndOfWeek()}");
+                break;
+            case HttpManager.RankPeriod.Monthly:
+                timeLeftText.SetText($"TIME LEFT\n{Utils.GetTimeUntilEndOfMonth()}");
+                break;
+        }
     }
 
     public void ChangeRankingDate(int rankPeriod)
@@ -81,7 +94,8 @@ public class RankingMenu : MonoBehaviour
         {
             case HttpManager.RankPeriod.Daily:
                 rankInfo = UserInfo.UserDayRanking;
-                userRankingPanel.SetTexts(UserInfo.Name, rankInfo.rank, rankInfo.score);
+                UserInfo.TodayRank = rankInfo.rank;
+                userRankingPanel.SetTexts(UserInfo.Name, UserInfo.TodayRank, rankInfo.score);
                 break;
             case HttpManager.RankPeriod.Weekly:
                 rankInfo = UserInfo.UserWeekRanking;

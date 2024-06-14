@@ -23,17 +23,6 @@ public class HttpManager : MonoBehaviour
         Monthly,
     }
 
-    public static IEnumerator IEGetUserInfo(int id)
-    {
-        string uri = $"{BaseUrl}/users/{id}";
-        yield return IEGetRequest(uri, GetUserInfo_ResponseHandler);
-    }
-
-    private static void GetUserInfo_ResponseHandler(string json)
-    {
-        Utils.LogFormattedJson("[Get] - UserInfo", json);
-    }
-
     public static IEnumerator IEGetUserScore(UnityAction callback, int id)
     {
         string uri = $"{BaseUrl}/users/{id}/games/1/scores";
@@ -62,7 +51,7 @@ public class HttpManager : MonoBehaviour
     private static void Login_ResponseHandler(string json)
     {
         ApiResponse<UserData> response = JsonUtility.FromJson<ApiResponse<UserData>>(json);
-        UserInfo.Instance.InitUserInfo(
+        UserInfo.InitUserInfo(
             response.data.todayHighestScore,
             response.data.todayRank
         );
