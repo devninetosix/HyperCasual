@@ -26,17 +26,12 @@ public class UserInfo : MonoBehaviour
         Instance = this;
     }
 
-    public void SetUserInfo(int userId, string userName, int todayHighScore, int todayRank)
+    public static void InitUserInfo(int todayHighScore = 0, int todayRank = 0)
     {
-        Id = userId;
-        Name = userName;
         TodayHighScore = todayHighScore;
         TodayRank = todayRank;
 
-        if (ES3.Load(Contant.BestScore, 0) < TodayHighScore)
-        {
-            ES3.Save(Contant.BestScore, TodayHighScore);
-        }
+        ES3.Save(Contant.BestScore, TodayHighScore);
     }
 
     public void UpdateTodayBestScore(int score)
@@ -51,6 +46,7 @@ public class UserInfo : MonoBehaviour
             ES3.Save(Contant.BestScore, score);
         }
 
+        TodayHighScore = score;
         StartCoroutine(HttpManager.IEHighScoreUpdate(Id, score));
     }
 }

@@ -13,7 +13,7 @@ public class TruncateText : MonoBehaviour
         _textMesh.SetText(" ");
     }
 
-    private void FixedUpdate()
+    private void LateUpdate()
     {
         if (_textMesh.text == string.Empty)
         {

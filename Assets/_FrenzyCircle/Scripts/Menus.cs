@@ -1,4 +1,6 @@
-﻿using TMPro;
+﻿using System.Collections;
+using AssetKits.ParticleImage;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -13,7 +15,6 @@ public class Menus : MonoBehaviour
 
     public GameObject shopMenu;
     public GameObject[] shopMenuItems;
-    public TextMeshProUGUI shopMenuAvailablePoints;
     public CircleCollider2D playButtonCollider;
     public GameObject pauseMenu;
     public GameObject transitionImage;
@@ -26,11 +27,12 @@ public class Menus : MonoBehaviour
 
     public GameObject topMenu;
     public GameObject replyButton;
-    
+
     // Prefabs
     public GameObject gamePrefab;
     public GameObject menuPrefab;
-    
+
+    public ParticleImage iconParticle;
 
     private void Start()
     {
@@ -39,6 +41,7 @@ public class Menus : MonoBehaviour
 
     public void SceneReload()
     {
+        BackToTheMainMenu();
         Vars.ResetAll();
         SceneManager.LoadScene(1);
     }
@@ -48,6 +51,7 @@ public class Menus : MonoBehaviour
         Vars.StartGame = true;
         Vars.CurrentMenu = 1;
         transitionImage.GetComponent<MenuTransition>().enabled = true;
+        iconParticle.startSize = new SeparatedMinMaxCurve(0);
         buttonSound.Play();
     }
 
@@ -60,7 +64,7 @@ public class Menus : MonoBehaviour
         mainMenuUI.SetActive(false);
         rankingMenuUI.SetActive(false);
         gameMenuUI.SetActive(true);
-        score.SetText("SCORE: 0");
+        score.SetText("SCORE: 0" + "\nBEST SCORE: " + ES3.Load(Contant.BestScore));
     }
 
     public void BackToTheMainMenu()
@@ -82,11 +86,11 @@ public class Menus : MonoBehaviour
 
     public void ShowMainMenu()
     {
-        var gamePrefab = GameObject.Find("Game");
+        var findObject = GameObject.Find("Game");
 
-        if (gamePrefab != null)
+        if (findObject)
         {
-            Destroy(gamePrefab);
+            Destroy(findObject);
         }
 
         GameObject game = Instantiate(menuPrefab);
@@ -107,7 +111,7 @@ public class Menus : MonoBehaviour
     }
 
     public void HideShopMenu()
-    {   
+    {
         transitionImage.GetComponent<MenuTransition>().enabled = true;
         Invoke(nameof(HideShopMenu_SceneReload), 0.6f);
     }
@@ -179,7 +183,7 @@ public class Menus : MonoBehaviour
         GameObject.Find("GameOverMenu").transform.localScale = new Vector2(0, 1);
         GameObject game = Instantiate(gamePrefab);
         game!.name = "Game";
-        score.SetText("SCORE: 0");
+        score.SetText("SCORE: 0" + "\nBEST SCORE: " + ES3.Load(Contant.BestScore));
     }
 
     public void SoundOnOff()

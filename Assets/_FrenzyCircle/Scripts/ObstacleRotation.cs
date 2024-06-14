@@ -10,6 +10,12 @@ public class ObstacleRotation : MonoBehaviour
     private void Start()
     {
         rot = Random.Range(50, 100);
+        
+        if (_timer > 10f)
+        {
+            rot = Random.Range(80f, 150f);
+        }
+        
         _sp = GetComponent<SpriteRenderer>();
         UpdateColor();
     }
@@ -22,7 +28,7 @@ public class ObstacleRotation : MonoBehaviour
         if (_timer > 5f)
         {
             _timer = 0;
-            Vars.ObstacleScaleSpeed += 0.00001f;
+            Vars.ObstacleScaleSpeed += 0.000005f;
         }
 
         transform.localScale = new Vector2(

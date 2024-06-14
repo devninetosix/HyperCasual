@@ -30,8 +30,10 @@ MonoBehaviour:
     referenceMode: 2
     serializationDepthLimit: 64
     assemblyNames:
+    - AllIn1SpriteShaderAssembly
     - Assembly-CSharp
     - Assembly-CSharp-firstpass
+    - ParticleImage
     showAdvancedSettings: 0
   addMgrToSceneAutomatically: 0
   autoUpdateReferences: 1

@@ -1,6 +1,4 @@
 using System;
-using Newtonsoft.Json;
-using UnityEngine.Serialization;
 
 [Serializable]
 public class ApiResponse<T>

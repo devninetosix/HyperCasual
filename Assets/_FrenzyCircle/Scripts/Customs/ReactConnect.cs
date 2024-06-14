@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
-using UnityEngine;
 using System.Runtime.InteropServices;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 [System.Serializable]
@@ -13,45 +13,57 @@ public class ConnectInfo
 
 public class ReactConnect : MonoBehaviour
 {
-#if !UNITY_EDITOR
     [DllImport("__Internal")]
     private static extern void GameInit(string message);
 
     private void Start()
     {
-        print("CallTestScript - Start");
+        ES3.Save(Contant.BestScore, 0);
+        Utils.Log("[Start] Unity Event, Frenzy Circle Start");
+#if UNITY_EDITOR
+        SetUserInfo("");
+#else
         GameInit("start");
+#endif
     }
 
+    // 미들웨어 (React)에서 실행해주는 함수
     public void SetUserInfo(string json)
     {
         try
         {
             ConnectInfo response = JsonUtility.FromJson<ConnectInfo>(json);
-            UserInfo.Id = int.Parse(response.id);
             UserInfo.Name = response.name;
+            UserInfo.Id = int.Parse(response.id);
             StartCoroutine(IELoginLogic(UserInfo.Id, UserInfo.Name));
-
             Utils.LogFormattedJson("[SetUserInfo]", json);
         }
         catch (Exception ex)
         {
+            // [POST] 호출 실패했을 경우, 로직 타는 부분
+            Utils.Log(ex.Message, true);
             StartCoroutine(IEDummyLogin());
         }
     }
 
+    // 비회원 로그인!!
+    private IEnumerator IEDummyLogin()
+    {
+#if UNITY_EDITOR
+        UserInfo.Name = "aespablo";
+        UserInfo.Id = 10101010;
+#else
+        UserInfo.Name = Utils.RandomNameGenerator();
+        UserInfo.Id = UnityEngine.Random.Range(1000000, 10000000);
+#endif
+        yield return StartCoroutine(IELoginLogic(UserInfo.Id, UserInfo.Name));
+    }
+
+    // 전반적인 로그인 로직
+    // 로그인 후 바로 다음씬으로 넘어간다.
     private IEnumerator IELoginLogic(int id, string userName)
     {
         yield return StartCoroutine(HttpManager.IELogin(id, userName));
         SceneManager.LoadScene(1);
     }
-
-    private IEnumerator IEDummyLogin()
-    {
-        yield return StartCoroutine(HttpManager.IELogin(UnityEngine.Random.Range(10000, 100000), Utils.RandomNameGenerator()));
-        yield return new WaitForSeconds(1);
-        SceneManager.LoadScene(1);
-    }
-
-#endif
 }

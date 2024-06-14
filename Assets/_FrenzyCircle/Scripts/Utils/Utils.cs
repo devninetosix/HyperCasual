@@ -18,22 +18,70 @@ public static class Utils
         {
             var parsedJson = JToken.Parse(json);
             var formattedJson = parsedJson.ToString(Formatting.Indented);
-            Debug.Log(header + "\n" + formattedJson);
+            Log(header + "\n" + formattedJson);
         }
         catch (Exception ex)
         {
-            Debug.LogError("Invalid JSON string: " + ex.Message);
+            Log("Invalid JSON string: " + ex.Message, true);
+        }
+#endif
+    }
+
+    public static void Log(object message, bool warning = false)
+    {
+#if UNITY_EDITOR
+        if (warning)
+        {
+            Debug.LogError($"<b><color=red>{message}</color></b>");
+        }
+        else
+        {
+            Debug.Log($"<b><color=white>{message}</color></b>");
         }
 #endif
     }
 
     public static string GetTimeUntilMidnight()
     {
-        DateTime now = DateTime.Now;
-        DateTime midnight = now.AddDays(1).Date; // 내일 자정 시간
+        DateTime now = DateTime.UtcNow;
+        DateTime midnight = now.Date.AddDays(1); // 내일 자정 시간
 
         TimeSpan timeUntilMidnight = midnight - now;
-        return timeUntilMidnight.ToString(@"hh\:mm\:ss");
+        return FormatTimeSpan(timeUntilMidnight);
+    }
+
+    public static string GetTimeUntilEndOfWeek()
+    {
+        DateTime now = DateTime.UtcNow;
+        int daysUntilEndOfWeek = ((int)DayOfWeek.Sunday - (int)now.DayOfWeek + 7) % 7;
+        DateTime endOfWeek = now.AddDays(daysUntilEndOfWeek).Date.AddDays(1).AddTicks(-1); // 이번 주 일요일의 끝
+
+        TimeSpan timeUntilEndOfWeek = endOfWeek - now;
+        return FormatTimeSpan(timeUntilEndOfWeek);
+    }
+
+    public static string GetTimeUntilEndOfMonth()
+    {
+        DateTime now = DateTime.UtcNow;
+        DateTime endOfMonth = new DateTime(now.Year, now.Month, DateTime.DaysInMonth(now.Year, now.Month)).AddDays(1).AddTicks(-1); // 이번 달의 마지막 날의 끝
+
+        TimeSpan timeUntilEndOfMonth = endOfMonth - now;
+        return FormatTimeSpan(timeUntilEndOfMonth);
+    }
+    
+    private static string FormatTimeSpan(TimeSpan timeSpan)
+    {
+        int days = timeSpan.Days;
+        int hours = timeSpan.Hours;
+        int minutes = timeSpan.Minutes;
+        int seconds = timeSpan.Seconds;
+
+        if (days > 0)
+        {
+            return $"{days}D {hours}H {minutes}M {seconds}S";
+        }
+
+        return $"{hours}H {minutes}M {seconds}S";
     }
 
     public static string RandomNameGenerator()
