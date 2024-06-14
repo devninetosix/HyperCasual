@@ -20,11 +20,7 @@ public class ReactConnect : MonoBehaviour
     {
         ES3.Save(Contant.BestScore, 0);
         Utils.Log("[Start] Unity Event, Frenzy Circle Start");
-#if UNITY_EDITOR
-        SetUserInfo("");
-#else
         GameInit("start");
-#endif
     }
 
     // 미들웨어 (React)에서 실행해주는 함수
@@ -49,13 +45,8 @@ public class ReactConnect : MonoBehaviour
     // 비회원 로그인!!
     private IEnumerator IEDummyLogin()
     {
-#if UNITY_EDITOR
-        UserInfo.Name = "aespablo";
-        UserInfo.Id = 10101010;
-#else
         UserInfo.Name = Utils.RandomNameGenerator();
         UserInfo.Id = UnityEngine.Random.Range(1000000, 10000000);
-#endif
         yield return StartCoroutine(IELoginLogic(UserInfo.Id, UserInfo.Name));
     }
 
