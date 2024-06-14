@@ -61,6 +61,11 @@ public class HttpManager : MonoBehaviour
 
     public static IEnumerator IEHighScoreUpdate(int id, int score)
     {
+        if (id == 0 || score == 0)
+        {
+            yield break;
+        }
+
         string uri = $"{BaseUrl}/games/1/scores";
         string jsonData = $"{{ \"userId\": {id}, \"score\": {score} }}";
         yield return IEPostRequest(uri, jsonData, HighScoreUpdate_ResponseHandler);
@@ -71,7 +76,8 @@ public class HttpManager : MonoBehaviour
         Utils.LogFormattedJson("[POST] - HighScoreUpdate", json);
     }
 
-    public static IEnumerator IEGetAllRanking(UnityAction callback, RankPeriod rankPeriod, int offset = 0, int limit = 100)
+    public static IEnumerator IEGetAllRanking(UnityAction callback, RankPeriod rankPeriod, int offset = 0,
+        int limit = 100)
     {
         string period = rankPeriod switch
         {

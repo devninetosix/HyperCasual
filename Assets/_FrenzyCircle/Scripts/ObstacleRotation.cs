@@ -28,7 +28,7 @@ public class ObstacleRotation : MonoBehaviour
         if (_timer > 5f)
         {
             _timer = 0;
-            Vars.ObstacleScaleSpeed += 0.000008f;
+            Vars.ObstacleScaleSpeed += 0.000005f;
         }
 
         transform.localScale = new Vector2(
