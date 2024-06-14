@@ -13,7 +13,6 @@ public class Menus : MonoBehaviour
 
     public GameObject shopMenu;
     public GameObject[] shopMenuItems;
-    public TextMeshProUGUI shopMenuAvailablePoints;
     public CircleCollider2D playButtonCollider;
     public GameObject pauseMenu;
     public GameObject transitionImage;
@@ -82,11 +81,11 @@ public class Menus : MonoBehaviour
 
     public void ShowMainMenu()
     {
-        var gamePrefab = GameObject.Find("Game");
+        var findObject = GameObject.Find("Game");
 
-        if (gamePrefab != null)
+        if (findObject)
         {
-            Destroy(gamePrefab);
+            Destroy(findObject);
         }
 
         GameObject game = Instantiate(menuPrefab);

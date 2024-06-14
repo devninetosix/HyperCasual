@@ -112,7 +112,7 @@ public class HttpManager : MonoBehaviour
 
         if (req.result is UnityWebRequest.Result.ConnectionError or UnityWebRequest.Result.ProtocolError)
         {
-            Debug.LogError($"[GET] CALL Error: {req.error}\nResponse: {req.downloadHandler.text}");
+            Utils.Log($"[GET] CALL Error: {req.error}\nResponse: {req.downloadHandler.text}", true);
         }
         else
         {
@@ -134,7 +134,7 @@ public class HttpManager : MonoBehaviour
 
         if (req.result is UnityWebRequest.Result.ConnectionError or UnityWebRequest.Result.ProtocolError)
         {
-            Debug.LogError($"[POST] CALL Error: {req.error}\nResponse: {req.downloadHandler.text}");
+            Utils.Log($"[POST] CALL Error: {req.error}\nResponse: {req.downloadHandler.text}", true);
         }
         else
         {

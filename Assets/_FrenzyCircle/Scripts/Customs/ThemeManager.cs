@@ -29,7 +29,6 @@ public class ThemeManager : MonoBehaviour
         if (_isLoaded)
         {
             cgImgFader.alpha = 0f;
-            BGMManager.Instance.BGMOn();
             yield break;
         }
 
@@ -38,7 +37,6 @@ public class ThemeManager : MonoBehaviour
 
         yield return cgImgFader.DOFade(0f, 1).SetEase(Ease.InQuart);
         _isLoaded = true;
-        BGMManager.Instance.BGMOn();
     }
 
     public static void SetThemes(int number)

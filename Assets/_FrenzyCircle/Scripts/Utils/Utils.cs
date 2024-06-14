@@ -13,6 +13,7 @@ public static class Utils
     /// <param name="json">포매팅할 JSON 문자열</param>
     public static void LogFormattedJson(string header, string json)
     {
+#if UNITY_EDITOR
         try
         {
             var parsedJson = JToken.Parse(json);
@@ -23,6 +24,21 @@ public static class Utils
         {
             Debug.LogError("Invalid JSON string: " + ex.Message);
         }
+#endif
+    }
+
+    public static void Log(object message, bool warning = false)
+    {
+#if UNITY_EDITOR
+        if (warning)
+        {
+            Debug.LogError($"<b>{message}</b>");
+        }
+        else
+        {
+            Debug.Log($"<b>{message}</b>");
+        }
+#endif
     }
 
     public static string GetTimeUntilMidnight()

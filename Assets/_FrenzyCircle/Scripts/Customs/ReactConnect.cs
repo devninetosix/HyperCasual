@@ -1,8 +1,7 @@
 using System;
 using System.Collections;
-using UnityEngine;
 using System.Runtime.InteropServices;
-using Sirenix.OdinInspector;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 [System.Serializable]
@@ -26,7 +25,7 @@ public class ReactConnect : MonoBehaviour
     private void Start()
     {
         ES3.Save(Contant.BestScore, 0);
-        Debug.Log("[Start] Unity Event, Frenzy Circle Start");
+        Utils.Log("[Start] Unity Event, Frenzy Circle Start");
         GameInit("start");
     }
 
@@ -57,5 +56,4 @@ public class ReactConnect : MonoBehaviour
         yield return StartCoroutine(HttpManager.IELogin(id, userName));
         SceneManager.LoadScene(1);
     }
-
 }
