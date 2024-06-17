@@ -5,6 +5,13 @@ using System.Collections.Generic;
 using Sirenix.OdinInspector;
 #endif
 
+[System.Serializable]
+public class UserScore
+{
+    public int userId;
+    public int score;
+}
+
 public class UserInfo : MonoBehaviour
 {
     public static int Id { get; private set; }
@@ -83,8 +90,14 @@ public class UserInfo : MonoBehaviour
         }
 
         TodayHighScore = score;
-        // TODO: Update High Score
 
-        // StartCoroutine(HttpManager.IEHighScoreUpdate(Id, score));
+        UserScore userScore = new UserScore()
+        {
+            userId = Id,
+            score = score
+        };
+
+        string json = JsonUtility.ToJson(userScore);
+        ReactConnect.SetHighScore(json);
     }
 }

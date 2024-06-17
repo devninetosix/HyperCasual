@@ -18,6 +18,9 @@ public class ReactConnect : MonoBehaviour
     [DllImport("__Internal")]
     private static extern void GameInit(string message);
 
+    [DllImport("__Internal")]
+    public static extern void SetHighScore(string message);
+
     private void Start()
     {
         ES3.Save(Contant.BestScore, 0);
