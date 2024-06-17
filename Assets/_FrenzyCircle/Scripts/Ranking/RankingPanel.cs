@@ -45,27 +45,21 @@ public class RankingPanel : MonoBehaviour
             return;
         }
 
-        if (targetChangedSize)
-        {
-            Utils.Log($"BEFORE: {nameTextPanel.fontSize}, {dynamicScrollSize.basePanel.GetNameFontSize()}");
-        }
-        
         if (nameTextPanel.fontSize - dynamicScrollSize.basePanel.GetNameFontSize() < 0.01f)
         {
             SetFontSizes();
         }
-
-        if (targetChangedSize)
-        {
-            Utils.Log($"AFTER: {nameTextPanel.fontSize}, {dynamicScrollSize.basePanel.GetNameFontSize()}");
-        }
     }
 
-    public void SetTexts(string userName = "", int rank = 0, int score = 0)
+    public void SetTexts(string userName, int rank, int score)
     {
-        if (userName != string.Empty && userName.Length >= 12)
+        if (!string.IsNullOrEmpty(userName) && userName.Length >= 12)
         {
             userName = userName[..12] + "...";
+        }
+        else if (userName == null)
+        {
+            userName = "-";
         }
 
         nameTextPanel.SetText(userName);
@@ -80,6 +74,16 @@ public class RankingPanel : MonoBehaviour
         rankTextPanel.fontSize = dynamicScrollSize.basePanel.GetRankTextSize();
         scoreTextPanel.fontSize = dynamicScrollSize.basePanel.GetScoreTextSize();
         pointTextPanel.fontSize = dynamicScrollSize.basePanel.GetPointTextSize();
+        TurnOnOff(false);
+        TurnOnOff(true);
+    }
+
+    private void TurnOnOff(bool turned)
+    {
+        nameTextPanel.enabled = turned;
+        rankTextPanel.enabled = turned;
+        scoreTextPanel.enabled = turned;
+        pointTextPanel.enabled = turned;
     }
 
     public float GetNameFontSize()

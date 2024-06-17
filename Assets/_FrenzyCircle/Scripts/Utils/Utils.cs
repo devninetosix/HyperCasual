@@ -14,7 +14,8 @@ public static class Utils
     /// <param name="json">포매팅할 JSON 문자열</param>
     public static void LogFormattedJson(string header, string json)
     {
-#if UNITY_EDITOR
+// TODO: 테스트 코드 제거
+#if UNITY_EDITOR || UNITY_WEBGL
         try
         {
             var parsedJson = JToken.Parse(json);
@@ -30,7 +31,7 @@ public static class Utils
 
     public static void Log(object message, bool warning = false)
     {
-#if UNITY_EDITOR
+#if UNITY_EDITOR || UNITY_WEBGL
         if (warning)
         {
             Debug.LogError($"<b><color=red>{message}</color></b>");
@@ -64,12 +65,13 @@ public static class Utils
     public static string GetTimeUntilEndOfMonth()
     {
         DateTime now = DateTime.UtcNow;
-        DateTime endOfMonth = new DateTime(now.Year, now.Month, DateTime.DaysInMonth(now.Year, now.Month)).AddDays(1).AddTicks(-1); // 이번 달의 마지막 날의 끝
+        DateTime endOfMonth = new DateTime(now.Year, now.Month, DateTime.DaysInMonth(now.Year, now.Month)).AddDays(1)
+            .AddTicks(-1); // 이번 달의 마지막 날의 끝
 
         TimeSpan timeUntilEndOfMonth = endOfMonth - now;
         return FormatTimeSpan(timeUntilEndOfMonth);
     }
-    
+
     private static string FormatTimeSpan(TimeSpan timeSpan)
     {
         int days = timeSpan.Days;

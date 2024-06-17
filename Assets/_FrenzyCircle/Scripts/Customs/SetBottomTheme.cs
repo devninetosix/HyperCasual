@@ -13,6 +13,6 @@ public class SetBottomTheme : MonoBehaviour
 
     private void Start()
     {
-        _img.sprite = ThemeManager.Instance.GetMiddleCircleSprite();
+        _img.sprite = ThemeManager.Instance.GetArrowSprite();
     }
 }

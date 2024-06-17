@@ -9,6 +9,8 @@ public class ConnectInfo
 {
     public string id;
     public string name;
+    public string todayHighestScore;
+    public string todayRank;
 }
 
 public class ReactConnect : MonoBehaviour
@@ -29,30 +31,27 @@ public class ReactConnect : MonoBehaviour
         try
         {
             ConnectInfo response = JsonUtility.FromJson<ConnectInfo>(json);
-            UserInfo.Name = response.name;
-            UserInfo.Id = int.Parse(response.id);
-            StartCoroutine(IELoginLogic(UserInfo.Id, UserInfo.Name));
+            UserInfo.InitUserInfo(
+                int.Parse(response.id),
+                response.name,
+                int.Parse(response.todayHighestScore),
+                int.Parse(response.todayRank)
+            );
             Utils.LogFormattedJson("[SetUserInfo]", json);
+            StartCoroutine(IELoadScene());
         }
         catch (Exception ex)
         {
             // [POST] 호출 실패했을 경우, 로직 타는 부분
             Utils.Log(ex.Message, true);
-            StartCoroutine(IEDummyLogin());
+            UserInfo.DummyLogin();
+            StartCoroutine(IELoadScene());
         }
     }
 
-    // 비회원 로그인!!
-    private IEnumerator IEDummyLogin()
+    private static IEnumerator IELoadScene()
     {
-        yield return StartCoroutine(IELoginLogic(UserInfo.Id, UserInfo.Name));
-    }
-
-    // 전반적인 로그인 로직
-    // 로그인 후 바로 다음씬으로 넘어간다.
-    private IEnumerator IELoginLogic(int id, string userName)
-    {
-        yield return StartCoroutine(HttpManager.IELogin(id, userName));
+        yield return new WaitForSeconds(.1f);
         SceneManager.LoadScene(1);
     }
 }

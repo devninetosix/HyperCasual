@@ -33,48 +33,47 @@ public class HttpManager : MonoBehaviour
     private static void GetUserScore_ResponseHandler(string json)
     {
         ApiResponse<UserRank> response = JsonUtility.FromJson<ApiResponse<UserRank>>(json);
-
-        UserInfo.UserDayRanking = response.data.dayRanking;
-        UserInfo.UserWeekRanking = response.data.weekRanking;
-        UserInfo.UserMonthRanking = response.data.monthRanking;
+        UserInfo.SetUserRanking(response.data.dayRanking, response.data.weekRanking, response.data.monthRanking);
 
         Utils.LogFormattedJson("[Get] - UserScore", json);
     }
 
-    public static IEnumerator IELogin(int id, string nickname)
-    {
-        string uri = $"{BaseUrl}/auth/login";
-        string jsonData = $"{{ \"gameId\": 1, \"id\": {id}, \"nickname\": \"{nickname}\" }}";
-        yield return IEPostRequest(uri, jsonData, Login_ResponseHandler);
-    }
+    // public static IEnumerator IELogin(int id, string nickname)
+    // {
+    //     string uri = $"{BaseUrl}/auth/login";
+    //     string jsonData = $"{{ \"gameId\": 1, \"id\": {id}, \"nickname\": \"{nickname}\" }}";
+    //     yield return IEPostRequest(uri, jsonData, Login_ResponseHandler);
+    // }
+    //
+    // private static void Login_ResponseHandler(string json)
+    // {
+    //     ApiResponse<UserData> response = JsonUtility.FromJson<ApiResponse<UserData>>(json);
+    //     UserInfo.InitUserInfo(
+    //         response.data.id,
+    //         response.data.nickname,
+    //         response.data.todayHighestScore,
+    //         response.data.todayRank
+    //     );
+    //
+    //     Utils.LogFormattedJson("[POST] - Login", json);
+    // }
 
-    private static void Login_ResponseHandler(string json)
-    {
-        ApiResponse<UserData> response = JsonUtility.FromJson<ApiResponse<UserData>>(json);
-        UserInfo.InitUserInfo(
-            response.data.todayHighestScore,
-            response.data.todayRank
-        );
-
-        Utils.LogFormattedJson("[POST] - Login", json);
-    }
-
-    public static IEnumerator IEHighScoreUpdate(int id, int score)
-    {
-        if (id == 0 || score == 0)
-        {
-            yield break;
-        }
-
-        string uri = $"{BaseUrl}/games/1/scores";
-        string jsonData = $"{{ \"userId\": {id}, \"score\": {score} }}";
-        yield return IEPostRequest(uri, jsonData, HighScoreUpdate_ResponseHandler);
-    }
-
-    private static void HighScoreUpdate_ResponseHandler(string json)
-    {
-        Utils.LogFormattedJson("[POST] - HighScoreUpdate", json);
-    }
+    // public static IEnumerator IEHighScoreUpdate(int id, int score)
+    // {
+    //     if (id == 0 || score == 0)
+    //     {
+    //         yield break;
+    //     }
+    //
+    //     string uri = $"{BaseUrl}/games/1/scores";
+    //     string jsonData = $"{{ \"userId\": {id}, \"score\": {score} }}";
+    //     yield return IEPostRequest(uri, jsonData, HighScoreUpdate_ResponseHandler);
+    // }
+    //
+    // private static void HighScoreUpdate_ResponseHandler(string json)
+    // {
+    //     Utils.LogFormattedJson("[POST] - HighScoreUpdate", json);
+    // }
 
     public static IEnumerator IEGetAllRanking(UnityAction callback, RankPeriod rankPeriod, int offset = 0,
         int limit = 100)
@@ -95,7 +94,7 @@ public class HttpManager : MonoBehaviour
     private static void GetAllRanking_ResponseHandler(string json)
     {
         ApiResponse<List<RankInfo>> response = JsonUtility.FromJson<ApiResponse<List<RankInfo>>>(json);
-        UserInfo.WorldRankings = response.data;
+        UserInfo.SetGlobalRanking(response.data);
         Utils.LogFormattedJson("[Get] - AllRanking", json);
     }
 
@@ -103,10 +102,6 @@ public class HttpManager : MonoBehaviour
     {
         using UnityWebRequest req = UnityWebRequest.Get(uri);
         req.SetRequestHeader("Authorization", "Bearer " + TOKEN);
-        /* req.SetRequestHeader("Access-Control-Allow-Credentials", "true");
-        req.SetRequestHeader("Access-Control-Allow-Headers", "Accept, X-Access-Token, X-Application-Name, X-Request-Sent-Time");
-        req.SetRequestHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
-        req.SetRequestHeader("Access-Control-Allow-Origin", "*"); */
         yield return req.SendWebRequest();
 
         if (req.result is UnityWebRequest.Result.ConnectionError or UnityWebRequest.Result.ProtocolError)
@@ -119,29 +114,23 @@ public class HttpManager : MonoBehaviour
         }
     }
 
-    private static IEnumerator IEPostRequest(string uri, string jsonData, UnityAction<string> callback)
-    {
-        using UnityWebRequest req = new UnityWebRequest(uri, "POST");
-        byte[] bodyRaw = Encoding.UTF8.GetBytes(jsonData);
-        req.uploadHandler = new UploadHandlerRaw(bodyRaw);
-        req.downloadHandler = new DownloadHandlerBuffer();
-        req.SetRequestHeader("Content-Type", "application/json");
-        /* req.SetRequestHeader("Access-Control-Allow-Credentials", "true");
-        req.SetRequestHeader("Access-Control-Allow-Headers", "Accept, X-Access-Token, X-Application-Name, X-Request-Sent-Time");
-        req.SetRequestHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS"); 
-        req.SetRequestHeader("Access-Control-Allow-Origin", "*"); */
-
-        req.SetRequestHeader("Authorization", "Bearer " + TOKEN);
-
-        yield return req.SendWebRequest();
-
-        if (req.result is UnityWebRequest.Result.ConnectionError or UnityWebRequest.Result.ProtocolError)
-        {
-            Utils.Log($"[POST] CALL Error: {req.error}\nResponse: {req.downloadHandler.text}", true);
-        }
-        else
-        {
-            callback?.Invoke(req.downloadHandler.text);
-        }
-    }
+    // private static IEnumerator IEPostRequest(string uri, string jsonData, UnityAction<string> callback)
+    // {
+    //     using UnityWebRequest req = new UnityWebRequest(uri, "POST");
+    //     byte[] bodyRaw = Encoding.UTF8.GetBytes(jsonData);
+    //     req.uploadHandler = new UploadHandlerRaw(bodyRaw);
+    //     req.downloadHandler = new DownloadHandlerBuffer();
+    //     req.SetRequestHeader("Content-Type", "application/json");
+    //     req.SetRequestHeader("Authorization", "Bearer " + TOKEN);
+    //     yield return req.SendWebRequest();
+    //
+    //     if (req.result is UnityWebRequest.Result.ConnectionError or UnityWebRequest.Result.ProtocolError)
+    //     {
+    //         Utils.Log($"[POST] CALL Error: {req.error}\nResponse: {req.downloadHandler.text}", true);
+    //     }
+    //     else
+    //     {
+    //         callback?.Invoke(req.downloadHandler.text);
+    //     }
+    // }
 }

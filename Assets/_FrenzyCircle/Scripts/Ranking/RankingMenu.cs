@@ -76,7 +76,6 @@ public class RankingMenu : MonoBehaviour
                 rankPeriod == i ? Color.white : Color.gray;
         }
 
-        userRankingPanel.SetTexts(UserInfo.Name);
         StartCoroutine(IEChain());
         return;
 
@@ -95,7 +94,7 @@ public class RankingMenu : MonoBehaviour
         {
             case HttpManager.RankPeriod.Daily:
                 rankInfo = UserInfo.UserDayRanking;
-                UserInfo.TodayRank = rankInfo.rank;
+                UserInfo.UpdateUserRanking(todayRank: rankInfo.rank);
                 userRankingPanel.SetTexts(UserInfo.Name, UserInfo.TodayRank, rankInfo.score);
                 break;
             case HttpManager.RankPeriod.Weekly:
@@ -113,7 +112,7 @@ public class RankingMenu : MonoBehaviour
 
     private void GlobalRankingInfoUpdate_Callback()
     {
-        List<RankInfo> globalRankings = UserInfo.WorldRankings;
+        List<RankInfo> globalRankings = UserInfo.GlobalRankings;
 
         globalRankings.RemoveAll(rankInfo => rankInfo.score == 0);
         globalRankings.Sort((a, b) => a.rank.CompareTo(b.rank));
@@ -144,7 +143,7 @@ public class RankingMenu : MonoBehaviour
         loadingData.alpha = 0f;
         cgNoData.alpha = globalRankings.Count == 0 ? 1f : 0f;
         noData.alpha = globalRankings.Count == 0 ? 1f : 0f;
-        
+
         rankingParents.DOAnchorPosY(0, .25f).SetEase(Ease.OutQuad);
     }
 }
