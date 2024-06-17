@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class ConnectInfo
 {
     public string id;
-    public string name;
+    public string nickname;
     public string todayHighestScore;
     public string todayRank;
 }
@@ -36,7 +36,7 @@ public class ReactConnect : MonoBehaviour
             ConnectInfo response = JsonUtility.FromJson<ConnectInfo>(json);
             UserInfo.InitUserInfo(
                 int.Parse(response.id),
-                response.name,
+                response.nickname,
                 int.Parse(response.todayHighestScore),
                 int.Parse(response.todayRank)
             );

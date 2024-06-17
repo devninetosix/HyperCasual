@@ -143,8 +143,7 @@ public class PlayerLogic : MonoBehaviour
         rpyButton.GetComponent<SpriteRenderer>().enabled = true;
         GameObject.Find("GameOverMenu").transform.localScale = new Vector2(1, 1);
         GameObject.Find("GameOverScore").GetComponent<TextMeshProUGUI>().SetText("SCORE: " + Vars.Score);
-        GameObject.Find("GameOverBestScore").GetComponent<TextMeshProUGUI>()
-            .SetText("BEST SCORE: " + ES3.Load(Contant.BestScore, 0));
+        GameObject.Find("GameOverBestScore").GetComponent<TextMeshProUGUI>().SetText("BEST SCORE: " + ES3.Load(Contant.BestScore, 0));
 
         if (gameObject)
         {
@@ -152,6 +151,6 @@ public class PlayerLogic : MonoBehaviour
         }
 
         GetComponent<PlayerLogic>().enabled = false;
-        UserInfo.Instance.UpdateTodayBestScore(Vars.Score);
+        UserInfo.UpdateTodayBestScore(Vars.Score);
     }
 }

@@ -77,7 +77,7 @@ public class UserInfo : MonoBehaviour
         );
     }
 
-    public void UpdateTodayBestScore(int score)
+    public static void UpdateTodayBestScore(int score)
     {
         if (TodayHighScore > score)
         {
