@@ -103,10 +103,10 @@ public class HttpManager : MonoBehaviour
     {
         using UnityWebRequest req = UnityWebRequest.Get(uri);
         req.SetRequestHeader("Authorization", "Bearer " + TOKEN);
-        req.SetRequestHeader("Access-Control-Allow-Credentials": "true");
-        req.SetRequestHeader("Access-Control-Allow-Headers": "Accept, X-Access-Token, X-Application-Name, X-Request-Sent-Time");
-        req.SetRequestHeader("Access-Control-Allow-Methods": "GET, POST, OPTIONS");
-        req.SetRequestHeader("Access-Control-Allow-Origin": "*");
+        /* req.SetRequestHeader("Access-Control-Allow-Credentials", "true");
+        req.SetRequestHeader("Access-Control-Allow-Headers", "Accept, X-Access-Token, X-Application-Name, X-Request-Sent-Time");
+        req.SetRequestHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+        req.SetRequestHeader("Access-Control-Allow-Origin", "*"); */
         yield return req.SendWebRequest();
 
         if (req.result is UnityWebRequest.Result.ConnectionError or UnityWebRequest.Result.ProtocolError)
@@ -126,11 +126,10 @@ public class HttpManager : MonoBehaviour
         req.uploadHandler = new UploadHandlerRaw(bodyRaw);
         req.downloadHandler = new DownloadHandlerBuffer();
         req.SetRequestHeader("Content-Type", "application/json");
-        // req.SetRequestHeader("Access-Control-Allow-Origin", "*");
-        req.SetRequestHeader("Access-Control-Allow-Credentials": "true");
-        req.SetRequestHeader("Access-Control-Allow-Headers": "Accept, X-Access-Token, X-Application-Name, X-Request-Sent-Time");
-        req.SetRequestHeader("Access-Control-Allow-Methods": "GET, POST, OPTIONS");
-        req.SetRequestHeader("Access-Control-Allow-Origin": "*");
+        /* req.SetRequestHeader("Access-Control-Allow-Credentials", "true");
+        req.SetRequestHeader("Access-Control-Allow-Headers", "Accept, X-Access-Token, X-Application-Name, X-Request-Sent-Time");
+        req.SetRequestHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS"); 
+        req.SetRequestHeader("Access-Control-Allow-Origin", "*"); */
 
         req.SetRequestHeader("Authorization", "Bearer " + TOKEN);
 

@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-[System.Serializable]
+[Serializable]
 public class ConnectInfo
 {
     public string id;
@@ -45,8 +45,6 @@ public class ReactConnect : MonoBehaviour
     // 비회원 로그인!!
     private IEnumerator IEDummyLogin()
     {
-        UserInfo.Name = Utils.RandomNameGenerator();
-        UserInfo.Id = UnityEngine.Random.Range(1000000, 10000000);
         yield return StartCoroutine(IELoginLogic(UserInfo.Id, UserInfo.Name));
     }
 
