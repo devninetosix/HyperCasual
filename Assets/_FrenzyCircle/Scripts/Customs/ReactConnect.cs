@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -35,26 +34,25 @@ public class ReactConnect : MonoBehaviour
         {
             ConnectInfo response = JsonUtility.FromJson<ConnectInfo>(json);
             UserInfo.InitUserInfo(
-                int.Parse(response.id),
+                response.id,
                 response.nickname,
                 int.Parse(response.todayHighestScore),
                 int.Parse(response.todayRank)
             );
             Utils.LogFormattedJson("[SetUserInfo]", json);
-            StartCoroutine(IELoadScene());
+            Invoke(nameof(LoadScene), 0.25f);
         }
         catch (Exception ex)
         {
             // [POST] 호출 실패했을 경우, 로직 타는 부분
             Utils.Log(ex.Message, true);
             UserInfo.DummyLogin();
-            StartCoroutine(IELoadScene());
+            Invoke(nameof(LoadScene), 0.25f);
         }
     }
 
-    private static IEnumerator IELoadScene()
+    private static void LoadScene()
     {
-        yield return new WaitForSeconds(.1f);
         SceneManager.LoadScene(1);
     }
 }

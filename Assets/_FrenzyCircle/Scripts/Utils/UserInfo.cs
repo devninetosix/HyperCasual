@@ -8,14 +8,14 @@ using Sirenix.OdinInspector;
 [System.Serializable]
 public class UserScore
 {
-    public int userId;
+    public string userId;
     public int score;
 }
 
 public class UserInfo : MonoBehaviour
 {
-    public static int Id { get; private set; }
-    public static string Name { get; private set; }
+    public static string Id { get; private set; }
+    public static string NickName { get; private set; }
     public static int TodayHighScore { get; private set; }
     public static int TodayRank { get; private set; }
 
@@ -37,10 +37,10 @@ public class UserInfo : MonoBehaviour
         Instance = this;
     }
 
-    public static void InitUserInfo(int userId, string userName, int todayHighScore = 0, int todayRank = 0)
+    public static void InitUserInfo(string userId, string userName, int todayHighScore = 0, int todayRank = 0)
     {
         Id = userId;
-        Name = userName;
+        NickName = userName;
         TodayHighScore = todayHighScore;
         TodayRank = todayRank;
 
@@ -72,7 +72,7 @@ public class UserInfo : MonoBehaviour
     public static void DummyLogin()
     {
         InitUserInfo(
-            Random.Range(10000, 100000),
+            Random.Range(10000, 100000).ToString(),
             Utils.RandomNameGenerator()
         );
     }

@@ -11,7 +11,7 @@ public class ApiResponse<T>
 [Serializable]
 public class UserData
 {
-    public int id;
+    public string id;
     public string nickname;
     public int todayHighestScore;
     public int todayRank;
@@ -28,8 +28,8 @@ public class UserRank
 [Serializable]
 public class RankInfo
 {
-    public int id;
-    public int userId;
+    public string id;
+    public string userId;
     public string nickname;
     public int score;
     public int rank;

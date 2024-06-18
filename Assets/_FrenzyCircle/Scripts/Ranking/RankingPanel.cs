@@ -45,7 +45,7 @@ public class RankingPanel : MonoBehaviour
             return;
         }
 
-        if (nameTextPanel.fontSize - dynamicScrollSize.basePanel.GetNameFontSize() < 0.01f)
+        if (Mathf.Abs(nameTextPanel.fontSize - dynamicScrollSize.basePanel.GetNameFontSize()) > 1f)
         {
             SetFontSizes();
         }
@@ -57,15 +57,11 @@ public class RankingPanel : MonoBehaviour
         {
             userName = userName[..12] + "...";
         }
-        else if (userName == null)
-        {
-            userName = "-";
-        }
 
-        nameTextPanel.SetText(userName);
-        rankTextPanel.SetText(rank == 0 ? "-" : rank + "");
-        scoreTextPanel.SetText(score == 0 ? "-" : score + "");
-        pointTextPanel.SetText("-");
+        nameTextPanel.text = userName;
+        rankTextPanel.text = rank == 0 ? "-" : rank + "";
+        scoreTextPanel.text = score == 0 ? "-" : score + "";
+        pointTextPanel.text = "-";
     }
 
     private void SetFontSizes()
@@ -74,34 +70,35 @@ public class RankingPanel : MonoBehaviour
         rankTextPanel.fontSize = dynamicScrollSize.basePanel.GetRankTextSize();
         scoreTextPanel.fontSize = dynamicScrollSize.basePanel.GetScoreTextSize();
         pointTextPanel.fontSize = dynamicScrollSize.basePanel.GetPointTextSize();
+        
         TurnOnOff(false);
         TurnOnOff(true);
     }
 
     private void TurnOnOff(bool turned)
     {
-        nameTextPanel.enabled = turned;
-        rankTextPanel.enabled = turned;
-        scoreTextPanel.enabled = turned;
-        pointTextPanel.enabled = turned;
+        nameTextPanel.gameObject.SetActive(turned);
+        rankTextPanel.gameObject.SetActive(turned);
+        scoreTextPanel.gameObject.SetActive(turned);
+        pointTextPanel.gameObject.SetActive(turned);
     }
 
-    public float GetNameFontSize()
+    private float GetNameFontSize()
     {
         return nameTextPanel.fontSize;
     }
 
-    public float GetRankTextSize()
+    private float GetRankTextSize()
     {
         return rankTextPanel.fontSize;
     }
 
-    public float GetScoreTextSize()
+    private float GetScoreTextSize()
     {
         return scoreTextPanel.fontSize;
     }
 
-    public float GetPointTextSize()
+    private float GetPointTextSize()
     {
         return pointTextPanel.fontSize;
     }

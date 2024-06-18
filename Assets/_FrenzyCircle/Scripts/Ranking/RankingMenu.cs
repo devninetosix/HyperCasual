@@ -1,8 +1,8 @@
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using DG.Tweening;
 
 public class RankingMenu : MonoBehaviour
@@ -76,6 +76,9 @@ public class RankingMenu : MonoBehaviour
                 rankPeriod == i ? Color.white : Color.gray;
         }
 
+        userRankingPanel.SetTexts(UserInfo.NickName, UserInfo.TodayRank, 0);
+        userRankingPanel.gameObject.SetActive(false);
+        Utils.Log(UserInfo.NickName);
         StartCoroutine(IEChain());
         return;
 
@@ -95,19 +98,22 @@ public class RankingMenu : MonoBehaviour
             case HttpManager.RankPeriod.Daily:
                 rankInfo = UserInfo.UserDayRanking;
                 UserInfo.UpdateUserRanking(todayRank: rankInfo.rank);
-                userRankingPanel.SetTexts(UserInfo.Name, UserInfo.TodayRank, rankInfo.score);
+                userRankingPanel.SetTexts(UserInfo.NickName, UserInfo.TodayRank, rankInfo.score);
                 break;
             case HttpManager.RankPeriod.Weekly:
                 rankInfo = UserInfo.UserWeekRanking;
-                userRankingPanel.SetTexts(UserInfo.Name, rankInfo.rank, rankInfo.score);
+                userRankingPanel.SetTexts(UserInfo.NickName, rankInfo.rank, rankInfo.score);
                 break;
             case HttpManager.RankPeriod.Monthly:
                 rankInfo = UserInfo.UserMonthRanking;
-                userRankingPanel.SetTexts(UserInfo.Name, rankInfo.rank, rankInfo.score);
+                userRankingPanel.SetTexts(UserInfo.NickName, rankInfo.rank, rankInfo.score);
                 break;
             default:
                 return;
         }
+        
+        
+        userRankingPanel.gameObject.SetActive(true);
     }
 
     private void GlobalRankingInfoUpdate_Callback()
