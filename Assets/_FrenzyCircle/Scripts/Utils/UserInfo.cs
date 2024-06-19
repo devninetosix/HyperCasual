@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 #if UNITY_EDITOR
 using Sirenix.OdinInspector;
+using UnityEngine.SceneManagement;
 #endif
 
 [System.Serializable]
@@ -66,9 +67,6 @@ public class UserInfo : MonoBehaviour
     }
 
     // 비회원 로그인!!
-#if UNITY_EDITOR
-    [Button(ButtonSizes.Large)]
-#endif
     public static void DummyLogin()
     {
         InitUserInfo(
@@ -76,6 +74,15 @@ public class UserInfo : MonoBehaviour
             Utils.RandomNameGenerator()
         );
     }
+
+#if UNITY_EDITOR
+    [Button(ButtonSizes.Large)]
+    private void GoToGameScene()
+    {
+        DummyLogin();
+        SceneManager.LoadScene(1);
+    }
+#endif
 
     public static void UpdateTodayBestScore(int score)
     {

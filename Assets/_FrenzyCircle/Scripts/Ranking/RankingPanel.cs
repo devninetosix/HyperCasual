@@ -62,6 +62,18 @@ public class RankingPanel : MonoBehaviour
         rankTextPanel.text = rank == 0 ? "-" : rank + "";
         scoreTextPanel.text = score == 0 ? "-" : score + "";
         pointTextPanel.text = "-";
+
+        if (!targetChangedSize)
+        {
+            rankTextPanel.color = rank switch
+            {
+                1 => new Color(1, 0.2705882f, 0.2705882f),
+                2 => new Color(1, 0.6235294f, 0.03921569f),
+                >= 3 and <= 5 => new Color(0.1960784f, 0.8431373f, 0.2941177f),
+                >= 6 and <= 10 => new Color(0.3921569f, 0.8196079f, 0.9960785f),
+                _ => Color.white
+            };
+        }
     }
 
     private void SetFontSizes()
