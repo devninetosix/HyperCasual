@@ -117,6 +117,6 @@ public static class Utils
 
 public static class Constant
 {
-    public const string BestScore = "BestScore22";
-    public const string Theme = "Theme22";
+    public const string BestScore = "KEY_BestScore";
+    public const string Theme = "Theme";
 }

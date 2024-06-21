@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class MiddleCircleManager : MonoBehaviour
 {
@@ -12,8 +13,9 @@ public class MiddleCircleManager : MonoBehaviour
         _animator.enabled = false;
     }
 
-    private void Start()
+    private IEnumerator Start()
     {
+        yield return new WaitForSeconds(.1f);
         _renderer.sprite = ThemeManager.Instance.GetMiddleCircleSprite();
         _animator.SetInteger(Constant.Theme, ES3.Load(Constant.Theme, 0));
     }

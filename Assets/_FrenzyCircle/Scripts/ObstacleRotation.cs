@@ -48,10 +48,10 @@ public class ObstacleRotation : MonoBehaviour
     {
         // 색상 조정
         Color c = Color.white;
-        float normalizedScale = Mathf.InverseLerp(0.05f, 1.0f, transform.localScale.x);
+        float normalizedScale = Mathf.InverseLerp(0.05f, 0.8f, transform.localScale.x);
 
         // 비선형 보간을 반대로 적용
-        float colorFactor = 1.0f - normalizedScale + 0.05f;
+        float colorFactor = 1.0f - normalizedScale;
 
         c.r = c.g = c.b = colorFactor;
         _sp.color = c;
