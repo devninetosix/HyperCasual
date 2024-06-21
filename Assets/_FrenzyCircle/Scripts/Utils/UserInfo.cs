@@ -45,7 +45,7 @@ public class UserInfo : MonoBehaviour
         TodayHighScore = todayHighScore;
         TodayRank = todayRank;
 
-        ES3.Save(Contant.BestScore, TodayHighScore);
+        ES3.Save(Constant.BestScore, TodayHighScore);
     }
 
     public static void UpdateUserRanking(int todayHighScore = -1, int todayRank = -1)
@@ -91,9 +91,9 @@ public class UserInfo : MonoBehaviour
             return;
         }
 
-        if (ES3.Load(Contant.BestScore, 0) < score)
+        if (ES3.Load(Constant.BestScore, 0) < score)
         {
-            ES3.Save(Contant.BestScore, score);
+            ES3.Save(Constant.BestScore, score);
         }
 
         TodayHighScore = score;

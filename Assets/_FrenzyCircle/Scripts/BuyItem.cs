@@ -9,7 +9,7 @@ public class BuyItem : MonoBehaviour
     {
         string themeName = gameObject.name;
 
-        if (int.Parse(themeName) == ES3.Load(Contant.Theme, 0))
+        if (int.Parse(themeName) == ES3.Load(Constant.Theme, 0))
         {
             background.color = new Color(1, 1, 1, 1);
         }

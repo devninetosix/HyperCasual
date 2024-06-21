@@ -64,7 +64,7 @@ public class Menus : MonoBehaviour
         mainMenuUI.SetActive(false);
         rankingMenuUI.SetActive(false);
         gameMenuUI.SetActive(true);
-        score.SetText("SCORE: 0" + "\nBEST SCORE: " + ES3.Load(Contant.BestScore));
+        score.SetText("SCORE: 0" + "\nBEST SCORE: " + ES3.Load(Constant.BestScore));
     }
 
     public void BackToTheMainMenu()
@@ -183,7 +183,7 @@ public class Menus : MonoBehaviour
         GameObject.Find("GameOverMenu").transform.localScale = new Vector2(0, 1);
         GameObject game = Instantiate(gamePrefab);
         game!.name = "Game";
-        score.SetText("SCORE: 0" + "\nBEST SCORE: " + ES3.Load(Contant.BestScore));
+        score.SetText("SCORE: 0" + "\nBEST SCORE: " + ES3.Load(Constant.BestScore));
     }
 
     public void SoundOnOff()

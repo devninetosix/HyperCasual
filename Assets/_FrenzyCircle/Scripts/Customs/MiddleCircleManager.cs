@@ -15,6 +15,6 @@ public class MiddleCircleManager : MonoBehaviour
     private void Start()
     {
         _renderer.sprite = ThemeManager.Instance.GetMiddleCircleSprite();
-        _animator.SetInteger(Contant.Theme, ES3.Load(Contant.Theme, 0));
+        _animator.SetInteger(Constant.Theme, ES3.Load(Constant.Theme, 0));
     }
 }

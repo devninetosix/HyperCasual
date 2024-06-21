@@ -112,12 +112,12 @@ public class PlayerLogic : MonoBehaviour
         else
         {
             Vars.Score++;
-            if (Vars.Score > ES3.Load(Contant.BestScore, 0))
+            if (Vars.Score > ES3.Load(Constant.BestScore, 0))
             {
-                ES3.Save(Contant.BestScore, Vars.Score);
+                ES3.Save(Constant.BestScore, Vars.Score);
             }
 
-            _score.SetText("SCORE: " + Vars.Score + "\nBEST SCORE: " + ES3.Load(Contant.BestScore));
+            _score.SetText("SCORE: " + Vars.Score + "\nBEST SCORE: " + ES3.Load(Constant.BestScore));
             _lineChangeSound.Play();
         }
 
@@ -143,7 +143,7 @@ public class PlayerLogic : MonoBehaviour
         rpyButton.GetComponent<SpriteRenderer>().enabled = true;
         GameObject.Find("GameOverMenu").transform.localScale = new Vector2(1, 1);
         GameObject.Find("GameOverScore").GetComponent<TextMeshProUGUI>().SetText("SCORE: " + Vars.Score);
-        GameObject.Find("GameOverBestScore").GetComponent<TextMeshProUGUI>().SetText("BEST SCORE: " + ES3.Load(Contant.BestScore, 0));
+        GameObject.Find("GameOverBestScore").GetComponent<TextMeshProUGUI>().SetText("BEST SCORE: " + ES3.Load(Constant.BestScore, 0));
 
         if (gameObject)
         {
