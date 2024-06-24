@@ -9,7 +9,7 @@ public class ObstacleRotation : MonoBehaviour
 
     private void Start()
     {
-        rot = Random.Range(50f, 125f);
+        rot = Random.Range(50f, 100f);
         
         _sp = GetComponent<SpriteRenderer>();
         UpdateColor();
@@ -43,7 +43,7 @@ public class ObstacleRotation : MonoBehaviour
     {
         // 색상 조정
         Color c = Color.white;
-        float normalizedScale = Mathf.InverseLerp(0.05f, 0.8f, transform.localScale.x);
+        float normalizedScale = Mathf.InverseLerp(0.2f, 0.8f, transform.localScale.x);
 
         // 비선형 보간을 반대로 적용
         float colorFactor = 1.0f - normalizedScale + .25f;
