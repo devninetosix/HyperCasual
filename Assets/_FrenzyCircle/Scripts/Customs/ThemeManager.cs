@@ -39,21 +39,21 @@ public class ThemeManager : MonoBehaviour
 
     public static void SetThemes(int number)
     {
-        ES3.Save(Contant.Theme, number);
+        ES3.Save(Constant.Theme, number);
     }
 
     public Sprite GetRotCircleSprite()
     {
-        return rotCircles[ES3.Load(Contant.Theme, 0)];
+        return rotCircles[ES3.Load(Constant.Theme, 0)];
     }
 
     public Sprite GetMiddleCircleSprite()
     {
-        return middleCircles[ES3.Load(Contant.Theme, 0)];
+        return middleCircles[ES3.Load(Constant.Theme, 0)];
     }
 
     public Sprite GetArrowSprite()
     {
-        return arrows[ES3.Load(Contant.Theme, 0)];
+        return arrows[ES3.Load(Constant.Theme, 0)];
     }
 }

@@ -19,7 +19,7 @@ public class PlayerDestroy : MonoBehaviour
         transform.localScale = new Vector2(_scale, _scale);
         if (_scale <= 0)
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }

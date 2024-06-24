@@ -37,7 +37,10 @@ public class ObjectRotationForMainMenu : MonoBehaviour
 
         if (transform.localScale.x < 0f)
         {
-            if (Vars.StartGame) Destroy(gameObject);
+            if (Vars.StartGame)
+            {
+                gameObject.SetActive(false);
+            }
             transform.localScale = new Vector2(0.75f, 0.75f);
             Vars.MainMenuCircles++;
             _sp.sortingOrder = -Vars.MainMenuCircles;

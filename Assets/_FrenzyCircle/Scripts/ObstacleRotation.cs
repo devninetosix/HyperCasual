@@ -9,12 +9,7 @@ public class ObstacleRotation : MonoBehaviour
 
     private void Start()
     {
-        rot = Random.Range(50, 100);
-        
-        if (_timer > 10f)
-        {
-            rot = Random.Range(80f, 150f);
-        }
+        rot = Random.Range(50f, 100f);
         
         _sp = GetComponent<SpriteRenderer>();
         UpdateColor();
@@ -25,10 +20,10 @@ public class ObstacleRotation : MonoBehaviour
         transform.Rotate(0, 0, (rotateForward ? 1 : -1) * rot * Time.deltaTime);
 
         _timer += Time.deltaTime;
-        if (_timer > 5f)
+        if (_timer > 3f)
         {
-            _timer = 0;
-            Vars.ObstacleScaleSpeed += 0.000005f;
+            _timer = 0f;
+            Vars.ObstacleScaleSpeed += 0.0000025f;
         }
 
         transform.localScale = new Vector2(
@@ -38,20 +33,20 @@ public class ObstacleRotation : MonoBehaviour
 
         if (transform.localScale.x < 0f)
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
         
         UpdateColor();
     }
-    
+
     private void UpdateColor()
     {
         // 색상 조정
         Color c = Color.white;
-        float normalizedScale = Mathf.InverseLerp(0.05f, 1.0f, transform.localScale.x);
+        float normalizedScale = Mathf.InverseLerp(0.2f, 0.8f, transform.localScale.x);
 
         // 비선형 보간을 반대로 적용
-        float colorFactor = 1.0f - normalizedScale + 0.05f;
+        float colorFactor = 1.0f - normalizedScale + .25f;
 
         c.r = c.g = c.b = colorFactor;
         _sp.color = c;

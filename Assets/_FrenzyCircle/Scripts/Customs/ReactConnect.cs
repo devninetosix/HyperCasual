@@ -22,7 +22,7 @@ public class ReactConnect : MonoBehaviour
 
     private void Start()
     {
-        ES3.Save(Contant.BestScore, 0);
+        ES3.Save(Constant.BestScore, 0);
         Utils.Log("[Start] Unity Event, Frenzy Circle Start");
         GameInit("start");
     }

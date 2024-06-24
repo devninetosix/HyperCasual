@@ -15,7 +15,7 @@ public static class Utils
     public static void LogFormattedJson(string header, string json)
     {
 // TODO: 테스트 코드 제거
-#if UNITY_EDITOR || UNITY_WEBGL
+#if UNITY_EDITOR
         try
         {
             var parsedJson = JToken.Parse(json);
@@ -31,7 +31,7 @@ public static class Utils
 
     public static void Log(object message, bool warning = false)
     {
-#if UNITY_EDITOR || UNITY_WEBGL
+#if UNITY_EDITOR
         if (warning)
         {
             Debug.LogError($"<b><color=red>{message}</color></b>");
@@ -115,8 +115,8 @@ public static class Utils
     }
 }
 
-public static class Contant
+public static class Constant
 {
-    public const string BestScore = "BestScore";
+    public const string BestScore = "KEY_BestScore";
     public const string Theme = "Theme";
 }
