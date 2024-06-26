@@ -33,6 +33,12 @@ public class PlayerLogic : MonoBehaviour
 
     private void Update()
     {
+        if (Input.anyKeyDown)
+        {
+            GameLogic();
+            return;
+        }
+
         if (!Input.GetMouseButtonDown(0))
         {
             return;
@@ -143,7 +149,8 @@ public class PlayerLogic : MonoBehaviour
         rpyButton.GetComponent<SpriteRenderer>().enabled = true;
         GameObject.Find("GameOverMenu").transform.localScale = new Vector2(1, 1);
         GameObject.Find("GameOverScore").GetComponent<TextMeshProUGUI>().SetText("SCORE: " + Vars.Score);
-        GameObject.Find("GameOverBestScore").GetComponent<TextMeshProUGUI>().SetText("BEST SCORE: " + ES3.Load(Constant.BestScore, 0));
+        GameObject.Find("GameOverBestScore").GetComponent<TextMeshProUGUI>()
+            .SetText("BEST SCORE: " + ES3.Load(Constant.BestScore, 0));
 
         if (gameObject)
         {
