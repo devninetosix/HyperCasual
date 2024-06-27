@@ -1,45 +1,49 @@
 ﻿using UnityEngine;
 
-public class GameplayAnimation : MonoBehaviour
+
+namespace FrenzyCircle
 {
-    private float _speed;
-    public PlayerLogic pl;
-    public CircleCollider2D playersCollider;
-    private GameplayAnimation _gameplayAnimation;
-
-    private void Start()
+    public class GameplayAnimation : MonoBehaviour
     {
-        _gameplayAnimation = GetComponent<GameplayAnimation>();
-    }
+        private float _speed;
+        public PlayerLogic pl;
+        public CircleCollider2D playersCollider;
+        private GameplayAnimation _gameplayAnimation;
 
-    private void FixedUpdate()
-    {
-        _speed += 0.001f;
-        transform.localScale = new Vector2(
-            transform.localScale.x + (0.0005f + _speed),
-            transform.localScale.y + (0.0005f + _speed)
-        );
-
-        if (!(transform.localScale.x >= 1))
+        private void Start()
         {
-            return;
+            _gameplayAnimation = GetComponent<GameplayAnimation>();
         }
 
-        transform.localScale = new Vector2(1, 1);
+        private void FixedUpdate()
+        {
+            _speed += 0.001f;
+            transform.localScale = new Vector2(
+                transform.localScale.x + (0.0005f + _speed),
+                transform.localScale.y + (0.0005f + _speed)
+            );
 
-        if (pl)
-        {
-            pl.enabled = true;
-        }
+            if (!(transform.localScale.x >= 1))
+            {
+                return;
+            }
 
-        if (playersCollider)
-        {
-            playersCollider.enabled = true;
-        }
-        
-        if (_gameplayAnimation)
-        {
-            _gameplayAnimation.enabled = false;
+            transform.localScale = new Vector2(1, 1);
+
+            if (pl)
+            {
+                pl.enabled = true;
+            }
+
+            if (playersCollider)
+            {
+                playersCollider.enabled = true;
+            }
+
+            if (_gameplayAnimation)
+            {
+                _gameplayAnimation.enabled = false;
+            }
         }
     }
 }

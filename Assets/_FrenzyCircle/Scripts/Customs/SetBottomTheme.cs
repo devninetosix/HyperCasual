@@ -1,18 +1,20 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SetBottomTheme : MonoBehaviour
+namespace FrenzyCircle
 {
-    private Image _img;
-
-    private void Awake()
+    public class SetBottomTheme : MonoBehaviour
     {
-        _img = GetComponent<Image>();
-    }
+        private Image _img;
 
-    private void Start()
-    {
-        _img.sprite = ThemeManager.Instance.GetArrowSprite();
+        private void Awake()
+        {
+            _img = GetComponent<Image>();
+        }
+
+        private void Start()
+        {
+            _img.sprite = ThemeManager.Instance.GetArrowSprite();
+        }
     }
 }

@@ -1,23 +1,27 @@
 ﻿using UnityEngine;
 
-public class GameStart : MonoBehaviour
+
+namespace FrenzyCircle
 {
-    private bool _canClick = true;
-
-    private void OnMouseDown()
+    public class GameStart : MonoBehaviour
     {
-        if (!_canClick)
+        private bool _canClick = true;
+
+        private void OnMouseDown()
         {
-            return;
-        }
-        
-        _canClick = false;
-        GameObject.Find("GameManager").GetComponent<Menus>().StartTheGame();
-        Invoke(nameof(AllowClicking), 1);
-    }
+            if (!_canClick)
+            {
+                return;
+            }
 
-    private void AllowClicking()
-    {
-        _canClick = true;
+            _canClick = false;
+            GameObject.Find("GameManager").GetComponent<Menus>().StartTheGame();
+            Invoke(nameof(AllowClicking), 1);
+        }
+
+        private void AllowClicking()
+        {
+            _canClick = true;
+        }
     }
 }

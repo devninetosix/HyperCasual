@@ -1,22 +1,26 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DynamicScrollContentSize : MonoBehaviour
+
+namespace FrenzyCircle
 {
-    private RectTransform _rectTr;
-    public RankingPanel basePanel;
-    
-    private void Awake()
+    public class DynamicScrollContentSize : MonoBehaviour
     {
-        _rectTr = GetComponent<RectTransform>();
-    }
-    
-    private void FixedUpdate()
-    {
-        if (transform.childCount > 0)
+        private RectTransform _rectTr;
+        public RankingPanel basePanel;
+
+        private void Awake()
         {
-            var height = transform.GetChild(0).GetComponent<LayoutElement>().minHeight;
-            _rectTr.sizeDelta = new Vector2(0, height * transform.childCount + height);
+            _rectTr = GetComponent<RectTransform>();
+        }
+
+        private void FixedUpdate()
+        {
+            if (transform.childCount > 0)
+            {
+                var height = transform.GetChild(0).GetComponent<LayoutElement>().minHeight;
+                _rectTr.sizeDelta = new Vector2(0, height * transform.childCount + height);
+            }
         }
     }
 }

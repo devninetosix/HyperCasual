@@ -1,25 +1,28 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class BuyItem : MonoBehaviour
+namespace FrenzyCircle
 {
-    public Image background;
-
-    private void OnEnable()
+    public class BuyItem : MonoBehaviour
     {
-        string themeName = gameObject.name;
+        public Image background;
 
-        if (int.Parse(themeName) == ES3.Load(Constant.Theme, 0))
+        private void OnEnable()
         {
-            background.color = new Color(1, 1, 1, 1);
-        }
-    }
+            string themeName = gameObject.name;
 
-    public void Buy()
-    {
-        GameObject.Find("GameManager").GetComponent<Menus>().UnSelectAllShopItems();
-        background.color = new Color(1, 1, 1, 1);
-        GameObject.Find("ButtonSound").GetComponent<AudioSource>().Play();
-        ThemeManager.SetThemes(int.Parse(gameObject.name));
+            if (int.Parse(themeName) == ES3.Load(Constant.Theme, 0))
+            {
+                background.color = new Color(1, 1, 1, 1);
+            }
+        }
+
+        public void Buy()
+        {
+            GameObject.Find("GameManager").GetComponent<Menus>().UnSelectAllShopItems();
+            background.color = new Color(1, 1, 1, 1);
+            GameObject.Find("ButtonSound").GetComponent<AudioSource>().Play();
+            ThemeManager.SetThemes(int.Parse(gameObject.name));
+        }
     }
 }

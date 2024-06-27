@@ -1,16 +1,20 @@
 using UnityEngine;
 
-public class ObstacleStartSprite : MonoBehaviour
+
+namespace FrenzyCircle
 {
-    private SpriteRenderer _renderer;
-
-    private void Awake()
+    public class ObstacleStartSprite : MonoBehaviour
     {
-        _renderer = GetComponent<SpriteRenderer>();
-    }
+        private SpriteRenderer _renderer;
 
-    private void Start()
-    {
-        _renderer.sprite = ThemeManager.Instance.GetRotCircleSprite();
+        private void Awake()
+        {
+            _renderer = GetComponent<SpriteRenderer>();
+        }
+
+        private void Start()
+        {
+            _renderer.sprite = ThemeManager.Instance.GetRotCircleSprite();
+        }
     }
 }

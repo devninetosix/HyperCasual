@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 4d13c3a68decb714e80835bb34f348f3
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 156513
+  packageName: All In 1 Sprite Shader
+  packageVersion: 3.71
+  assetPath: Assets/AllIn1SpriteShader/Demo/Animation/Blur.controller
+  uploadId: 644767

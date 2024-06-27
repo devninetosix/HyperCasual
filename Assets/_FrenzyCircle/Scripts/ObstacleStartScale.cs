@@ -1,11 +1,15 @@
 ﻿using UnityEngine;
 
-public class ObstacleStartScale : MonoBehaviour
-{
-    public float startScale;
 
-    private void Start()
+namespace FrenzyCircle
+{
+    public class ObstacleStartScale : MonoBehaviour
     {
-        startScale = transform.localScale.y;
+        public float startScale;
+
+        private void Start()
+        {
+            startScale = transform.localScale.y;
+        }
     }
 }

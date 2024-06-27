@@ -1,31 +1,35 @@
 using TMPro;
 using UnityEngine;
 
-public class TruncateText : MonoBehaviour
+
+namespace FrenzyCircle
 {
-    private const int MaxCharacters = 12;
-
-    private TextMeshProUGUI _textMesh;
-
-    private void Awake()
+    public class TruncateText : MonoBehaviour
     {
-        _textMesh = GetComponent<TextMeshProUGUI>();
-        _textMesh.SetText(" ");
-    }
+        private const int MaxCharacters = 12;
 
-    private void LateUpdate()
-    {
-        if (_textMesh.text == string.Empty)
+        private TextMeshProUGUI _textMesh;
+
+        private void Awake()
         {
-            return;
-        }
-        
-        if (_textMesh.text.Length < MaxCharacters)
-        {
-            return;
+            _textMesh = GetComponent<TextMeshProUGUI>();
+            _textMesh.SetText(" ");
         }
 
-        string truncatedText = _textMesh.text[..MaxCharacters] + "...";
-        _textMesh.SetText(truncatedText);
+        private void LateUpdate()
+        {
+            if (_textMesh.text == string.Empty)
+            {
+                return;
+            }
+
+            if (_textMesh.text.Length < MaxCharacters)
+            {
+                return;
+            }
+
+            string truncatedText = _textMesh.text[..MaxCharacters] + "...";
+            _textMesh.SetText(truncatedText);
+        }
     }
 }

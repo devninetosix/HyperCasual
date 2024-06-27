@@ -1,22 +1,26 @@
 using UnityEngine;
 using System.Collections;
 
-public class MiddleCircleManager : MonoBehaviour
+
+namespace FrenzyCircle
 {
-    private SpriteRenderer _renderer;
-    private Animator _animator;
-
-    private void Awake()
+    public class MiddleCircleManager : MonoBehaviour
     {
-        _renderer = GetComponent<SpriteRenderer>();
-        _animator = GetComponent<Animator>();
-        _animator.enabled = false;
-    }
+        private SpriteRenderer _renderer;
+        private Animator _animator;
 
-    private IEnumerator Start()
-    {
-        yield return new WaitForSeconds(.1f);
-        _renderer.sprite = ThemeManager.Instance.GetMiddleCircleSprite();
-        _animator.SetInteger(Constant.Theme, ES3.Load(Constant.Theme, 0));
+        private void Awake()
+        {
+            _renderer = GetComponent<SpriteRenderer>();
+            _animator = GetComponent<Animator>();
+            _animator.enabled = false;
+        }
+
+        private IEnumerator Start()
+        {
+            yield return new WaitForSeconds(.1f);
+            _renderer.sprite = ThemeManager.Instance.GetMiddleCircleSprite();
+            _animator.SetInteger(Constant.Theme, ES3.Load(Constant.Theme, 0));
+        }
     }
 }

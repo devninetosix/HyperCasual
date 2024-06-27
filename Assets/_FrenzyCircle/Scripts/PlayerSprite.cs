@@ -1,16 +1,20 @@
 ﻿using UnityEngine;
 
-public class PlayerSprite : MonoBehaviour
+
+namespace FrenzyCircle
 {
-    private SpriteRenderer _renderer;
-
-    private void Awake()
+    public class PlayerSprite : MonoBehaviour
     {
-        _renderer = GetComponent<SpriteRenderer>();
-    }
+        private SpriteRenderer _renderer;
 
-    private void OnEnable()
-    {
-        _renderer.sprite = ThemeManager.Instance.GetArrowSprite();
+        private void Awake()
+        {
+            _renderer = GetComponent<SpriteRenderer>();
+        }
+
+        private void OnEnable()
+        {
+            _renderer.sprite = ThemeManager.Instance.GetArrowSprite();
+        }
     }
 }
