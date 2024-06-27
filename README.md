@@ -1,3 +1,3 @@
-# TonPlay2D
+# Hyper Casual Gaming
 
-
+We make fun!
